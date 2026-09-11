@@ -1,0 +1,61 @@
+<%--
+    utilidadesInmobiliaria.jspf - Funciones de apoyo compartidas por las
+    paginas del proyecto TerraNova (formato de moneda, escape de HTML,
+    verificacion de rol PARA LA VISTA y registro de auditoria).
+
+    IMPORTANTE: tieneRol() aqui es solo para decidir que botones/menus
+    mostrar. El control de acceso real, obligatorio, lo hace
+    com.terranova.filter.AccesoFilter en el servidor. Ocultar un boton
+    con tieneRol() nunca reemplaza esa validacion.
+--%>
+<%@ page import="java.sql.*, java.util.*, java.text.NumberFormat, java.util.Locale" %>
+<%!
+    public String formatoCOP(double valor) {
+        NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("es", "CO"));
+        nf.setMaximumFractionDigits(0);
+        return nf.format(valor);
+    }
+
+    public String escapar(String texto) {
+        if (texto == null) return "";
+        return texto.replace("&", "&amp;")
+                     .replace("<", "&lt;")
+                     .replace(">", "&gt;")
+                     .replace("\"", "&quot;")
+                     .replace("'", "&#39;");
+    }
+
+    @SuppressWarnings("unchecked")
+    public boolean tieneRol(HttpSession sesion, String... rolesPermitidos) {
+        if (sesion == null) return false;
+        Object rolesObj = sesion.getAttribute("roles");
+        if (!(rolesObj instanceof Set)) return false;
+        Set<String> roles = (Set<String>) rolesObj;
+        for (String r : rolesPermitidos) {
+            if (roles.contains(r)) return true;
+        }
+        return false;
+    }
+
+    public boolean estaAutenticado(HttpSession sesion) {
+        return sesion != null && sesion.getAttribute("idUsuario") != null;
+    }
+
+    /** Inserta un evento en la tabla auditoria. No lanza excepcion si falla
+     *  (una falla de auditoria nunca debe tumbar la operacion principal). */
+    public void registrarAuditoria(Connection con, Integer idUsuario, String accion,
+                                    String tabla, String detalle, String ip) {
+        String sql = "INSERT INTO auditoria (id_usuario, accion, tabla_afectada, detalle, ip) VALUES (?,?,?,?,?)";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            if (idUsuario != null) ps.setInt(1, idUsuario); else ps.setNull(1, Types.INTEGER);
+            ps.setString(2, accion);
+            ps.setString(3, tabla);
+            ps.setString(4, detalle);
+            ps.setString(5, ip);
+            ps.executeUpdate();
+        } catch (SQLException ignorada) {
+            // Se ignora deliberadamente: un fallo al auditar no debe
+            // interrumpir el flujo principal de la aplicacion.
+        }
+    }
+%>

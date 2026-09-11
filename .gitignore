@@ -1,0 +1,42 @@
+# Este repositorio vive dentro del contexto compartido de Tomcat /JAVA,
+# que tambien contiene otros ejercicios de clase no relacionados con este
+# parcial (y en un par de ellos, credenciales de bases de datos en linea).
+# Por eso este .gitignore usa una lista BLANCA: todo se ignora por defecto
+# y solo se habilitan explicitamente las rutas del proyecto TerraNova.
+#
+# Si necesitas agregar un archivo nuevo del proyecto y "git status" no lo
+# muestra, es porque cae fuera de esta lista blanca: agrega la regla
+# "!ruta" correspondiente en vez de hacer "git add -f".
+
+# 1) Ignorar todo en la raiz del contexto
+/*
+
+# 2) Habilitar el proyecto del parcial completo
+!/Parcial 1/
+!/Parcial 1/**
+!/README.md
+!/.gitignore
+
+# 3) Habilitar SOLO las piezas de WEB-INF que pertenecen a este proyecto
+!/WEB-INF/
+/WEB-INF/*
+!/WEB-INF/web.xml
+
+!/WEB-INF/jspf/
+/WEB-INF/jspf/*
+!/WEB-INF/jspf/conexionInmobiliaria.jspf
+!/WEB-INF/jspf/cabeceraInmobiliaria.jspf
+!/WEB-INF/jspf/pieInmobiliaria.jspf
+!/WEB-INF/jspf/utilidadesInmobiliaria.jspf
+
+!/WEB-INF/classes/
+/WEB-INF/classes/*
+!/WEB-INF/classes/com/
+/WEB-INF/classes/com/*
+!/WEB-INF/classes/com/terranova/
+!/WEB-INF/classes/com/terranova/**/*.java
+# Los .class compilados no se versionan (se generan con javac, ver README)
+*.class
+
+# 4) Nunca versionar el PDF del enunciado original del docente si se guarda aqui
+Parcial 1/PARCIAL_JAVA_1_CORTE_PRACTICO_V2.pdf

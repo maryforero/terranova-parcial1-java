@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    web.xml - Descriptor de despliegue del contexto compartido /JAVA.
+
+    Version 4.0 = Java EE 8 (javax.servlet). Coincide con Tomcat 8.5/9.x,
+    que es lo instalado en este XAMPP (ver Paso 14.3 del taller para el
+    cambio de espacio de nombres si algun dia se pasa a Tomcat 10/11).
+
+    NOTA: este contexto (/JAVA) es compartido por varios ejercicios ademas
+    de RestauranteWeb (Parcial 1, BdEjercicio2, etc.), asi que:
+      - welcome-file-list y session-config son seguros de dejar globales:
+        no cambian nada para las carpetas que ya tienen su propio index.jsp.
+      - el grupo de codificacion UTF-8 se dejo LIMITADO con url-pattern a
+        /Simulacro/RestauranteWeb/* para no alterar el encoding de los
+        demas ejercicios que no lo declaran en el propio JSP.
+      - NO se agrego un <error-page> para 404 (el taller original lo pide
+        apuntando a login.jsp) porque en un contexto compartido eso
+        redirigiria CUALQUIER url no encontrada de cualquier ejercicio al
+        login de RestauranteWeb, lo cual seria confuso.
+-->
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                              http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <display-name>JAVA</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <!-- La sesion caduca a los 30 minutos de inactividad -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <!-- UTF-8 solo dentro de los proyectos que lo declaran aqui -->
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>/Simulacro/RestauranteWeb/*</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+            <trim-directive-whitespaces>true</trim-directive-whitespaces>
+        </jsp-property-group>
+        <jsp-property-group>
+            <url-pattern>/Parcial 1/Inmobiliaria/*</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+            <trim-directive-whitespaces>true</trim-directive-whitespaces>
+        </jsp-property-group>
+    </jsp-config>
+
+    <!-- Filtro de control de acceso por rol del Parcial (TerraNova Bienes Raices).
+         Es la unica fuente de verdad del control de acceso: si un usuario no
+         autenticado, o autenticado sin el rol requerido, escribe la URL
+         directamente, este filtro lo redirige a login o a acceso denegado.
+         Ocultar botones en la vista NO cuenta como control de acceso. -->
+    <filter>
+        <filter-name>AccesoFilter</filter-name>
+        <filter-class>com.terranova.filter.AccesoFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AccesoFilter</filter-name>
+        <url-pattern>/Parcial 1/Inmobiliaria/*</url-pattern>
+    </filter-mapping>
+
+</web-app>

@@ -1,0 +1,53 @@
+/* TerraNova Bienes Raices - estilos propios (complementan Bootstrap 5) */
+
+.hero-terranova {
+    background: linear-gradient(135deg, #0b5d3b 0%, #0f7a4d 60%, #16995f 100%);
+    color: #fff;
+    border-radius: 0.75rem;
+    padding: 3rem 2rem;
+}
+
+.tarjeta-propiedad {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    height: 100%;
+}
+.tarjeta-propiedad:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.12);
+}
+.tarjeta-propiedad img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.precio-destacado {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #0b5d3b;
+}
+
+.badge-estado-DISPONIBLE { background-color: #16995f !important; }
+.badge-estado-RESERVADO  { background-color: #c9a227 !important; color:#222; }
+.badge-estado-VENDIDO,
+.badge-estado-ARRENDADO  { background-color: #6c757d !important; }
+.badge-estado-INACTIVO   { background-color: #adb5bd !important; color:#222; }
+
+.badge-cita-PENDIENTE, .badge-solicitud-PENDIENTE     { background-color:#c9a227 !important; color:#222; }
+.badge-cita-CONFIRMADA, .badge-solicitud-APROBADA     { background-color:#16995f !important; }
+.badge-cita-RECHAZADA,  .badge-solicitud-RECHAZADA    { background-color:#c0392b !important; }
+.badge-cita-REALIZADA                                 { background-color:#0b5d3b !important; }
+.badge-cita-CANCELADA                                 { background-color:#6c757d !important; }
+.badge-solicitud-EN_REVISION                          { background-color:#2f6fb0 !important; }
+
+.galeria-miniatura {
+    width: 90px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 0.375rem;
+}
+
+/* Responsivo: apila el buscador rapido en pantallas pequenas */
+@media (max-width: 576px) {
+    .hero-terranova { padding: 2rem 1rem; }
+    .precio-destacado { font-size: 1.1rem; }
+}
