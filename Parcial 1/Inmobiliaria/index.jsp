@@ -4,7 +4,6 @@
 <%
     String ctx = request.getContextPath() + "/Parcial%201/Inmobiliaria";
     String tituloPagina = "Inicio";
-    String msg = request.getParameter("msg");
 
     boolean esCliente = tieneRol(session, "CLIENTE");
     Integer idUsuario = esCliente ? (Integer) session.getAttribute("idUsuario") : null;
@@ -19,16 +18,11 @@
 %>
 <%@ include file="/WEB-INF/jspf/cabeceraInmobiliaria.jspf" %>
 
-<% if ("favorito_agregado".equals(msg)) { %>
-<div class="alert alert-success alerta-flotante"><i class="bi bi-heart-fill"></i> Se agrego a tus favoritos.</div>
-<% } else if ("favorito_quitado".equals(msg)) { %>
-<div class="alert alert-secondary alerta-flotante"><i class="bi bi-heartbreak"></i> Se quito de tus favoritos.</div>
-<% } %>
-
+<!-- ================= Hero + buscador rapido ================= -->
 <div class="hero-terranova mb-4">
     <div class="container-inner">
     <div class="row align-items-center">
-        <div class="col-lg-7">
+        <div class="col-lg-8">
             <h1 class="fw-bold">Encuentra el inmueble que estas buscando</h1>
             <p class="lead">TerraNova reune las mejores propiedades en venta y arriendo
                 del area metropolitana de Bucaramanga, publicadas por varias
@@ -83,13 +77,14 @@
             </select>
         </div>
         <div class="col-md-3 d-grid">
-            <button type="submit" class="btn btn-warning text-dark fw-semibold">
+            <button type="submit" class="btn btn-warning fw-semibold">
                 <i class="bi bi-search"></i> Buscar propiedades</button>
         </div>
     </form>
     </div>
 </div>
 
+<!-- ================= Estadisticas ================= -->
 <div class="stats-strip mb-5">
     <div class="row g-0 text-center">
     <%
@@ -108,7 +103,7 @@
                 }
     %>
         <div class="col-6 col-md-3 stat-item">
-            <div class="stat-numero"><i class="bi <%= s[2] %>"></i> <%= valor %></div>
+            <div class="stat-numero"><i class="bi <%= s[2] %>"></i><%= valor %></div>
             <div class="stat-label"><%= s[1] %></div>
         </div>
     <%      }
@@ -116,36 +111,44 @@
     </div>
 </div>
 
-<h4 class="text-center mb-4">¿Por que elegir TerraNova?</h4>
-<div class="row g-4 mb-5 text-center">
-    <div class="col-md-3">
-        <div class="feature-icono mx-auto"><i class="bi bi-buildings"></i></div>
+<!-- ================= Por que elegirnos ================= -->
+<div class="seccion-titulo">
+    <h4>¿Por que elegir TerraNova?</h4>
+    <p>Un marketplace pensado para que buscar, agendar y tramitar tu proximo inmueble sea simple.</p>
+</div>
+<div class="row g-4 mb-5">
+    <div class="col-md-3 feature-card">
+        <div class="feature-icono"><i class="bi bi-buildings"></i></div>
         <h6>Varias inmobiliarias</h6>
         <p class="text-muted small">Comparamos propiedades de distintas agencias aliadas en un
             solo lugar, sin favorecer a ninguna.</p>
     </div>
-    <div class="col-md-3">
-        <div class="feature-icono mx-auto"><i class="bi bi-patch-check"></i></div>
+    <div class="col-md-3 feature-card">
+        <div class="feature-icono"><i class="bi bi-patch-check"></i></div>
         <h6>Publicaciones verificadas</h6>
         <p class="text-muted small">Cada inmueble tiene una matricula inmobiliaria unica y un
             agente responsable identificado.</p>
     </div>
-    <div class="col-md-3">
-        <div class="feature-icono mx-auto"><i class="bi bi-shield-lock"></i></div>
+    <div class="col-md-3 feature-card">
+        <div class="feature-icono"><i class="bi bi-shield-lock"></i></div>
         <h6>Cuentas seguras</h6>
         <p class="text-muted small">Contraseñas cifradas y control de acceso por rol en cada
             paso del proceso.</p>
     </div>
-    <div class="col-md-3">
-        <div class="feature-icono mx-auto"><i class="bi bi-calendar2-check"></i></div>
+    <div class="col-md-3 feature-card">
+        <div class="feature-icono"><i class="bi bi-calendar2-check"></i></div>
         <h6>Agenda en minutos</h6>
         <p class="text-muted small">Solicita una visita o radica tu tramite de compra/arriendo
             sin llamadas ni filas.</p>
     </div>
 </div>
 
-<h4 class="mb-3"><i class="bi bi-star-fill text-warning"></i> Propiedades destacadas</h4>
-<div class="row g-3 mb-5">
+<!-- ================= Propiedades destacadas ================= -->
+<div class="seccion-titulo">
+    <h4><i class="bi bi-star-fill text-warning"></i> Propiedades destacadas</h4>
+    <p>Las publicaciones mas recientes disponibles ahora mismo.</p>
+</div>
+<div class="row g-4 mb-5">
 <%
     String sqlDestacadas =
         "SELECT p.id_propiedad, p.titulo, p.precio, p.operacion, p.estado, " +
@@ -167,23 +170,25 @@
             int idProp = rs.getInt("id_propiedad");
             boolean esFav = misFavoritos.contains(idProp);
 %>
-    <div class="col-md-4">
+    <div class="col-md-6 col-lg-4">
         <div class="card tarjeta-propiedad shadow-sm">
             <div class="tarjeta-img-wrap">
                 <img src="<%= escapar(rs.getString("imagen")) %>" class="card-img-top" alt="<%= escapar(rs.getString("tipo")) %>">
                 <span class="ribbon-destacado">Destacado</span>
                 <% if (esCliente) { %>
-                <a class="btn-favorito-card <%= esFav ? "es-favorito" : "" %>"
-                   href="<%= ctx %>/favoritos/alternar.jsp?idPropiedad=<%= idProp %>"
-                   title="<%= esFav ? "Quitar de favoritos" : "Agregar a favoritos" %>">
+                <button type="button" class="btn-favorito-card <%= esFav ? "es-favorito" : "" %>"
+                        data-id="<%= idProp %>"
+                        title="<%= esFav ? "Quitar de favoritos" : "Agregar a favoritos" %>">
                     <i class="bi <%= esFav ? "bi-heart-fill" : "bi-heart" %>"></i>
-                </a>
+                </button>
                 <% } %>
             </div>
             <div class="card-body">
-                <span class="badge badge-estado-<%= rs.getString("estado") %>"><%= rs.getString("estado") %></span>
-                <span class="badge text-bg-secondary"><%= rs.getString("operacion") %></span>
-                <h6 class="mt-2"><%= escapar(rs.getString("titulo")) %></h6>
+                <div>
+                    <span class="badge badge-estado-<%= rs.getString("estado") %>"><%= rs.getString("estado") %></span>
+                    <span class="badge text-bg-secondary"><%= rs.getString("operacion") %></span>
+                </div>
+                <h6 class="mt-2 titulo-propiedad"><%= escapar(rs.getString("titulo")) %></h6>
                 <p class="text-muted mb-1"><i class="bi bi-geo-alt"></i> <%= escapar(rs.getString("ciudad")) %>
                     &middot; <%= escapar(rs.getString("tipo")) %></p>
                 <p class="precio-destacado"><%= formatoCOP(rs.getDouble("precio")) %></p>
@@ -203,11 +208,12 @@
 <% } %>
 </div>
 
+<!-- ================= CTA de cierre ================= -->
 <div class="cta-terranova text-center mb-4">
     <h4 class="fw-bold">¿Eres agente inmobiliario?</h4>
     <p class="mb-3">Registrate, publica tus propiedades y gestiona citas y solicitudes desde un
         solo panel.</p>
-    <a class="btn btn-warning text-dark fw-semibold" href="<%= ctx %>/registro.jsp">
+    <a class="btn btn-warning fw-semibold" href="<%= ctx %>/registro.jsp">
         <i class="bi bi-person-plus"></i> Crear una cuenta</a>
 </div>
 

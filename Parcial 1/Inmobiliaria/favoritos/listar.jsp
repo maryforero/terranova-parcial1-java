@@ -5,16 +5,10 @@
     String ctx = request.getContextPath() + "/Parcial%201/Inmobiliaria";
     String tituloPagina = "Mis favoritos";
     int idUsuario = (Integer) session.getAttribute("idUsuario");
-    String msg = request.getParameter("msg");
 %>
 <%@ include file="/WEB-INF/jspf/cabeceraInmobiliaria.jspf" %>
 
 <h3 class="mb-3"><i class="bi bi-heart-fill text-danger"></i> Mis favoritos</h3>
-<% if ("favorito_agregado".equals(msg)) { %>
-<div class="alert alert-success alerta-flotante"><i class="bi bi-heart-fill"></i> Se agrego a tus favoritos.</div>
-<% } else if ("favorito_quitado".equals(msg)) { %>
-<div class="alert alert-secondary alerta-flotante"><i class="bi bi-heartbreak"></i> Se quito de tus favoritos.</div>
-<% } %>
 
 <div class="row g-3">
 <%
@@ -31,18 +25,18 @@
             while (rs.next()) {
                 alguna = true;
 %>
-    <div class="col-md-4">
+    <div class="col-md-4 col-favorito">
         <div class="card tarjeta-propiedad shadow-sm">
             <img src="<%= escapar(rs.getString("imagen")) %>" class="card-img-top" alt="Propiedad">
             <div class="card-body">
                 <span class="badge badge-estado-<%= rs.getString("estado") %>"><%= rs.getString("estado") %></span>
-                <h6 class="mt-2"><%= escapar(rs.getString("titulo")) %></h6>
+                <h6 class="mt-2 titulo-propiedad"><%= escapar(rs.getString("titulo")) %></h6>
                 <p class="text-muted mb-1"><i class="bi bi-geo-alt"></i> <%= escapar(rs.getString("ciudad")) %></p>
                 <p class="precio-destacado"><%= formatoCOP(rs.getDouble("precio")) %></p>
                 <div class="d-flex gap-2">
                     <a class="btn btn-outline-success btn-sm flex-fill" href="<%= ctx %>/detallePropiedad.jsp?id=<%= rs.getInt("id_propiedad") %>">Ver</a>
-                    <a class="btn btn-outline-danger btn-sm" href="<%= ctx %>/favoritos/alternar.jsp?idPropiedad=<%= rs.getInt("id_propiedad") %>">
-                        <i class="bi bi-heartbreak"></i></a>
+                    <button type="button" class="btn btn-outline-danger btn-sm btn-quitar-favorito" data-id="<%= rs.getInt("id_propiedad") %>">
+                        <i class="bi bi-heartbreak"></i></button>
                 </div>
             </div>
         </div>

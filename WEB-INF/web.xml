@@ -10,9 +10,14 @@
     de RestauranteWeb (Parcial 1, BdEjercicio2, etc.), asi que:
       - welcome-file-list y session-config son seguros de dejar globales:
         no cambian nada para las carpetas que ya tienen su propio index.jsp.
-      - el grupo de codificacion UTF-8 se dejo LIMITADO con url-pattern a
-        /Simulacro/RestauranteWeb/* para no alterar el encoding de los
-        demas ejercicios que no lo declaran en el propio JSP.
+      - el grupo de codificacion UTF-8 usa el patron de EXTENSION "*.jsp"
+        (no un patron de carpeta tipo "/algo/*"). Un jsp-property-group con
+        patron de carpeta hace que Tomcat trate TODO archivo de esa carpeta
+        como si fuera JSP, incluyendo .css/.js: eso rompe su Content-Type
+        (se sirven como text/html en vez de text/css o text/javascript) y
+        el navegador los ignora en silencio. *.jsp evita ese problema y de
+        paso aplica UTF-8 a los JSP de cualquier ejercicio del contexto
+        compartido, lo cual es seguro (nunca es un encoding indeseado).
       - NO se agrego un <error-page> para 404 (el taller original lo pide
         apuntando a login.jsp) porque en un contexto compartido eso
         redirigiria CUALQUIER url no encontrada de cualquier ejercicio al
@@ -36,17 +41,22 @@
         <session-timeout>30</session-timeout>
     </session-config>
 
-    <!-- UTF-8 solo dentro de los proyectos que lo declaran aqui -->
+    <!-- UTF-8 para todos los .jsp del contexto compartido (patron de
+         EXTENSION, no de carpeta: ver nota arriba sobre por que).
+
+         trim-directive-whitespaces NO se activa: a pesar del nombre, la
+         implementacion de Jasper de este Tomcat no solo recorta espacios
+         alrededor de directivas <%@ %>, tambien recorta cualquier texto
+         de plantilla que sea PURO ESPACIO entre dos tags JSP consecutivos,
+         incluidos dos <%= %> seguidos como "<%= nombres %> <%= apellidos %>".
+         Eso se detecto porque el nombre del agente salia pegado
+         ("LauraGarcia Nino" en vez de "Laura Garcia Nino") en el detalle
+         de propiedad. El ahorro de bytes en el HTML generado no vale el
+         riesgo de perder espacios visibles en cualquier pagina nueva. -->
     <jsp-config>
         <jsp-property-group>
-            <url-pattern>/Simulacro/RestauranteWeb/*</url-pattern>
+            <url-pattern>*.jsp</url-pattern>
             <page-encoding>UTF-8</page-encoding>
-            <trim-directive-whitespaces>true</trim-directive-whitespaces>
-        </jsp-property-group>
-        <jsp-property-group>
-            <url-pattern>/Parcial 1/Inmobiliaria/*</url-pattern>
-            <page-encoding>UTF-8</page-encoding>
-            <trim-directive-whitespaces>true</trim-directive-whitespaces>
         </jsp-property-group>
     </jsp-config>
 

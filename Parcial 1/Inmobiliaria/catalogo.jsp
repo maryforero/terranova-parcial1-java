@@ -4,7 +4,6 @@
 <%
     String ctx = request.getContextPath() + "/Parcial%201/Inmobiliaria";
     String tituloPagina = "Catalogo de propiedades";
-    String msg = request.getParameter("msg");
 
     String idCiudad   = request.getParameter("idCiudad");
     String idTipo     = request.getParameter("idTipo");
@@ -27,12 +26,6 @@
     }
 %>
 <%@ include file="/WEB-INF/jspf/cabeceraInmobiliaria.jspf" %>
-
-<% if ("favorito_agregado".equals(msg)) { %>
-<div class="alert alert-success alerta-flotante"><i class="bi bi-heart-fill"></i> Se agrego a tus favoritos.</div>
-<% } else if ("favorito_quitado".equals(msg)) { %>
-<div class="alert alert-secondary alerta-flotante"><i class="bi bi-heartbreak"></i> Se quito de tus favoritos.</div>
-<% } %>
 
 <div class="row g-4">
 <div class="col-lg-3">
@@ -196,17 +189,19 @@
             <div class="tarjeta-img-wrap">
                 <img src="<%= escapar((String) f.get("imagen")) %>" class="card-img-top" alt="<%= escapar((String) f.get("tipo")) %>">
                 <% if (esCliente) { %>
-                <a class="btn-favorito-card <%= esFav ? "es-favorito" : "" %>"
-                   href="<%= ctx %>/favoritos/alternar.jsp?idPropiedad=<%= idProp %>"
-                   title="<%= esFav ? "Quitar de favoritos" : "Agregar a favoritos" %>">
+                <button type="button" class="btn-favorito-card <%= esFav ? "es-favorito" : "" %>"
+                        data-id="<%= idProp %>"
+                        title="<%= esFav ? "Quitar de favoritos" : "Agregar a favoritos" %>">
                     <i class="bi <%= esFav ? "bi-heart-fill" : "bi-heart" %>"></i>
-                </a>
+                </button>
                 <% } %>
             </div>
             <div class="card-body">
+                <div>
                 <span class="badge badge-estado-<%= f.get("estado") %>"><%= f.get("estado") %></span>
                 <span class="badge text-bg-secondary"><%= f.get("operacion") %></span>
-                <h6 class="mt-2"><%= escapar((String) f.get("titulo")) %></h6>
+                </div>
+                <h6 class="mt-2 titulo-propiedad"><%= escapar((String) f.get("titulo")) %></h6>
                 <p class="text-muted mb-1"><i class="bi bi-geo-alt"></i> <%= escapar((String) f.get("ciudad")) %>
                     &middot; <%= escapar((String) f.get("tipo")) %></p>
                 <p class="precio-destacado"><%= formatoCOP((Double) f.get("precio")) %></p>

@@ -7,9 +7,11 @@
 %>
 <%@ include file="/WEB-INF/jspf/cabeceraInmobiliaria.jspf" %>
 
-<h3 class="mb-1"><i class="bi bi-bar-chart"></i> Reportes</h3>
-<p class="text-muted mb-4">Un vistazo rapido al estado del negocio, seguido de las consultas SQL
-    que lo sustentan (INNER JOIN, relacion N:M, LEFT JOIN y agregaciones con GROUP BY/HAVING).</p>
+<div class="seccion-titulo text-start mb-4">
+    <h3 class="panel-titulo mb-1"><i class="bi bi-bar-chart"></i> Reportes</h3>
+    <p class="text-muted mb-0">Un vistazo rapido al estado del negocio, seguido de las consultas SQL
+        que lo sustentan (INNER JOIN, relacion N:M, LEFT JOIN y agregaciones con GROUP BY/HAVING).</p>
+</div>
 
 <%!
     /** Una fila (etiqueta, valor) para graficas de barras u otros usos simples. */
@@ -21,10 +23,10 @@
     /** Tarjeta KPI simple con un numero grande. */
     void pintarKpi(JspWriter out, String colorClase, String icono, long valor, String etiqueta)
             throws java.io.IOException {
-        out.println("<div class=\"col-6 col-lg-3\"><div class=\"kpi-card " + colorClase + "\">"
-            + "<i class=\"bi " + icono + "\"></i>"
-            + "<div class=\"kpi-valor\">" + valor + "</div>"
-            + "<div class=\"kpi-label\">" + etiqueta + "</div></div></div>");
+        out.println("<div class=\"col-6 col-lg-3\"><div class=\"kpi-card " + colorClase + " d-flex align-items-center gap-3\">"
+            + "<i class=\"bi " + icono + "\" style=\"font-size:1.7rem;opacity:0.85;\"></i>"
+            + "<div><div class=\"kpi-valor\">" + valor + "</div>"
+            + "<div class=\"kpi-label\">" + etiqueta + "</div></div></div></div>");
     }
 
     /** Ejecuta un SELECT de 2 columnas (etiqueta, valor) y arma la lista de filas. */
@@ -122,8 +124,9 @@
 </div>
 
 <!-- ================= Reportes de agregacion (graficas) ================= -->
-<h5 class="mb-3 text-muted"><i class="bi bi-graph-up"></i> Paneles con agregacion (GROUP BY + HAVING)</h5>
-<div class="row g-3 mb-4">
+<h6 class="text-uppercase text-muted mb-3" style="letter-spacing:0.04em;">
+    <i class="bi bi-graph-up"></i> Paneles con agregacion (GROUP BY + HAVING)</h6>
+<div class="row g-3 mb-5">
     <div class="col-lg-4">
 <%      pintarBarras(out, con, "1", "Propiedades disponibles por ciudad",
             "¿En que ciudades tenemos mas inventario listo para vender o arrendar? " +
@@ -151,7 +154,8 @@
 </div>
 
 <!-- ================= Reportes de cruces (JOIN) ================= -->
-<h5 class="mb-3 text-muted"><i class="bi bi-diagram-3"></i> Cruces entre tablas (JOIN)</h5>
+<h6 class="text-uppercase text-muted mb-3" style="letter-spacing:0.04em;">
+    <i class="bi bi-diagram-3"></i> Cruces entre tablas (JOIN)</h6>
 <div class="row g-3">
     <div class="col-lg-6">
 <%      pintarTabla(out, con, "4", "Propiedades con ciudad, tipo e inmobiliaria",
