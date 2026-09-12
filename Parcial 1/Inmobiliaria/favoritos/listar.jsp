@@ -5,10 +5,16 @@
     String ctx = request.getContextPath() + "/Parcial%201/Inmobiliaria";
     String tituloPagina = "Mis favoritos";
     int idUsuario = (Integer) session.getAttribute("idUsuario");
+    String msg = request.getParameter("msg");
 %>
 <%@ include file="/WEB-INF/jspf/cabeceraInmobiliaria.jspf" %>
 
 <h3 class="mb-3"><i class="bi bi-heart-fill text-danger"></i> Mis favoritos</h3>
+<% if ("favorito_agregado".equals(msg)) { %>
+<div class="alert alert-success alerta-flotante"><i class="bi bi-heart-fill"></i> Se agrego a tus favoritos.</div>
+<% } else if ("favorito_quitado".equals(msg)) { %>
+<div class="alert alert-secondary alerta-flotante"><i class="bi bi-heartbreak"></i> Se quito de tus favoritos.</div>
+<% } %>
 
 <div class="row g-3">
 <%

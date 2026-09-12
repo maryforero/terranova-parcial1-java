@@ -4,10 +4,30 @@
 <%
     String ctx = request.getContextPath() + "/Parcial%201/Inmobiliaria";
     String tituloPagina = "Detalle de propiedad";
+    String msg = request.getParameter("msg");
     int idPropiedad = 0;
     try { idPropiedad = Integer.parseInt(request.getParameter("id")); } catch (Exception ex) { }
+
+    boolean esCliente = tieneRol(session, "CLIENTE");
+    boolean esFavorito = false;
+    if (esCliente) {
+        int idUsuarioFav = (Integer) session.getAttribute("idUsuario");
+        try (Connection con = abrirConexion();
+             PreparedStatement ps = con.prepareStatement(
+                 "SELECT COUNT(*) FROM favorito WHERE id_usuario=? AND id_propiedad=?")) {
+            ps.setInt(1, idUsuarioFav);
+            ps.setInt(2, idPropiedad);
+            try (ResultSet rs = ps.executeQuery()) { if (rs.next()) esFavorito = rs.getInt(1) > 0; }
+        } catch (SQLException ex) { }
+    }
 %>
 <%@ include file="/WEB-INF/jspf/cabeceraInmobiliaria.jspf" %>
+
+<% if ("favorito_agregado".equals(msg)) { %>
+<div class="alert alert-success alerta-flotante"><i class="bi bi-heart-fill"></i> Se agrego a tus favoritos.</div>
+<% } else if ("favorito_quitado".equals(msg)) { %>
+<div class="alert alert-secondary alerta-flotante"><i class="bi bi-heartbreak"></i> Se quito de tus favoritos.</div>
+<% } %>
 
 <%
     String sql =
@@ -106,8 +126,10 @@
                             <i class="bi bi-calendar-plus"></i> Agendar visita</a>
                         <a class="btn btn-outline-success" href="<%= ctx %>/solicitudes/radicar.jsp?idPropiedad=<%= idPropiedad %>">
                             <i class="bi bi-file-earmark-plus"></i> Solicitar compra/arriendo</a>
-                        <a class="btn btn-outline-danger" href="<%= ctx %>/favoritos/alternar.jsp?idPropiedad=<%= idPropiedad %>&volver=detalle">
-                            <i class="bi bi-heart"></i> Agregar a favoritos</a>
+                        <a class="btn <%= esFavorito ? "btn-danger" : "btn-outline-danger" %>"
+                           href="<%= ctx %>/favoritos/alternar.jsp?idPropiedad=<%= idPropiedad %>&volver=detalle">
+                            <i class="bi <%= esFavorito ? "bi-heart-fill" : "bi-heart" %>"></i>
+                            <%= esFavorito ? "Quitar de favoritos" : "Agregar a favoritos" %></a>
                     </div>
                 <% } else if (!estaAutenticado(session)) { %>
                     <a class="btn btn-success w-100" href="<%= ctx %>/login.jsp">

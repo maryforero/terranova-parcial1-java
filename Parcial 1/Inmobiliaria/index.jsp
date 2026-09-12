@@ -4,10 +4,29 @@
 <%
     String ctx = request.getContextPath() + "/Parcial%201/Inmobiliaria";
     String tituloPagina = "Inicio";
+    String msg = request.getParameter("msg");
+
+    boolean esCliente = tieneRol(session, "CLIENTE");
+    Integer idUsuario = esCliente ? (Integer) session.getAttribute("idUsuario") : null;
+    java.util.Set<Integer> misFavoritos = new java.util.HashSet<>();
+    if (esCliente) {
+        try (Connection con = abrirConexion();
+             PreparedStatement ps = con.prepareStatement("SELECT id_propiedad FROM favorito WHERE id_usuario=?")) {
+            ps.setInt(1, idUsuario);
+            try (ResultSet rs = ps.executeQuery()) { while (rs.next()) misFavoritos.add(rs.getInt(1)); }
+        } catch (SQLException ex) { }
+    }
 %>
 <%@ include file="/WEB-INF/jspf/cabeceraInmobiliaria.jspf" %>
 
+<% if ("favorito_agregado".equals(msg)) { %>
+<div class="alert alert-success alerta-flotante"><i class="bi bi-heart-fill"></i> Se agrego a tus favoritos.</div>
+<% } else if ("favorito_quitado".equals(msg)) { %>
+<div class="alert alert-secondary alerta-flotante"><i class="bi bi-heartbreak"></i> Se quito de tus favoritos.</div>
+<% } %>
+
 <div class="hero-terranova mb-4">
+    <div class="container-inner">
     <div class="row align-items-center">
         <div class="col-lg-7">
             <h1 class="fw-bold">Encuentra el inmueble que estas buscando</h1>
@@ -68,10 +87,65 @@
                 <i class="bi bi-search"></i> Buscar propiedades</button>
         </div>
     </form>
+    </div>
+</div>
+
+<div class="stats-strip mb-5">
+    <div class="row g-0 text-center">
+    <%
+        String[][] stats = {
+            {"SELECT COUNT(*) FROM propiedad WHERE estado <> 'INACTIVO'", "Propiedades publicadas", "bi-houses"},
+            {"SELECT COUNT(DISTINCT id_ciudad) FROM propiedad", "Ciudades cubiertas", "bi-geo-alt"},
+            {"SELECT COUNT(*) FROM inmobiliaria", "Inmobiliarias aliadas", "bi-building"},
+            {"SELECT COUNT(*) FROM usuario u JOIN usuario_rol ur ON ur.id_usuario=u.id_usuario " +
+             "JOIN rol r ON r.id_rol=ur.id_rol WHERE r.nombre='CLIENTE'", "Clientes registrados", "bi-people"}
+        };
+        try (Connection con = abrirConexion()) {
+            for (String[] s : stats) {
+                int valor = 0;
+                try (PreparedStatement ps = con.prepareStatement(s[0]); ResultSet rs = ps.executeQuery()) {
+                    if (rs.next()) valor = rs.getInt(1);
+                }
+    %>
+        <div class="col-6 col-md-3 stat-item">
+            <div class="stat-numero"><i class="bi <%= s[2] %>"></i> <%= valor %></div>
+            <div class="stat-label"><%= s[1] %></div>
+        </div>
+    <%      }
+        } catch (SQLException ex) { } %>
+    </div>
+</div>
+
+<h4 class="text-center mb-4">¿Por que elegir TerraNova?</h4>
+<div class="row g-4 mb-5 text-center">
+    <div class="col-md-3">
+        <div class="feature-icono mx-auto"><i class="bi bi-buildings"></i></div>
+        <h6>Varias inmobiliarias</h6>
+        <p class="text-muted small">Comparamos propiedades de distintas agencias aliadas en un
+            solo lugar, sin favorecer a ninguna.</p>
+    </div>
+    <div class="col-md-3">
+        <div class="feature-icono mx-auto"><i class="bi bi-patch-check"></i></div>
+        <h6>Publicaciones verificadas</h6>
+        <p class="text-muted small">Cada inmueble tiene una matricula inmobiliaria unica y un
+            agente responsable identificado.</p>
+    </div>
+    <div class="col-md-3">
+        <div class="feature-icono mx-auto"><i class="bi bi-shield-lock"></i></div>
+        <h6>Cuentas seguras</h6>
+        <p class="text-muted small">Contraseñas cifradas y control de acceso por rol en cada
+            paso del proceso.</p>
+    </div>
+    <div class="col-md-3">
+        <div class="feature-icono mx-auto"><i class="bi bi-calendar2-check"></i></div>
+        <h6>Agenda en minutos</h6>
+        <p class="text-muted small">Solicita una visita o radica tu tramite de compra/arriendo
+            sin llamadas ni filas.</p>
+    </div>
 </div>
 
 <h4 class="mb-3"><i class="bi bi-star-fill text-warning"></i> Propiedades destacadas</h4>
-<div class="row g-3">
+<div class="row g-3 mb-5">
 <%
     String sqlDestacadas =
         "SELECT p.id_propiedad, p.titulo, p.precio, p.operacion, p.estado, " +
@@ -90,10 +164,22 @@
         boolean alguna = false;
         while (rs.next()) {
             alguna = true;
+            int idProp = rs.getInt("id_propiedad");
+            boolean esFav = misFavoritos.contains(idProp);
 %>
     <div class="col-md-4">
         <div class="card tarjeta-propiedad shadow-sm">
-            <img src="<%= escapar(rs.getString("imagen")) %>" class="card-img-top" alt="Propiedad">
+            <div class="tarjeta-img-wrap">
+                <img src="<%= escapar(rs.getString("imagen")) %>" class="card-img-top" alt="<%= escapar(rs.getString("tipo")) %>">
+                <span class="ribbon-destacado">Destacado</span>
+                <% if (esCliente) { %>
+                <a class="btn-favorito-card <%= esFav ? "es-favorito" : "" %>"
+                   href="<%= ctx %>/favoritos/alternar.jsp?idPropiedad=<%= idProp %>"
+                   title="<%= esFav ? "Quitar de favoritos" : "Agregar a favoritos" %>">
+                    <i class="bi <%= esFav ? "bi-heart-fill" : "bi-heart" %>"></i>
+                </a>
+                <% } %>
+            </div>
             <div class="card-body">
                 <span class="badge badge-estado-<%= rs.getString("estado") %>"><%= rs.getString("estado") %></span>
                 <span class="badge text-bg-secondary"><%= rs.getString("operacion") %></span>
@@ -102,7 +188,7 @@
                     &middot; <%= escapar(rs.getString("tipo")) %></p>
                 <p class="precio-destacado"><%= formatoCOP(rs.getDouble("precio")) %></p>
                 <a class="btn btn-outline-success btn-sm w-100"
-                   href="<%= ctx %>/detallePropiedad.jsp?id=<%= rs.getInt("id_propiedad") %>">
+                   href="<%= ctx %>/detallePropiedad.jsp?id=<%= idProp %>">
                     Ver detalle</a>
             </div>
         </div>
@@ -115,6 +201,14 @@
 <% } } catch (SQLException ex) { %>
     <div class="col-12"><p class="text-danger">No se pudieron cargar las propiedades destacadas.</p></div>
 <% } %>
+</div>
+
+<div class="cta-terranova text-center mb-4">
+    <h4 class="fw-bold">¿Eres agente inmobiliario?</h4>
+    <p class="mb-3">Registrate, publica tus propiedades y gestiona citas y solicitudes desde un
+        solo panel.</p>
+    <a class="btn btn-warning text-dark fw-semibold" href="<%= ctx %>/registro.jsp">
+        <i class="bi bi-person-plus"></i> Crear una cuenta</a>
 </div>
 
 <%@ include file="/WEB-INF/jspf/pieInmobiliaria.jspf" %>

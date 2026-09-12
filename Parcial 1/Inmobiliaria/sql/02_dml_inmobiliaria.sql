@@ -213,44 +213,51 @@ VALUES
     ('SAN-0014-BGA', 'Apartamento antiguo para remodelar', 2, 1, 1, 4, 'Cll 22 #14-30, Bucaramanga', 210000000, 70.0, 2, 1, 'VENTA', 'INACTIVO');
 
 -- ---------------------------------------------------------------------
--- IMAGENES DE PROPIEDAD (2 a 3 por inmueble)
+-- IMAGENES DE PROPIEDAD (1 a 2 por inmueble)
+-- Fotos reales de Unsplash curadas a mano segun el tipo de inmueble
+-- (casa, apartamento, local, oficina, finca, bodega, lote) para que la
+-- galeria muestre algo coherente con lo que se esta ofreciendo, en vez
+-- de imagenes aleatorias sin relacion (picsum.photos anterior).
 -- ---------------------------------------------------------------------
 INSERT INTO imagen_propiedad (id_propiedad, url_imagen, es_principal, orden) VALUES
-    (1, 'https://picsum.photos/seed/terranova1a/800/600', 1, 1),
-    (1, 'https://picsum.photos/seed/terranova1b/800/600', 0, 2),
-    (2, 'https://picsum.photos/seed/terranova2a/800/600', 1, 1),
-    (2, 'https://picsum.photos/seed/terranova2b/800/600', 0, 2),
-    (2, 'https://picsum.photos/seed/terranova2c/800/600', 0, 3),
-    (3, 'https://picsum.photos/seed/terranova3a/800/600', 1, 1),
-    (3, 'https://picsum.photos/seed/terranova3b/800/600', 0, 2),
-    (4, 'https://picsum.photos/seed/terranova4a/800/600', 1, 1),
-    (4, 'https://picsum.photos/seed/terranova4b/800/600', 0, 2),
-    (4, 'https://picsum.photos/seed/terranova4c/800/600', 0, 3),
-    (5, 'https://picsum.photos/seed/terranova5a/800/600', 1, 1),
-    (5, 'https://picsum.photos/seed/terranova5b/800/600', 0, 2),
-    (6, 'https://picsum.photos/seed/terranova6a/800/600', 1, 1),
-    (6, 'https://picsum.photos/seed/terranova6b/800/600', 0, 2),
-    (6, 'https://picsum.photos/seed/terranova6c/800/600', 0, 3),
-    (7, 'https://picsum.photos/seed/terranova7a/800/600', 1, 1),
-    (7, 'https://picsum.photos/seed/terranova7b/800/600', 0, 2),
-    (8, 'https://picsum.photos/seed/terranova8a/800/600', 1, 1),
-    (8, 'https://picsum.photos/seed/terranova8b/800/600', 0, 2),
-    (8, 'https://picsum.photos/seed/terranova8c/800/600', 0, 3),
-    (9, 'https://picsum.photos/seed/terranova9a/800/600', 1, 1),
-    (9, 'https://picsum.photos/seed/terranova9b/800/600', 0, 2),
-    (10, 'https://picsum.photos/seed/terranova10a/800/600', 1, 1),
-    (10, 'https://picsum.photos/seed/terranova10b/800/600', 0, 2),
-    (10, 'https://picsum.photos/seed/terranova10c/800/600', 0, 3),
-    (11, 'https://picsum.photos/seed/terranova11a/800/600', 1, 1),
-    (11, 'https://picsum.photos/seed/terranova11b/800/600', 0, 2),
-    (12, 'https://picsum.photos/seed/terranova12a/800/600', 1, 1),
-    (12, 'https://picsum.photos/seed/terranova12b/800/600', 0, 2),
-    (12, 'https://picsum.photos/seed/terranova12c/800/600', 0, 3),
-    (13, 'https://picsum.photos/seed/terranova13a/800/600', 1, 1),
-    (13, 'https://picsum.photos/seed/terranova13b/800/600', 0, 2),
-    (14, 'https://picsum.photos/seed/terranova14a/800/600', 1, 1),
-    (14, 'https://picsum.photos/seed/terranova14b/800/600', 0, 2),
-    (14, 'https://picsum.photos/seed/terranova14c/800/600', 0, 3);
+    -- 1: Casa campestre con piscina en Cabecera
+    (1, 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (1, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 2: Apartamento moderno en Cabecera del Llano
+    (2, 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (2, 'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 3: Apartaestudio para estudiantes cerca a la UTS
+    (3, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (3, 'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 4: Local comercial centro de Bucaramanga
+    (4, 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    -- 5: Oficina ejecutiva Torre Empresarial
+    (5, 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (5, 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 6: Apartamento con vista a las montanas
+    (6, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (6, 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 7: Casa familiar en conjunto cerrado
+    (7, 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (7, 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 8: Local en zona comercial de Giron
+    (8, 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    -- 9: Casa colonial centro historico de Giron
+    (9, 'https://images.unsplash.com/photo-1591474200742-8e512e6f98f8?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (9, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 10: Finca de recreo con zona BBQ
+    (10, 'https://images.unsplash.com/photo-1500076656116-558758c991c1?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (10, 'https://images.unsplash.com/photo-1444858291040-58f756a3bdd6?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 11: Apartamento arriendo cerca al parque principal
+    (11, 'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (11, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 12: Bodega industrial zona Chimita
+    (12, 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    -- 13: Lote urbanizable sector Lagos del Cacique
+    (13, 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    -- 14: Apartamento antiguo para remodelar
+    (14, 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (14, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 0, 2);
 
 -- ---------------------------------------------------------------------
 -- PROPIEDAD <-> CARACTERISTICA (N:M)
