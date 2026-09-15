@@ -24,8 +24,25 @@
                     <div class="alert alert-warning">Debes iniciar sesion para continuar.</div>
                 <% } %>
 
-                <p class="small text-muted mb-2 text-center">Acceso rapido de prueba</p>
-                <div class="row g-2 mb-4">
+                <form method="post" action="<%= ctx %>/procesarLogin.jsp" data-validar novalidate>
+                    <div class="mb-3">
+                        <label class="form-label">Correo</label>
+                        <input type="email" name="correo" class="form-control" required autofocus>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Clave</label>
+                        <input type="password" name="clave" class="form-control" required>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100"><i class="bi bi-box-arrow-in-right"></i> Ingresar</button>
+                </form>
+                <p class="text-center mt-3 mb-0">
+                    No tienes cuenta? <a href="<%= ctx %>/registro.jsp">Registrate</a></p>
+
+                <div class="separador-o"><span>acceso rapido de prueba</span></div>
+
+                <div class="row g-2 mb-2">
                     <div class="col-4">
                         <form method="post" action="<%= ctx %>/procesarLogin.jsp">
                             <input type="hidden" name="correo" value="admin@terranova.com">
@@ -69,30 +86,8 @@
                         </form>
                     </div>
                 </div>
-                <p class="small text-muted text-center mb-4">Director tiene doble rol
+                <p class="small text-muted text-center mb-0">Director tiene doble rol
                     (Administrador + Inmobiliaria) para demostrar la relacion N:M.</p>
-
-                <div class="separador-o"><span>o ingresa con tu cuenta</span></div>
-
-                <form method="post" action="<%= ctx %>/procesarLogin.jsp" class="mt-3" data-validar novalidate>
-                    <div class="mb-3">
-                        <label class="form-label">Correo</label>
-                        <input type="email" name="correo" class="form-control" required autofocus>
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Clave</label>
-                        <input type="password" name="clave" class="form-control" required>
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <button type="submit" class="btn btn-success w-100"><i class="bi bi-box-arrow-in-right"></i> Ingresar</button>
-                </form>
-                <p class="text-center mt-3 mb-0">
-                    No tienes cuenta? <a href="<%= ctx %>/registro.jsp">Registrate</a></p>
-                <hr>
-                <p class="small text-muted mb-0">Usuarios de prueba (clave <code>1234</code>):
-                    admin@terranova.com &middot; director@terranova.com &middot;
-                    agente.garcia@terranova.com &middot; cliente.torres@gmail.com</p>
             </div>
         </div>
     </div>
