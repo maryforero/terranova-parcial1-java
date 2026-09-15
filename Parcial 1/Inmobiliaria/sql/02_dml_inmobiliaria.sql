@@ -250,97 +250,107 @@ INSERT INTO imagen_propiedad (id_propiedad, url_imagen, es_principal, orden) VAL
     (2, 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
     (2, 'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 3: Apartaestudio para estudiantes cerca a la UTS
-    (3, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (3, 'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (3, 'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (3, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 4: Local comercial centro de Bucaramanga
     (4, 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (4, 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 5: Oficina ejecutiva Torre Empresarial
     (5, 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
     (5, 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 6: Apartamento con vista a las montanas
     (6, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (6, 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (6, 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 7: Casa familiar en conjunto cerrado
-    (7, 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (7, 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (7, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (7, 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 8: Local en zona comercial de Giron
     (8, 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (8, 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 9: Casa colonial centro historico de Giron
-    (9, 'https://images.unsplash.com/photo-1591474200742-8e512e6f98f8?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (9, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (9, 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (9, 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 10: Finca de recreo con zona BBQ
     (10, 'https://images.unsplash.com/photo-1500076656116-558758c991c1?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
     (10, 'https://images.unsplash.com/photo-1444858291040-58f756a3bdd6?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 11: Apartamento arriendo cerca al parque principal
-    (11, 'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (11, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (11, 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (11, 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 12: Bodega industrial zona Chimita
     (12, 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (12, 'https://images.unsplash.com/photo-1565610222536-ef125c59da2e?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 13: Lote urbanizable sector Lagos del Cacique
     (13, 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (13, 'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 14: Apartamento antiguo para remodelar
-    (14, 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (14, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (14, 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (14, 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 15: Casa campestre en las afueras de San Gil
     (15, 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (15, 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (15, 'https://images.unsplash.com/photo-1591474200742-8e512e6f98f8?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 16: Apartamento nuevo cerca al Parque El Gallineral
-    (16, 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (16, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (16, 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (16, 'https://images.unsplash.com/photo-1615529182904-14819c35db37?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 17: Bodega logistica zona industrial de Barrancabermeja
-    (17, 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (17, 'https://images.unsplash.com/photo-1565610222536-ef125c59da2e?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (17, 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 18: Local comercial avenida principal de Barrancabermeja
-    (18, 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (18, 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
     (18, 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 19: Casa colonial patrimonial en el Socorro
-    (19, 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (19, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (19, 'https://images.unsplash.com/photo-1591474200742-8e512e6f98f8?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (19, 'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 20: Finca cafetera con vista a la cordillera
     (20, 'https://images.unsplash.com/photo-1444858291040-58f756a3bdd6?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (20, 'https://images.unsplash.com/photo-1500076656116-558758c991c1?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (20, 'https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 21: Apartamento ejecutivo en Chapinero
-    (21, 'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (21, 'https://images.unsplash.com/photo-1615529182904-14819c35db37?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
     (21, 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 22: Apartaestudio en El Poblado
-    (22, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (22, 'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (22, 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (22, 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 23: Oficina coworking en Cabecera
     (23, 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (23, 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (23, 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 24: Lote campestre para proyecto de vivienda
-    (24, 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (24, 'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (24, 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 25: Finca ganadera camino a Charala
-    (25, 'https://images.unsplash.com/photo-1500076656116-558758c991c1?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (25, 'https://images.unsplash.com/photo-1444858291040-58f756a3bdd6?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (25, 'https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (25, 'https://images.unsplash.com/photo-1500076656116-558758c991c1?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 26: Bodega de almacenamiento via Bucaramanga-San Gil
     (26, 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (26, 'https://images.unsplash.com/photo-1565610222536-ef125c59da2e?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 27: Apartamento frente al rio Magdalena
-    (27, 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (27, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (27, 'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (27, 'https://images.unsplash.com/photo-1615529182904-14819c35db37?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 28: Apartaestudio para estudiantes en el Socorro
     (28, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (28, 'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (28, 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 29: Lote esquinero cerca al parque principal
     (29, 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (29, 'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 30: Casa esquinera remodelada en el centro
-    (30, 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (30, 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (30, 'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (30, 'https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 31: Local comercial frente al parque de Malaga
     (31, 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (31, 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (31, 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 32: Oficina corporativa Zona T
-    (32, 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (32, 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (32, 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (32, 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 33: Casa campestre en las afueras de Bogota
-    (33, 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (33, 'https://images.unsplash.com/photo-1591474200742-8e512e6f98f8?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (33, 'https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (33, 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 34: Bodega industrial zona franca de Medellin
-    (34, 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (34, 'https://images.unsplash.com/photo-1565610222536-ef125c59da2e?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (34, 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 35: Apartamento en Laureles con balcon
-    (35, 'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (35, 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    (35, 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (35, 'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 36: Lote industrial zona Cafe Madrid
-    (36, 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop&auto=format&q=80', 1, 1);
+    (36, 'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (36, 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop&auto=format&q=80', 0, 2);
 
 -- ---------------------------------------------------------------------
 -- PROPIEDAD <-> CARACTERISTICA (N:M)
