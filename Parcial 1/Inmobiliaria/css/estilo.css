@@ -1,39 +1,45 @@
 /* TerraNova Bienes Raices - estilos propios (complementan Bootstrap 5) */
 
 /* ==========================================================================
-   Paleta: verde-carbon oscuro + bronce/dorado apagado + marfil.
+   Paleta: morado + dorado sobre fondo blanco (ver tokens --tn-* abajo).
    Se sobrescriben las variables de Bootstrap 5.3 (no las clases una por una)
-   para que btn-success/btn-warning/text-warning/bg-light/enlaces, etc. en
-   TODO el proyecto tomen la nueva paleta automaticamente.
+   para que text-success/text-warning/bg-light/enlaces, etc. en TODO el
+   proyecto tomen la nueva paleta automaticamente. Los botones (.btn-*)
+   necesitan ademas su propio bloque mas abajo: ver la nota junto a
+   ".btn-success, .btn-outline-primary.active".
    ========================================================================== */
 :root {
-    /* Paleta morado + azul (antes verde + bronce). Los nombres de las
-       variables se dejaron igual para no tocar el resto del archivo;
-       lo unico que cambio es el color que hay detras de cada una. */
-    --tn-oscuro: #241b40;
-    --tn-verde: #6c4bb6;
-    --tn-verde-suave: #8a6fd1;
-    --tn-dorado: #3a6fb0;
-    --tn-dorado-suave: #5b91d1;
-    --tn-crema: #f5f5fb;
-    --tn-texto: #221f30;
+    /* Paleta "definitiva" del cliente: morado + dorado como detalle,
+       fondo blanco. Los nombres de las variables se dejaron igual que en
+       la version anterior (morado+azul) para no tocar el resto del
+       archivo; lo unico que cambia es el color que hay detras de cada
+       una y que ahora se agrega --tn-gris-seccion para las secciones
+       gris muy claro que pide la paleta. */
+    --tn-oscuro: #4C1D95;        /* morado oscuro: navbar, footer, hero, titulos */
+    --tn-verde: #6D28D9;         /* morado: color principal, botones, links */
+    --tn-verde-suave: #8B5CF6;   /* morado claro: gradientes/hover */
+    --tn-dorado: #C9A227;        /* dorado: detalles pequeños/premium */
+    --tn-dorado-suave: #DCB955;  /* dorado claro: gradientes */
+    --tn-crema: #FFFFFF;         /* fondo general */
+    --tn-texto: #171717;         /* texto principal */
+    --tn-gris-seccion: #F5F5F5;  /* fondo de secciones/paneles distinguidos del blanco */
 
     --bs-primary: var(--tn-verde);
-    --bs-primary-rgb: 108,75,182;
+    --bs-primary-rgb: 109,40,217;
     --bs-success: var(--tn-verde);
-    --bs-success-rgb: 108,75,182;
+    --bs-success-rgb: 109,40,217;
     --bs-warning: var(--tn-dorado);
-    --bs-warning-rgb: 58,111,176;
+    --bs-warning-rgb: 201,162,39;
     --bs-danger: #a13a3a;
     --bs-danger-rgb: 161,58,58;
     --bs-link-color: var(--tn-verde);
-    --bs-link-color-rgb: 108,75,182;
+    --bs-link-color-rgb: 109,40,217;
     --bs-link-hover-color: var(--tn-oscuro);
-    --bs-link-hover-color-rgb: 36,27,64;
+    --bs-link-hover-color-rgb: 76,29,149;
     --bs-body-bg: var(--tn-crema);
     --bs-body-color: var(--tn-texto);
-    --bs-light: var(--tn-crema);
-    --bs-light-rgb: 245,245,251;
+    --bs-light: var(--tn-gris-seccion);
+    --bs-light-rgb: 245,245,245;
 }
 
 body {
@@ -109,7 +115,7 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     color: #fff;
     border-radius: 1rem;
     padding: 4.5rem 2rem 3.5rem;
-    background: linear-gradient(135deg, rgba(20,14,40,0.93) 0%, rgba(36,27,64,0.90) 55%, rgba(108,75,182,0.80) 100%),
+    background: linear-gradient(135deg, rgba(30,10,64,0.93) 0%, rgba(76,29,149,0.90) 55%, rgba(109,40,217,0.80) 100%),
                 url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=70&auto=format&fit=crop') center/cover no-repeat;
     overflow: hidden;
 }
@@ -117,11 +123,11 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 .hero-terranova .lead { color: rgba(255,255,255,0.90); }
 .hero-terranova h1 { letter-spacing: -0.01em; }
 
-/* Franja de estadisticas: banda simple, sin encimarse sobre el hero */
+/* Franja de estadisticas: banda simple, sin encimarse sobre el hero.
+   Fondo gris muy claro para distinguirla del blanco de la pagina. */
 .stats-strip {
-    background: #fff;
+    background: var(--tn-gris-seccion);
     border-radius: 0.9rem;
-    box-shadow: 0 0.4rem 1.2rem rgba(36,27,64,0.07);
     padding: 0.5rem 0;
 }
 .stats-strip .stat-item { padding: 1.1rem 0.5rem; text-align: center; }
@@ -147,7 +153,7 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     width: 56px; height: 56px;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    background: rgba(108,75,182,0.10);
+    background: rgba(109,40,217,0.10);
     color: var(--tn-verde);
     font-size: 1.4rem;
     margin: 0 auto 0.85rem;
@@ -176,7 +182,7 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 }
 .tarjeta-propiedad:hover {
     transform: translateY(-4px);
-    box-shadow: 0 0.75rem 1.5rem rgba(36,27,64,0.14);
+    box-shadow: 0 0.75rem 1.5rem rgba(76,29,149,0.14);
 }
 .tarjeta-propiedad .card-body {
     display: flex;
@@ -263,6 +269,7 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     color: #fff;
     font-weight: 600;
 }
+.filtros-catalogo .card-body { background: var(--tn-gris-seccion); }
 .resultado-contador { color: #6b7280; font-size: 0.95rem; }
 
 /* ---------- Tarjetas KPI (reportes y paneles) ---------- */
@@ -275,7 +282,7 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 .kpi-card .kpi-valor { font-family:'Poppins',sans-serif; font-size: 1.9rem; font-weight: 700; line-height: 1.15; }
 .kpi-card .kpi-label { font-size: 0.82rem; opacity: 0.92; }
 .kpi-card.kpi-verde   { background: linear-gradient(135deg,var(--tn-oscuro),var(--tn-verde)); }
-.kpi-card.kpi-dorado  { background: linear-gradient(135deg,#1c3a6e,var(--tn-dorado)); }
+.kpi-card.kpi-dorado  { background: linear-gradient(135deg,#7a621a,var(--tn-dorado)); }
 .kpi-card.kpi-azul    { background: linear-gradient(135deg,#1c3a4a,#2f5f7a); }
 .kpi-card.kpi-gris    { background: linear-gradient(135deg,#495057,#6c757d); }
 
@@ -283,19 +290,19 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 .reporte-card {
     background: #fff;
     border-radius: 0.75rem;
-    box-shadow: 0 0.25rem 0.75rem rgba(36,27,64,0.07);
+    box-shadow: 0 0.25rem 0.75rem rgba(76,29,149,0.07);
     padding: 1.25rem;
     height: 100%;
 }
 .reporte-card h5 { margin-bottom: 0.2rem; color: var(--tn-oscuro); }
 .reporte-card .reporte-desc { color: #6b7280; font-size: 0.86rem; min-height: 2.6em; }
 .reporte-insight {
-    background: rgba(108,75,182,0.08);
+    background: rgba(109,40,217,0.08);
     border-left: 3px solid var(--tn-verde);
     padding: 0.5rem 0.75rem;
     border-radius: 0.35rem;
     font-size: 0.86rem;
-    color: #2e2350;
+    color: #3b1670;
     margin: 0.75rem 0 0.25rem;
 }
 .barra-fila { margin-bottom: 0.6rem; }
@@ -327,9 +334,9 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 .rol-rapido-card i { font-size: 1.5rem; color: var(--tn-verde); }
 .rol-rapido-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 0.5rem 1rem rgba(36,27,64,0.12);
+    box-shadow: 0 0.5rem 1rem rgba(76,29,149,0.12);
     border-color: var(--tn-verde);
-    background: rgba(108,75,182,0.06);
+    background: rgba(109,40,217,0.06);
 }
 
 .separador-o {
@@ -360,7 +367,7 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 .panel-accion i { font-size: 1.6rem; color: var(--tn-verde); display: block; margin-bottom: 0.4rem; }
 .panel-accion:hover {
     transform: translateY(-3px);
-    box-shadow: 0 0.5rem 1rem rgba(36,27,64,0.1);
+    box-shadow: 0 0.5rem 1rem rgba(76,29,149,0.1);
     border-color: var(--tn-verde);
 }
 
