@@ -70,7 +70,7 @@
             <%= escapar(rs.getString("ciudad")) %></p>
         <p><%= escapar(rs.getString("descripcion")) %></p>
 
-        <h6 class="mt-3">Caracteristicas</h6>
+        <h6 class="mt-3">Características</h6>
         <div class="d-flex flex-wrap gap-2 mb-3">
             <%
                 try (PreparedStatement psCar = con.prepareStatement(
@@ -85,7 +85,7 @@
             %>
             <span class="badge text-bg-light border"><i class="bi bi-check2-circle text-success"></i> <%= escapar(rsCar.getString("nombre")) %></span>
             <% } if (!alguna) { %>
-            <span class="text-muted">Sin caracteristicas registradas.</span>
+            <span class="text-muted">Sin características registradas.</span>
             <% } } } %>
         </div>
     </div>
@@ -97,10 +97,10 @@
                 <span class="badge text-bg-secondary"><%= rs.getString("operacion") %></span>
                 <h3 class="precio-destacado mt-2"><%= formatoCOP(rs.getDouble("precio")) %></h3>
                 <ul class="list-unstyled small text-muted">
-                    <li><i class="bi bi-rulers"></i> Area: <%= rs.getObject("area_m2") != null ? rs.getDouble("area_m2") + " m2" : "N/D" %></li>
+                    <li><i class="bi bi-rulers"></i> Área: <%= rs.getObject("area_m2") != null ? rs.getDouble("area_m2") + " m2" : "N/D" %></li>
                     <li><i class="bi bi-door-closed"></i> Habitaciones: <%= rs.getObject("habitaciones") != null ? rs.getInt("habitaciones") : "N/D" %></li>
-                    <li><i class="bi bi-droplet"></i> Banos: <%= rs.getObject("banos") != null ? rs.getInt("banos") : "N/D" %></li>
-                    <li><i class="bi bi-hash"></i> Matricula: <%= escapar(rs.getString("matricula_inmobiliaria")) %></li>
+                    <li><i class="bi bi-droplet"></i> Baños: <%= rs.getObject("banos") != null ? rs.getInt("banos") : "N/D" %></li>
+                    <li><i class="bi bi-hash"></i> Matrícula: <%= escapar(rs.getString("matricula_inmobiliaria")) %></li>
                 </ul>
                 <hr>
                 <p class="mb-1"><strong><i class="bi bi-building"></i> <%= escapar(rs.getString("inmobiliaria")) %></strong></p>
@@ -110,7 +110,7 @@
                         &middot; <%= escapar(rs.getString("telefono_inmobiliaria")) %></p>
                 <% } else { %>
                     <p class="text-muted small mb-3">
-                        <i class="bi bi-lock"></i> Inicia sesion para ver los datos de contacto completos del agente.</p>
+                        <i class="bi bi-lock"></i> Inicia sesión para ver los datos de contacto completos del agente.</p>
                 <% } %>
 
                 <% if (tieneRol(session, "CLIENTE")) { %>
@@ -125,7 +125,7 @@
                     </div>
                 <% } else if (!estaAutenticado(session)) { %>
                     <a class="btn btn-success w-100" href="<%= ctx %>/login.jsp">
-                        <i class="bi bi-box-arrow-in-right"></i> Inicia sesion para agendar o solicitar</a>
+                        <i class="bi bi-box-arrow-in-right"></i> Inicia sesión para agendar o solicitar</a>
                 <% } %>
             </div>
         </div>
@@ -142,7 +142,7 @@
     if (!encontrada) {
 %>
         <div class="alert alert-warning">La propiedad solicitada no existe o ya no esta disponible.
-            <a href="<%= ctx %>/catalogo.jsp">Volver al catalogo</a></div>
+            <a href="<%= ctx %>/catalogo.jsp">Volver al catálogo</a></div>
 <% } %>
 
 <%@ include file="/WEB-INF/jspf/pieInmobiliaria.jspf" %>

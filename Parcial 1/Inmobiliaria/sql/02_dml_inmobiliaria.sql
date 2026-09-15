@@ -1,5 +1,5 @@
 -- =====================================================================
--- TerraNova Bienes Raices - Script DML (datos de prueba)
+-- TerraNova Bienes Raíces - Script DML (datos de prueba)
 -- Generado automaticamente por scripts/gen_dml.py
 -- Las claves y salts de usuario se calculan con hashlib (SHA-256),
 -- NUNCA transcritas a mano, para evitar truncamientos accidentales.
@@ -22,14 +22,14 @@ INSERT INTO rol (nombre) VALUES
 INSERT INTO ciudad (nombre, departamento) VALUES
     ('Bucaramanga', 'Santander'),
     ('Floridablanca', 'Santander'),
-    ('Giron', 'Santander'),
+    ('Girón', 'Santander'),
     ('Piedecuesta', 'Santander'),
     ('San Gil', 'Santander'),
     ('Barrancabermeja', 'Santander'),
     ('Socorro', 'Santander'),
-    ('Malaga', 'Santander'),
-    ('Bogota', 'Cundinamarca'),
-    ('Medellin', 'Antioquia');
+    ('Málaga', 'Santander'),
+    ('Bogotá', 'Cundinamarca'),
+    ('Medellín', 'Antioquia');
 
 -- ---------------------------------------------------------------------
 -- TIPOS DE PROPIEDAD
@@ -52,24 +52,24 @@ INSERT INTO caracteristica (nombre) VALUES
     ('Parqueadero'),
     ('Ascensor'),
     ('Gimnasio'),
-    ('Balcon'),
+    ('Balcón'),
     ('Zona BBQ'),
     ('Vigilancia 24 horas'),
     ('Amoblado'),
     ('Aire acondicionado'),
     ('Terraza'),
-    ('Deposito'),
-    ('Jardin');
+    ('Depósito'),
+    ('Jardín');
 
 -- ---------------------------------------------------------------------
 -- INMOBILIARIAS (agencias que publican en el marketplace)
--- id_ciudad: 1=Bucaramanga, 2=Floridablanca, 3=Giron, 4=Piedecuesta
+-- id_ciudad: 1=Bucaramanga, 2=Floridablanca, 3=Girón, 4=Piedecuesta
 -- ---------------------------------------------------------------------
 INSERT INTO inmobiliaria (nombre, nit, telefono, direccion, id_ciudad) VALUES
-    ('TerraNova Bienes Raices',        '900123456-1', '6076441000', 'Cra 27 #45-10, Bucaramanga',  1),
+    ('TerraNova Bienes Raíces',        '900123456-1', '6076441000', 'Cra 27 #45-10, Bucaramanga',  1),
     ('Habitat Real',                   '900123457-2', '6076442000', 'Cra 15 #8-40, Floridablanca', 2),
-    ('Vivienda Total',                 '900123458-3', '6076443000', 'Cll 12 #6-25, Giron',         3),
-    ('Bienes y Raices del Oriente',    '900123459-4', '6076444000', 'Cra 4 #10-12, Piedecuesta',   4);
+    ('Vivienda Total',                 '900123458-3', '6076443000', 'Cll 12 #6-25, Girón',         3),
+    ('Bienes y Raíces del Oriente',    '900123459-4', '6076444000', 'Cra 4 #10-12, Piedecuesta',   4);
 
 -- ---------------------------------------------------------------------
 -- USUARIOS + PERFIL (1:1) + ROLES (N:M)
@@ -89,7 +89,7 @@ INSERT INTO usuario (correo, password_hash, password_salt, id_inmobiliaria, esta
     ('director@terranova.com', 'b9d16c60238bc7f1a4a1d900ea258b995bde570bfc4894057fcdb8b1fe7aeb09', 'a1b2c3d4e5f60708a1b2c3d4e5f60702', 1, 'ACTIVO');
 SET @uid := LAST_INSERT_ID();
 INSERT INTO perfil (id_usuario, nombres, apellidos, documento, telefono, direccion) VALUES
-    (@uid, 'Andres', 'Villamizar Cote', '1091234502', '3001234502', 'Cll 36 #22-18, Bucaramanga');
+    (@uid, 'Andrés', 'Villamizar Cote', '1091234502', '3001234502', 'Cll 36 #22-18, Bucaramanga');
 INSERT INTO usuario_rol (id_usuario, id_rol) VALUES
     (@uid, 1),
     (@uid, 2);
@@ -99,7 +99,7 @@ INSERT INTO usuario (correo, password_hash, password_salt, id_inmobiliaria, esta
     ('agente.garcia@terranova.com', 'dc6224e607a38354c610ca321781bf0830909b93b918e5dc15703dbca856f852', 'a1b2c3d4e5f60708a1b2c3d4e5f60703', 1, 'ACTIVO');
 SET @uid := LAST_INSERT_ID();
 INSERT INTO perfil (id_usuario, nombres, apellidos, documento, telefono, direccion) VALUES
-    (@uid, 'Laura', 'Garcia Nino', '1091234503', '3001234503', 'Cra 33 #50-20, Bucaramanga');
+    (@uid, 'Laura', 'García Niño', '1091234503', '3001234503', 'Cra 33 #50-20, Bucaramanga');
 INSERT INTO usuario_rol (id_usuario, id_rol) VALUES
     (@uid, 2);
 
@@ -108,7 +108,7 @@ INSERT INTO usuario (correo, password_hash, password_salt, id_inmobiliaria, esta
     ('agente.rios@terranova.com', '7908b94b9ac7fd5417f3f68134bc32f900e94fafa0155e2d5f238b71a3796525', 'a1b2c3d4e5f60708a1b2c3d4e5f60704', 1, 'ACTIVO');
 SET @uid := LAST_INSERT_ID();
 INSERT INTO perfil (id_usuario, nombres, apellidos, documento, telefono, direccion) VALUES
-    (@uid, 'Felipe', 'Rios Camacho', '1091234504', '3001234504', 'Cll 45 #15-30, Bucaramanga');
+    (@uid, 'Felipe', 'Ríos Camacho', '1091234504', '3001234504', 'Cll 45 #15-30, Bucaramanga');
 INSERT INTO usuario_rol (id_usuario, id_rol) VALUES
     (@uid, 2);
 
@@ -117,7 +117,7 @@ INSERT INTO usuario (correo, password_hash, password_salt, id_inmobiliaria, esta
     ('agente.pena@habitatreal.com', 'cc52208e96c6bbf822e694bf528a9c44fbe15c126fb2877ae61435f4f3972ad6', 'a1b2c3d4e5f60708a1b2c3d4e5f60705', 2, 'ACTIVO');
 SET @uid := LAST_INSERT_ID();
 INSERT INTO perfil (id_usuario, nombres, apellidos, documento, telefono, direccion) VALUES
-    (@uid, 'Diana', 'Pena Delgado', '1091234505', '3101234505', 'Cra 15 #8-40, Floridablanca');
+    (@uid, 'Diana', 'Peña Delgado', '1091234505', '3101234505', 'Cra 15 #8-40, Floridablanca');
 INSERT INTO usuario_rol (id_usuario, id_rol) VALUES
     (@uid, 2);
 
@@ -126,7 +126,7 @@ INSERT INTO usuario (correo, password_hash, password_salt, id_inmobiliaria, esta
     ('agente.suarez@viviendatotal.com', '7e855ac2ef76bfd4b44ccc0a1abd099a33fee9ad60b75ef90f583c276fe3b90b', 'a1b2c3d4e5f60708a1b2c3d4e5f60706', 3, 'ACTIVO');
 SET @uid := LAST_INSERT_ID();
 INSERT INTO perfil (id_usuario, nombres, apellidos, documento, telefono, direccion) VALUES
-    (@uid, 'Julian', 'Suarez Prada', '1091234506', '3101234506', 'Cll 12 #6-25, Giron');
+    (@uid, 'Julián', 'Suárez Prada', '1091234506', '3101234506', 'Cll 12 #6-25, Girón');
 INSERT INTO usuario_rol (id_usuario, id_rol) VALUES
     (@uid, 2);
 
@@ -144,7 +144,7 @@ INSERT INTO usuario (correo, password_hash, password_salt, id_inmobiliaria, esta
     ('cliente.torres@gmail.com', '775a3c820f38c6ce54a4c246886fffad7ced311134c7de5603a0d6d13ad6a26d', 'a1b2c3d4e5f60708a1b2c3d4e5f60708', NULL, 'ACTIVO');
 SET @uid := LAST_INSERT_ID();
 INSERT INTO perfil (id_usuario, nombres, apellidos, documento, telefono, direccion) VALUES
-    (@uid, 'Sergio', 'Torres Lopez', '1098765401', '3201234508', 'Cra 9 #20-14, Bucaramanga');
+    (@uid, 'Sergio', 'Torres López', '1098765401', '3201234508', 'Cra 9 #20-14, Bucaramanga');
 INSERT INTO usuario_rol (id_usuario, id_rol) VALUES
     (@uid, 3);
 
@@ -153,7 +153,7 @@ INSERT INTO usuario (correo, password_hash, password_salt, id_inmobiliaria, esta
     ('cliente.gomez@gmail.com', 'eeed31b49b3246a3fe3984790fdf7119f2c061715f0a4a7719245af18fd97b28', 'a1b2c3d4e5f60708a1b2c3d4e5f60709', NULL, 'ACTIVO');
 SET @uid := LAST_INSERT_ID();
 INSERT INTO perfil (id_usuario, nombres, apellidos, documento, telefono, direccion) VALUES
-    (@uid, 'Valentina', 'Gomez Ardila', '1098765402', '3201234509', 'Cll 30 #14-08, Floridablanca');
+    (@uid, 'Valentina', 'Gómez Ardila', '1098765402', '3201234509', 'Cll 30 #14-08, Floridablanca');
 INSERT INTO usuario_rol (id_usuario, id_rol) VALUES
     (@uid, 3);
 
@@ -162,7 +162,7 @@ INSERT INTO usuario (correo, password_hash, password_salt, id_inmobiliaria, esta
     ('cliente.duran@gmail.com', '96539cbc77791be9d62767455d6172638580b36d04ee84b378ebb4ac5d14e352', 'a1b2c3d4e5f60708a1b2c3d4e5f6070a', NULL, 'ACTIVO');
 SET @uid := LAST_INSERT_ID();
 INSERT INTO perfil (id_usuario, nombres, apellidos, documento, telefono, direccion) VALUES
-    (@uid, 'Miguel', 'Duran Silva', '1098765403', '3201234510', 'Cra 21 #33-45, Giron');
+    (@uid, 'Miguel', 'Durán Silva', '1098765403', '3201234510', 'Cra 21 #33-45, Girón');
 INSERT INTO usuario_rol (id_usuario, id_rol) VALUES
     (@uid, 3);
 
@@ -182,7 +182,7 @@ INSERT INTO usuario_rol (id_usuario, id_rol) VALUES
 --  4 agente.rios@terranova.com (INMOBILIARIA, TerraNova)
 --  5 agente.pena@habitatreal.com (INMOBILIARIA, Habitat Real)
 --  6 agente.suarez@viviendatotal.com (INMOBILIARIA, Vivienda Total)
---  7 agente.moreno@bienesoriente.com (INMOBILIARIA, Bienes y Raices del Oriente)
+--  7 agente.moreno@bienesoriente.com (INMOBILIARIA, Bienes y Raíces del Oriente)
 --  8 cliente.torres@gmail.com (CLIENTE)
 --  9 cliente.gomez@gmail.com (CLIENTE)
 -- 10 cliente.duran@gmail.com (CLIENTE)
@@ -191,8 +191,8 @@ INSERT INTO usuario_rol (id_usuario, id_rol) VALUES
 -- ---------------------------------------------------------------------
 -- PROPIEDADES
 -- id_tipo: 1 Casa 2 Apto 3 Apartaestudio 4 Local 5 Oficina 6 Lote 7 Finca 8 Bodega
--- id_ciudad: 1 Bucaramanga 2 Floridablanca 3 Giron 4 Piedecuesta 5 San Gil
---            6 Barrancabermeja 7 Socorro 8 Malaga 9 Bogota 10 Medellin
+-- id_ciudad: 1 Bucaramanga 2 Floridablanca 3 Girón 4 Piedecuesta 5 San Gil
+--            6 Barrancabermeja 7 Socorro 8 Málaga 9 Bogotá 10 Medellín
 -- ---------------------------------------------------------------------
 INSERT INTO propiedad
     (matricula_inmobiliaria, titulo, id_tipo, id_ciudad, id_inmobiliaria, id_agente,
@@ -203,10 +203,10 @@ VALUES
     ('SAN-0003-BGA', 'Apartaestudio para estudiantes cerca a la UTS', 3, 1, 1, 4, 'Cra 27 #45-10, Bucaramanga', 1200000, 38.0, 1, 1, 'ARRIENDO', 'DISPONIBLE'),
     ('SAN-0004-BGA', 'Local comercial centro de Bucaramanga', 4, 1, 1, 4, 'Cll 35 #18-22, Bucaramanga', 3500000, 60.0, NULL, 1, 'ARRIENDO', 'DISPONIBLE'),
     ('SAN-0005-BGA', 'Oficina ejecutiva Torre Empresarial', 5, 1, 1, 2, 'Cra 33 #34-15, Bucaramanga', 2800000, 45.0, NULL, 1, 'ARRIENDO', 'RESERVADO'),
-    ('SAN-0006-FLB', 'Apartamento con vista a las montanas', 2, 2, 2, 5, 'Cra 15 #8-40, Floridablanca', 380000000, 88.0, 3, 2, 'VENTA', 'DISPONIBLE'),
+    ('SAN-0006-FLB', 'Apartamento con vista a las montañas', 2, 2, 2, 5, 'Cra 15 #8-40, Floridablanca', 380000000, 88.0, 3, 2, 'VENTA', 'DISPONIBLE'),
     ('SAN-0007-FLB', 'Casa familiar en conjunto cerrado', 1, 2, 2, 5, 'Cll 20 #9-30, Floridablanca', 520000000, 210.0, 4, 3, 'VENTA', 'VENDIDO'),
-    ('SAN-0008-GIR', 'Local en zona comercial de Giron', 4, 3, 3, 6, 'Cll 12 #6-25, Giron', 2200000, 40.0, NULL, 1, 'ARRIENDO', 'DISPONIBLE'),
-    ('SAN-0009-GIR', 'Casa colonial centro historico de Giron', 1, 3, 3, 6, 'Cra 28 #30-10, Giron', 650000000, 180.0, 3, 2, 'VENTA', 'DISPONIBLE'),
+    ('SAN-0008-GIR', 'Local en zona comercial de Girón', 4, 3, 3, 6, 'Cll 12 #6-25, Girón', 2200000, 40.0, NULL, 1, 'ARRIENDO', 'DISPONIBLE'),
+    ('SAN-0009-GIR', 'Casa colonial centro historico de Girón', 1, 3, 3, 6, 'Cra 28 #30-10, Girón', 650000000, 180.0, 3, 2, 'VENTA', 'DISPONIBLE'),
     ('SAN-0010-PIE', 'Finca de recreo con zona BBQ', 7, 4, 4, 7, 'Vereda Sevilla, Piedecuesta', 950000000, 5000.0, 5, 4, 'VENTA', 'DISPONIBLE'),
     ('SAN-0011-PIE', 'Apartamento arriendo cerca al parque principal', 2, 4, 4, 7, 'Cra 4 #10-12, Piedecuesta', 1100000, 60.0, 2, 1, 'ARRIENDO', 'ARRENDADO'),
     ('SAN-0012-BGA', 'Bodega industrial zona Chimita', 8, 1, 1, 2, 'Diagonal 15 #100-20, Bucaramanga', 6500000, 400.0, NULL, 1, 'ARRIENDO', 'DISPONIBLE'),
@@ -214,12 +214,12 @@ VALUES
     ('SAN-0014-BGA', 'Apartamento antiguo para remodelar', 2, 1, 1, 4, 'Cll 22 #14-30, Bucaramanga', 210000000, 70.0, 2, 1, 'VENTA', 'INACTIVO'),
     ('SAN-0015-SGL', 'Casa campestre en las afueras de San Gil', 1, 5, 1, 2, 'Vereda Alto del Pozo, San Gil', 480000000, 300.0, 4, 3, 'VENTA', 'DISPONIBLE'),
     ('SAN-0016-SGL', 'Apartamento nuevo cerca al Parque El Gallineral', 2, 5, 2, 5, 'Cra 10 #7-45, San Gil', 320000000, 85.0, 3, 2, 'VENTA', 'DISPONIBLE'),
-    ('SAN-0017-BAR', 'Bodega logistica zona industrial de Barrancabermeja', 8, 6, 3, 6, 'Km 3 via Yondo, Barrancabermeja', 8200000, 600.0, NULL, 2, 'ARRIENDO', 'DISPONIBLE'),
+    ('SAN-0017-BAR', 'Bodega logística zona industrial de Barrancabermeja', 8, 6, 3, 6, 'Km 3 via Yondo, Barrancabermeja', 8200000, 600.0, NULL, 2, 'ARRIENDO', 'DISPONIBLE'),
     ('SAN-0018-BAR', 'Local comercial avenida principal de Barrancabermeja', 4, 6, 4, 7, 'Cra 20 #52-18, Barrancabermeja', 2900000, 70.0, NULL, 1, 'ARRIENDO', 'DISPONIBLE'),
     ('SAN-0019-SOC', 'Casa colonial patrimonial en el Socorro', 1, 7, 1, 3, 'Cll 14 #10-22, Socorro', 390000000, 220.0, 4, 2, 'VENTA', 'DISPONIBLE'),
-    ('SAN-0020-MLG', 'Finca cafetera con vista a la cordillera', 7, 8, 2, 5, 'Vereda La Laguna, Malaga', 680000000, 8000.0, 3, 2, 'VENTA', 'DISPONIBLE'),
-    ('SAN-0021-BOG', 'Apartamento ejecutivo en Chapinero', 2, 9, 3, 6, 'Cra 13 #63-20, Bogota', 620000000, 78.0, 2, 2, 'VENTA', 'RESERVADO'),
-    ('SAN-0022-MED', 'Apartaestudio en El Poblado', 3, 10, 4, 7, 'Cll 10 #35-40, Medellin', 2100000, 42.0, 1, 1, 'ARRIENDO', 'DISPONIBLE'),
+    ('SAN-0020-MLG', 'Finca cafetera con vista a la cordillera', 7, 8, 2, 5, 'Vereda La Laguna, Málaga', 680000000, 8000.0, 3, 2, 'VENTA', 'DISPONIBLE'),
+    ('SAN-0021-BOG', 'Apartamento ejecutivo en Chapinero', 2, 9, 3, 6, 'Cra 13 #63-20, Bogotá', 620000000, 78.0, 2, 2, 'VENTA', 'RESERVADO'),
+    ('SAN-0022-MED', 'Apartaestudio en El Poblado', 3, 10, 4, 7, 'Cll 10 #35-40, Medellín', 2100000, 42.0, 1, 1, 'ARRIENDO', 'DISPONIBLE'),
     ('SAN-0023-BGA', 'Oficina coworking en Cabecera', 5, 1, 1, 4, 'Cra 33 #40-18, Bucaramanga', 1800000, 30.0, NULL, 1, 'ARRIENDO', 'DISPONIBLE'),
     ('SAN-0024-FLB', 'Lote campestre para proyecto de vivienda', 6, 2, 2, 5, 'Vereda Casiano, Floridablanca', 210000000, 800.0, NULL, NULL, 'VENTA', 'DISPONIBLE'),
     ('SAN-0025-SGL', 'Finca ganadera camino a Charala', 7, 5, 2, 5, 'Vereda Charala Km 8, San Gil', 720000000, 15000.0, 4, 3, 'VENTA', 'DISPONIBLE'),
@@ -227,12 +227,12 @@ VALUES
     ('SAN-0027-BAR', 'Apartamento frente al rio Magdalena', 2, 6, 3, 6, 'Cra 5 #48-30, Barrancabermeja', 260000000, 82.0, 3, 2, 'VENTA', 'DISPONIBLE'),
     ('SAN-0028-SOC', 'Apartaestudio para estudiantes en el Socorro', 3, 7, 4, 7, 'Cll 16 #8-14, Socorro', 850000, 32.0, 1, 1, 'ARRIENDO', 'DISPONIBLE'),
     ('SAN-0029-SOC', 'Lote esquinero cerca al parque principal', 6, 7, 1, 3, 'Cra 12 #13-05, Socorro', 145000000, 300.0, NULL, NULL, 'VENTA', 'DISPONIBLE'),
-    ('SAN-0030-MLG', 'Casa esquinera remodelada en el centro', 1, 8, 2, 5, 'Cll 8 #9-40, Malaga', 310000000, 190.0, 3, 2, 'VENTA', 'VENDIDO'),
-    ('SAN-0031-MLG', 'Local comercial frente al parque de Malaga', 4, 8, 3, 6, 'Cra 9 #7-15, Malaga', 1600000, 45.0, NULL, 1, 'ARRIENDO', 'DISPONIBLE'),
-    ('SAN-0032-BOG', 'Oficina corporativa Zona T', 5, 9, 4, 7, 'Cra 11 #82-30, Bogota', 4200000, 90.0, NULL, 2, 'ARRIENDO', 'RESERVADO'),
-    ('SAN-0033-BOG', 'Casa campestre en las afueras de Bogota', 1, 9, 1, 2, 'Vereda Chicaque, Bogota', 890000000, 350.0, 5, 4, 'VENTA', 'DISPONIBLE'),
-    ('SAN-0034-MED', 'Bodega industrial zona franca de Medellin', 8, 10, 2, 5, 'Autopista Sur Km 4, Medellin', 12000000, 800.0, NULL, 2, 'ARRIENDO', 'DISPONIBLE'),
-    ('SAN-0035-MED', 'Apartamento en Laureles con balcon', 2, 10, 3, 6, 'Cra 76 #34-50, Medellin', 2400000, 75.0, 2, 2, 'ARRIENDO', 'ARRENDADO'),
+    ('SAN-0030-MLG', 'Casa esquinera remodelada en el centro', 1, 8, 2, 5, 'Cll 8 #9-40, Málaga', 310000000, 190.0, 3, 2, 'VENTA', 'VENDIDO'),
+    ('SAN-0031-MLG', 'Local comercial frente al parque de Málaga', 4, 8, 3, 6, 'Cra 9 #7-15, Málaga', 1600000, 45.0, NULL, 1, 'ARRIENDO', 'DISPONIBLE'),
+    ('SAN-0032-BOG', 'Oficina corporativa Zona T', 5, 9, 4, 7, 'Cra 11 #82-30, Bogotá', 4200000, 90.0, NULL, 2, 'ARRIENDO', 'RESERVADO'),
+    ('SAN-0033-BOG', 'Casa campestre en las afueras de Bogotá', 1, 9, 1, 2, 'Vereda Chicaque, Bogotá', 890000000, 350.0, 5, 4, 'VENTA', 'DISPONIBLE'),
+    ('SAN-0034-MED', 'Bodega industrial zona franca de Medellín', 8, 10, 2, 5, 'Autopista Sur Km 4, Medellín', 12000000, 800.0, NULL, 2, 'ARRIENDO', 'DISPONIBLE'),
+    ('SAN-0035-MED', 'Apartamento en Laureles con balcon', 2, 10, 3, 6, 'Cra 76 #34-50, Medellín', 2400000, 75.0, 2, 2, 'ARRIENDO', 'ARRENDADO'),
     ('SAN-0036-BGA', 'Lote industrial zona Cafe Madrid', 6, 1, 1, 4, 'Autopista Floridablanca Km 6, Bucaramanga', 420000000, 1200.0, NULL, NULL, 'VENTA', 'DISPONIBLE');
 
 -- ---------------------------------------------------------------------
@@ -258,16 +258,16 @@ INSERT INTO imagen_propiedad (id_propiedad, url_imagen, es_principal, orden) VAL
     -- 5: Oficina ejecutiva Torre Empresarial
     (5, 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
     (5, 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
-    -- 6: Apartamento con vista a las montanas
+    -- 6: Apartamento con vista a las montañas
     (6, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
     (6, 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 7: Casa familiar en conjunto cerrado
     (7, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
     (7, 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
-    -- 8: Local en zona comercial de Giron
+    -- 8: Local en zona comercial de Girón
     (8, 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
     (8, 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
-    -- 9: Casa colonial centro historico de Giron
+    -- 9: Casa colonial centro historico de Girón
     (9, 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
     (9, 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 10: Finca de recreo con zona BBQ
@@ -291,7 +291,7 @@ INSERT INTO imagen_propiedad (id_propiedad, url_imagen, es_principal, orden) VAL
     -- 16: Apartamento nuevo cerca al Parque El Gallineral
     (16, 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
     (16, 'https://images.unsplash.com/photo-1615529182904-14819c35db37?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
-    -- 17: Bodega logistica zona industrial de Barrancabermeja
+    -- 17: Bodega logística zona industrial de Barrancabermeja
     (17, 'https://images.unsplash.com/photo-1565610222536-ef125c59da2e?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
     (17, 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 18: Local comercial avenida principal de Barrancabermeja
@@ -333,16 +333,16 @@ INSERT INTO imagen_propiedad (id_propiedad, url_imagen, es_principal, orden) VAL
     -- 30: Casa esquinera remodelada en el centro
     (30, 'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
     (30, 'https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
-    -- 31: Local comercial frente al parque de Malaga
+    -- 31: Local comercial frente al parque de Málaga
     (31, 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
     (31, 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 32: Oficina corporativa Zona T
     (32, 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
     (32, 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
-    -- 33: Casa campestre en las afueras de Bogota
+    -- 33: Casa campestre en las afueras de Bogotá
     (33, 'https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
     (33, 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
-    -- 34: Bodega industrial zona franca de Medellin
+    -- 34: Bodega industrial zona franca de Medellín
     (34, 'https://images.unsplash.com/photo-1565610222536-ef125c59da2e?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
     (34, 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 35: Apartamento en Laureles con balcon
@@ -470,22 +470,22 @@ INSERT INTO cita (id_propiedad, id_cliente, fecha_hora, estado, observaciones) V
     (9, 10, '2026-09-20 14:00:00', 'CONFIRMADA', NULL),
     (10, 8, '2026-09-22 08:00:00', 'PENDIENTE', 'Visita a finca, confirmar transporte'),
     (11, 9, '2026-08-25 16:00:00', 'REALIZADA', NULL),
-    (4, 11, '2026-09-19 13:00:00', 'RECHAZADA', 'Agente no disponible ese dia'),
+    (4, 11, '2026-09-19 13:00:00', 'RECHAZADA', 'Agente no disponible ese día'),
     (12, 10, '2026-09-21 10:00:00', 'PENDIENTE', NULL),
-    (13, 8, '2026-09-23 09:30:00', 'CANCELADA', 'Cliente cancelo');
+    (13, 8, '2026-09-23 09:30:00', 'CANCELADA', 'Cliente canceló');
 
 -- ---------------------------------------------------------------------
 -- SOLICITUDES DE COMPRA/ARRIENDO
 -- ---------------------------------------------------------------------
 INSERT INTO solicitud (id_propiedad, id_cliente, tipo, estado, observaciones) VALUES
-    (1, 8, 'COMPRA', 'EN_REVISION', 'Solicita credito hipotecario'),
-    (7, 11, 'COMPRA', 'APROBADA', 'Documentacion completa'),
+    (1, 8, 'COMPRA', 'EN_REVISION', 'Solicita crédito hipotecario'),
+    (7, 11, 'COMPRA', 'APROBADA', 'Documentación completa'),
     (3, 10, 'ARRIENDO', 'APROBADA', NULL),
     (11, 9, 'ARRIENDO', 'APROBADA', 'Contrato firmado'),
     (9, 10, 'COMPRA', 'PENDIENTE', NULL),
     (2, 8, 'COMPRA', 'RECHAZADA', 'Ingresos no certificados'),
     (6, 9, 'COMPRA', 'EN_REVISION', NULL),
-    (4, 11, 'ARRIENDO', 'PENDIENTE', 'Solicita contrato a 2 anios'),
+    (4, 11, 'ARRIENDO', 'PENDIENTE', 'Solicita contrato a 2 años'),
     (10, 8, 'COMPRA', 'PENDIENTE', 'Interesado en finca completa'),
     (12, 10, 'ARRIENDO', 'EN_REVISION', NULL);
 
@@ -493,25 +493,25 @@ INSERT INTO solicitud (id_propiedad, id_cliente, tipo, estado, observaciones) VA
 -- DOCUMENTOS POR SOLICITUD
 -- ---------------------------------------------------------------------
 INSERT INTO documento_solicitud (id_solicitud, nombre_documento, url_archivo) VALUES
-    (1, 'Cedula de ciudadania', '/docs/solicitud1_cedula.pdf'),
+    (1, 'Cédula de ciudadanía', '/docs/solicitud1_cedula.pdf'),
     (1, 'Certificado laboral', '/docs/solicitud1_laboral.pdf'),
-    (2, 'Cedula de ciudadania', '/docs/solicitud2_cedula.pdf'),
+    (2, 'Cédula de ciudadanía', '/docs/solicitud2_cedula.pdf'),
     (2, 'Certificado laboral', '/docs/solicitud2_laboral.pdf'),
-    (3, 'Cedula de ciudadania', '/docs/solicitud3_cedula.pdf'),
+    (3, 'Cédula de ciudadanía', '/docs/solicitud3_cedula.pdf'),
     (3, 'Certificado laboral', '/docs/solicitud3_laboral.pdf'),
-    (4, 'Cedula de ciudadania', '/docs/solicitud4_cedula.pdf'),
+    (4, 'Cédula de ciudadanía', '/docs/solicitud4_cedula.pdf'),
     (4, 'Certificado laboral', '/docs/solicitud4_laboral.pdf'),
-    (5, 'Cedula de ciudadania', '/docs/solicitud5_cedula.pdf'),
+    (5, 'Cédula de ciudadanía', '/docs/solicitud5_cedula.pdf'),
     (5, 'Certificado laboral', '/docs/solicitud5_laboral.pdf'),
-    (6, 'Cedula de ciudadania', '/docs/solicitud6_cedula.pdf'),
+    (6, 'Cédula de ciudadanía', '/docs/solicitud6_cedula.pdf'),
     (6, 'Certificado laboral', '/docs/solicitud6_laboral.pdf'),
-    (7, 'Cedula de ciudadania', '/docs/solicitud7_cedula.pdf'),
+    (7, 'Cédula de ciudadanía', '/docs/solicitud7_cedula.pdf'),
     (7, 'Certificado laboral', '/docs/solicitud7_laboral.pdf'),
-    (8, 'Cedula de ciudadania', '/docs/solicitud8_cedula.pdf'),
+    (8, 'Cédula de ciudadanía', '/docs/solicitud8_cedula.pdf'),
     (8, 'Certificado laboral', '/docs/solicitud8_laboral.pdf'),
-    (9, 'Cedula de ciudadania', '/docs/solicitud9_cedula.pdf'),
+    (9, 'Cédula de ciudadanía', '/docs/solicitud9_cedula.pdf'),
     (9, 'Certificado laboral', '/docs/solicitud9_laboral.pdf'),
-    (10, 'Cedula de ciudadania', '/docs/solicitud10_cedula.pdf'),
+    (10, 'Cédula de ciudadanía', '/docs/solicitud10_cedula.pdf'),
     (10, 'Certificado laboral', '/docs/solicitud10_laboral.pdf');
 
 -- ---------------------------------------------------------------------
@@ -535,34 +535,34 @@ INSERT INTO favorito (id_usuario, id_propiedad) VALUES
 -- AUDITORIA (muestra de eventos registrados por la aplicacion)
 -- ---------------------------------------------------------------------
 INSERT INTO auditoria (id_usuario, accion, tabla_afectada, detalle, ip, fecha_hora) VALUES
-    (1,  'LOGIN', 'usuario', 'Inicio de sesion exitoso', '190.90.4.12', DATE_SUB(NOW(), INTERVAL 9 DAY)),
-    (2,  'LOGIN', 'usuario', 'Inicio de sesion exitoso', '190.90.4.20', DATE_SUB(NOW(), INTERVAL 9 DAY)),
-    (3,  'CREAR_PROPIEDAD', 'propiedad', 'Publico SAN-0001-BGA', '190.90.4.33', DATE_SUB(NOW(), INTERVAL 9 DAY)),
-    (4,  'CREAR_PROPIEDAD', 'propiedad', 'Publico SAN-0003-BGA', '190.90.4.41', DATE_SUB(NOW(), INTERVAL 8 DAY)),
+    (1,  'LOGIN', 'usuario', 'Inicio de sesión exitoso', '190.90.4.12', DATE_SUB(NOW(), INTERVAL 9 DAY)),
+    (2,  'LOGIN', 'usuario', 'Inicio de sesión exitoso', '190.90.4.20', DATE_SUB(NOW(), INTERVAL 9 DAY)),
+    (3,  'CREAR_PROPIEDAD', 'propiedad', 'Publicó SAN-0001-BGA', '190.90.4.33', DATE_SUB(NOW(), INTERVAL 9 DAY)),
+    (4,  'CREAR_PROPIEDAD', 'propiedad', 'Publicó SAN-0003-BGA', '190.90.4.41', DATE_SUB(NOW(), INTERVAL 8 DAY)),
     (8,  'REGISTRO', 'usuario', 'Nueva cuenta cliente', '181.52.60.10', DATE_SUB(NOW(), INTERVAL 8 DAY)),
     (9,  'REGISTRO', 'usuario', 'Nueva cuenta cliente', '181.52.60.14', DATE_SUB(NOW(), INTERVAL 8 DAY)),
-    (6,  'CREAR_PROPIEDAD', 'propiedad', 'Publico SAN-0008-GIR', '190.90.4.55', DATE_SUB(NOW(), INTERVAL 7 DAY)),
+    (6,  'CREAR_PROPIEDAD', 'propiedad', 'Publicó SAN-0008-GIR', '190.90.4.55', DATE_SUB(NOW(), INTERVAL 7 DAY)),
     (8,  'AGENDAR_CITA', 'cita', 'Cita sobre propiedad 1', '181.52.60.10', DATE_SUB(NOW(), INTERVAL 7 DAY)),
-    (3,  'CAMBIAR_ESTADO_CITA', 'cita', 'Confirmo cita 1', '190.90.4.33', DATE_SUB(NOW(), INTERVAL 7 DAY)),
+    (3,  'CAMBIAR_ESTADO_CITA', 'cita', 'Confirmó cita 1', '190.90.4.33', DATE_SUB(NOW(), INTERVAL 7 DAY)),
     (10, 'LOGIN_FALLIDO', 'usuario', 'Clave incorrecta', '181.52.61.22', DATE_SUB(NOW(), INTERVAL 6 DAY)),
     (10, 'LOGIN_FALLIDO', 'usuario', 'Clave incorrecta', '181.52.61.22', DATE_SUB(NOW(), INTERVAL 6 DAY)),
-    (10, 'LOGIN', 'usuario', 'Inicio de sesion exitoso', '181.52.61.22', DATE_SUB(NOW(), INTERVAL 6 DAY)),
+    (10, 'LOGIN', 'usuario', 'Inicio de sesión exitoso', '181.52.61.22', DATE_SUB(NOW(), INTERVAL 6 DAY)),
     (9,  'RADICAR_SOLICITUD', 'solicitud', 'Solicitud de compra propiedad 6', '181.52.60.14', DATE_SUB(NOW(), INTERVAL 6 DAY)),
     (5,  'CAMBIAR_ESTADO_SOLICITUD', 'solicitud', 'Solicitud 2 -> APROBADA', '190.90.4.60', DATE_SUB(NOW(), INTERVAL 6 DAY)),
-    (1,  'CAMBIAR_ROL', 'usuario_rol', 'Actualizo roles del usuario 2', '190.90.4.12', DATE_SUB(NOW(), INTERVAL 5 DAY)),
-    (4,  'EDITAR_PROPIEDAD', 'propiedad', 'Edito SAN-0003-BGA', '190.90.4.41', DATE_SUB(NOW(), INTERVAL 5 DAY)),
-    (7,  'CREAR_PROPIEDAD', 'propiedad', 'Publico SAN-0010-PIE', '190.90.4.71', DATE_SUB(NOW(), INTERVAL 5 DAY)),
+    (1,  'CAMBIAR_ROL', 'usuario_rol', 'Actualizó roles del usuario 2', '190.90.4.12', DATE_SUB(NOW(), INTERVAL 5 DAY)),
+    (4,  'EDITAR_PROPIEDAD', 'propiedad', 'Editó SAN-0003-BGA', '190.90.4.41', DATE_SUB(NOW(), INTERVAL 5 DAY)),
+    (7,  'CREAR_PROPIEDAD', 'propiedad', 'Publicó SAN-0010-PIE', '190.90.4.71', DATE_SUB(NOW(), INTERVAL 5 DAY)),
     (11, 'REGISTRO', 'usuario', 'Nueva cuenta cliente', '181.52.62.30', DATE_SUB(NOW(), INTERVAL 4 DAY)),
     (11, 'MARCAR_FAVORITO', 'favorito', 'Propiedad 9', '181.52.62.30', DATE_SUB(NOW(), INTERVAL 4 DAY)),
     (10, 'MARCAR_FAVORITO', 'favorito', 'Propiedad 3', '181.52.61.22', DATE_SUB(NOW(), INTERVAL 4 DAY)),
     (1,  'CAMBIAR_ESTADO_USUARIO', 'usuario', 'Usuario 9 -> INACTIVO', '190.90.4.12', DATE_SUB(NOW(), INTERVAL 3 DAY)),
     (1,  'CAMBIAR_ESTADO_USUARIO', 'usuario', 'Usuario 9 -> ACTIVO', '190.90.4.12', DATE_SUB(NOW(), INTERVAL 3 DAY)),
     (1,  'AGREGAR_CATALOGO', 'ciudad', 'Agrego San Gil', '190.90.4.12', DATE_SUB(NOW(), INTERVAL 3 DAY)),
-    (6,  'BAJA_PROPIEDAD', 'propiedad', 'Inactivo propiedad id=14', '190.90.4.55', DATE_SUB(NOW(), INTERVAL 2 DAY)),
+    (6,  'BAJA_PROPIEDAD', 'propiedad', 'Inactivó propiedad id=14', '190.90.4.55', DATE_SUB(NOW(), INTERVAL 2 DAY)),
     (8,  'CAMBIAR_CLAVE', 'usuario', 'Cambio de clave', '181.52.60.10', DATE_SUB(NOW(), INTERVAL 2 DAY)),
     (5,  'CAMBIAR_ESTADO_CITA', 'cita', 'Cita 6 -> CONFIRMADA', '190.90.4.60', DATE_SUB(NOW(), INTERVAL 1 DAY)),
     (9,  'AGENDAR_CITA', 'cita', 'Cita sobre propiedad 16', '181.52.60.14', DATE_SUB(NOW(), INTERVAL 1 DAY)),
-    (2,  'LOGIN', 'usuario', 'Inicio de sesion exitoso', '190.90.4.20', DATE_SUB(NOW(), INTERVAL 10 HOUR)),
-    (1,  'LOGIN', 'usuario', 'Inicio de sesion exitoso', '190.90.4.12', DATE_SUB(NOW(), INTERVAL 3 HOUR)),
-    (8,  'LOGIN', 'usuario', 'Inicio de sesion exitoso', '181.52.60.10', DATE_SUB(NOW(), INTERVAL 1 HOUR));
+    (2,  'LOGIN', 'usuario', 'Inicio de sesión exitoso', '190.90.4.20', DATE_SUB(NOW(), INTERVAL 10 HOUR)),
+    (1,  'LOGIN', 'usuario', 'Inicio de sesión exitoso', '190.90.4.12', DATE_SUB(NOW(), INTERVAL 3 HOUR)),
+    (8,  'LOGIN', 'usuario', 'Inicio de sesión exitoso', '181.52.60.10', DATE_SUB(NOW(), INTERVAL 1 HOUR));
 

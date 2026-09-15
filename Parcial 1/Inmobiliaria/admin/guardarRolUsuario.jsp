@@ -28,7 +28,7 @@
         }
         con.commit();
         registrarAuditoria(con, idAdmin, "CAMBIAR_ROL", "usuario_rol",
-            "Actualizo roles del usuario " + idUsuario, request.getRemoteAddr());
+            "Actualizó roles del usuario " + idUsuario, request.getRemoteAddr());
     } catch (SQLException ex) {
         deshacer(con);
     } finally {

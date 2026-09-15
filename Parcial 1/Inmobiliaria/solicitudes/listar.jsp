@@ -60,7 +60,7 @@
             <a class="btn btn-sm btn-outline-secondary" href="<%= ctx %>/solicitudes/subirDocumento.jsp?id=<%= rs.getInt("id_solicitud") %>">Documentos</a>
         <% } %>
         <% if ((esAgente || esAdmin) && ("PENDIENTE".equals(estado) || "EN_REVISION".equals(estado))) { %>
-            <a class="btn btn-sm btn-outline-primary" href="<%= ctx %>/solicitudes/cambiarEstado.jsp?id=<%= rs.getInt("id_solicitud") %>&estado=EN_REVISION">En revision</a>
+            <a class="btn btn-sm btn-outline-primary" href="<%= ctx %>/solicitudes/cambiarEstado.jsp?id=<%= rs.getInt("id_solicitud") %>&estado=EN_REVISION">En revisión</a>
             <a class="btn btn-sm btn-success" href="<%= ctx %>/solicitudes/cambiarEstado.jsp?id=<%= rs.getInt("id_solicitud") %>&estado=APROBADA">Aprobar</a>
             <a class="btn btn-sm btn-danger" href="<%= ctx %>/solicitudes/cambiarEstado.jsp?id=<%= rs.getInt("id_solicitud") %>&estado=RECHAZADA">Rechazar</a>
         <% } %>

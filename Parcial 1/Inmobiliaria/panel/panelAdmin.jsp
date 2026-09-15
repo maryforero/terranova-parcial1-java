@@ -32,7 +32,7 @@
     </div>
 <%      }
     } catch (SQLException ex) { %>
-    <div class="col-12 text-danger">No se pudieron cargar las metricas: <%= escapar(ex.getMessage()) %></div>
+    <div class="col-12 text-danger">No se pudieron cargar las métricas: <%= escapar(ex.getMessage()) %></div>
 <%  } %>
 </div>
 
@@ -43,11 +43,11 @@
     </div>
     <div class="col-6 col-md-3">
         <a class="panel-accion d-block text-center text-decoration-none" href="<%= ctx %>/admin/catalogos.jsp">
-            <i class="bi bi-tags"></i> Catalogos</a>
+            <i class="bi bi-tags"></i> Catálogos</a>
     </div>
     <div class="col-6 col-md-3">
         <a class="panel-accion d-block text-center text-decoration-none" href="<%= ctx %>/admin/auditoria.jsp">
-            <i class="bi bi-shield-check"></i> Auditoria</a>
+            <i class="bi bi-shield-check"></i> Auditoría</a>
     </div>
     <div class="col-6 col-md-3">
         <a class="panel-accion d-block text-center text-decoration-none" href="<%= ctx %>/reportes/reportes.jsp">

@@ -1,7 +1,7 @@
-// TerraNova Bienes Raices - alternar favoritos sin recargar la pagina.
+// TerraNova Bienes Raíces - alternar favoritos sin recargar la página.
 // Antes esto era un enlace a favoritos/alternar.jsp que recargaba toda la
-// pagina (perdiendo la posicion del scroll). Ahora se llama por AJAX a
-// favoritos/alternarAjax.jsp y solo se actualiza el boton en el sitio.
+// página (perdiendo la posición del scroll). Ahora se llama por AJAX a
+// favoritos/alternarAjax.jsp y solo se actualiza el botón en el sitio.
 (function () {
     "use strict";
 
@@ -36,7 +36,7 @@
     document.addEventListener("DOMContentLoaded", function () {
         var ctxBase = document.body.getAttribute("data-ctx") || "";
 
-        // Boton flotante (corazon) sobre las tarjetas de inicio/catalogo.
+        // Botón flotante (corazón) sobre las tarjetas de inicio/catálogo.
         document.querySelectorAll(".btn-favorito-card").forEach(function (boton) {
             boton.addEventListener("click", function (evento) {
                 evento.preventDefault();
@@ -46,18 +46,18 @@
                         boton.classList.add("es-favorito");
                         boton.querySelector("i").className = "bi bi-heart-fill";
                         boton.title = "Quitar de favoritos";
-                        mostrarToast("Se agrego a tus favoritos", "bi-heart-fill");
+                        mostrarToast("Se agregó a tus favoritos", "bi-heart-fill");
                     } else if (resultado === "QUITADO") {
                         boton.classList.remove("es-favorito");
                         boton.querySelector("i").className = "bi bi-heart";
                         boton.title = "Agregar a favoritos";
-                        mostrarToast("Se quito de tus favoritos", "bi-heartbreak");
+                        mostrarToast("Se quitó de tus favoritos", "bi-heartbreak");
                     }
                 });
             });
         });
 
-        // Boton grande de la ficha de detalle (con texto).
+        // Botón grande de la ficha de detalle (con texto).
         document.querySelectorAll(".btn-favorito-detalle").forEach(function (boton) {
             boton.addEventListener("click", function (evento) {
                 evento.preventDefault();
@@ -69,19 +69,19 @@
                         boton.classList.add("btn-danger");
                         icono.className = "bi bi-heart-fill";
                         boton.lastChild.textContent = " Quitar de favoritos";
-                        mostrarToast("Se agrego a tus favoritos", "bi-heart-fill");
+                        mostrarToast("Se agregó a tus favoritos", "bi-heart-fill");
                     } else if (resultado === "QUITADO") {
                         boton.classList.add("btn-outline-danger");
                         boton.classList.remove("btn-danger");
                         icono.className = "bi bi-heart";
                         boton.lastChild.textContent = " Agregar a favoritos";
-                        mostrarToast("Se quito de tus favoritos", "bi-heartbreak");
+                        mostrarToast("Se quitó de tus favoritos", "bi-heartbreak");
                     }
                 });
             });
         });
 
-        // Boton "quitar" en la pagina Mis favoritos: elimina la tarjeta completa.
+        // Botón "quitar" en la página Mis favoritos: elimina la tarjeta completa.
         document.querySelectorAll(".btn-quitar-favorito").forEach(function (boton) {
             boton.addEventListener("click", function (evento) {
                 evento.preventDefault();
@@ -97,7 +97,7 @@
                                 location.reload();
                             }
                         }, 250);
-                        mostrarToast("Se quito de tus favoritos", "bi-heartbreak");
+                        mostrarToast("Se quitó de tus favoritos", "bi-heartbreak");
                     }
                 });
             });

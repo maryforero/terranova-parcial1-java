@@ -43,7 +43,7 @@
     </div>
 <%      }
         if (!alguna) { %>
-    <div class="col-12"><p class="text-muted">Aun no tienes propiedades favoritas. <a href="<%= ctx %>/catalogo.jsp">Explora el catalogo</a>.</p></div>
+    <div class="col-12"><p class="text-muted">Aún no tienes propiedades favoritas. <a href="<%= ctx %>/catalogo.jsp">Explora el catálogo</a>.</p></div>
 <%      }
     }
 } catch (SQLException ex) { %>

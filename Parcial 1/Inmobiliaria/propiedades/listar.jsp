@@ -17,17 +17,17 @@
 
 <% if ("guardado".equals(msg)) { %><div class="alert alert-success">Propiedad guardada correctamente.</div><% } %>
 <% if ("baja".equals(msg)) { %><div class="alert alert-success">Propiedad dada de baja (inactivada).</div><% } %>
-<% if ("caracteristicas".equals(msg)) { %><div class="alert alert-success">Caracteristicas actualizadas.</div><% } %>
+<% if ("caracteristicas".equals(msg)) { %><div class="alert alert-success">Características actualizadas.</div><% } %>
 <% if ("imagen_agregada".equals(msg)) { %><div class="alert alert-success">Imagen agregada.</div><% } %>
 <% if ("imagen_eliminada".equals(msg)) { %><div class="alert alert-success">Imagen eliminada.</div><% } %>
-<% if ("matricula_duplicada".equals(msg)) { %><div class="alert alert-danger">Esa matricula inmobiliaria ya esta registrada en otra propiedad.</div><% } %>
+<% if ("matricula_duplicada".equals(msg)) { %><div class="alert alert-danger">Esa matrícula inmobiliaria ya está registrada en otra propiedad.</div><% } %>
 
 <div class="table-responsive">
 <table class="table table-hover bg-white align-middle">
 <thead><tr>
-    <th>Matricula</th><th>Titulo</th><th>Ciudad</th><th>Tipo</th>
+    <th>Matrícula</th><th>Título</th><th>Ciudad</th><th>Tipo</th>
     <% if (esAdmin) { %><th>Agente</th><% } %>
-    <th>Precio</th><th>Operacion</th><th>Estado</th><th></th>
+    <th>Precio</th><th>Operación</th><th>Estado</th><th></th>
 </tr></thead>
 <tbody>
 <%
@@ -59,11 +59,11 @@
         <td><span class="badge badge-estado-<%= rs.getString("estado") %>"><%= rs.getString("estado") %></span></td>
         <td class="text-nowrap">
             <a class="btn btn-sm btn-outline-primary" href="<%= ctx %>/propiedades/formulario.jsp?id=<%= idProp %>" title="Editar"><i class="bi bi-pencil"></i></a>
-            <a class="btn btn-sm btn-outline-secondary" href="<%= ctx %>/propiedades/imagenes.jsp?id=<%= idProp %>" title="Galeria"><i class="bi bi-images"></i></a>
-            <a class="btn btn-sm btn-outline-secondary" href="<%= ctx %>/propiedades/caracteristicas.jsp?id=<%= idProp %>" title="Caracteristicas"><i class="bi bi-tags"></i></a>
+            <a class="btn btn-sm btn-outline-secondary" href="<%= ctx %>/propiedades/imagenes.jsp?id=<%= idProp %>" title="Galería"><i class="bi bi-images"></i></a>
+            <a class="btn btn-sm btn-outline-secondary" href="<%= ctx %>/propiedades/caracteristicas.jsp?id=<%= idProp %>" title="Características"><i class="bi bi-tags"></i></a>
             <% if (!"INACTIVO".equals(rs.getString("estado"))) { %>
             <a class="btn btn-sm btn-outline-danger" href="<%= ctx %>/propiedades/baja.jsp?id=<%= idProp %>"
-               onclick="return confirm('Dar de baja esta propiedad?');" title="Dar de baja"><i class="bi bi-trash"></i></a>
+               onclick="return confirm('¿Dar de baja esta propiedad?');" title="Dar de baja"><i class="bi bi-trash"></i></a>
             <% } %>
         </td>
     </tr>

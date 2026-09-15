@@ -1,4 +1,4 @@
-# Diccionario de datos - TerraNova Bienes Raices
+# Diccionario de datos - TerraNova Bienes Raíces
 
 Motor: MySQL/MariaDB. Charset `utf8mb4`. Todas las PK son `INT AUTO_INCREMENT`
 salvo las llaves compuestas de las tablas intermedias N:M.

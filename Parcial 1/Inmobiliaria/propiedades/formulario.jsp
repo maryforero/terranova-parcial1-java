@@ -52,30 +52,30 @@
     String errorForm = request.getParameter("error");
     if ("matricula_duplicada".equals(errorForm)) {
 %>
-<div class="alert alert-danger">Esa matricula inmobiliaria ya esta registrada en otra propiedad.</div>
+<div class="alert alert-danger">Esa matrícula inmobiliaria ya está registrada en otra propiedad.</div>
 <% } else if ("campos_invalidos".equals(errorForm)) { %>
-<div class="alert alert-danger">Revisa los campos: hay datos obligatorios, numericos o de precio invalidos.</div>
+<div class="alert alert-danger">Revisa los campos: hay datos obligatorios, numéricos o de precio inválidos.</div>
 <% } %>
 
 <form method="post" action="<%= ctx %>/propiedades/guardar.jsp" data-validar novalidate>
     <% if (idPropiedad != null) { %><input type="hidden" name="id" value="<%= idPropiedad %>"><% } %>
     <div class="row g-3">
         <div class="col-md-4">
-            <label class="form-label">Matricula inmobiliaria</label>
+            <label class="form-label">Matrícula inmobiliaria</label>
             <input type="text" name="matricula" class="form-control" required value="<%= escapar(matricula) %>">
             <div class="invalid-feedback"></div>
         </div>
         <div class="col-md-8">
-            <label class="form-label">Titulo</label>
+            <label class="form-label">Título</label>
             <input type="text" name="titulo" class="form-control" required value="<%= escapar(titulo) %>">
             <div class="invalid-feedback"></div>
         </div>
         <div class="col-12">
-            <label class="form-label">Descripcion</label>
+            <label class="form-label">Descripción</label>
             <textarea name="descripcion" class="form-control" rows="3"><%= escapar(descripcion) %></textarea>
         </div>
         <div class="col-md-4">
-            <label class="form-label">Direccion</label>
+            <label class="form-label">Dirección</label>
             <input type="text" name="direccion" class="form-control" required value="<%= escapar(direccion) %>">
             <div class="invalid-feedback"></div>
         </div>
@@ -111,7 +111,7 @@
             <div class="invalid-feedback"></div>
         </div>
         <div class="col-md-3">
-            <label class="form-label">Area (m2)</label>
+            <label class="form-label">Área (m2)</label>
             <input type="number" step="0.01" name="areaM2" class="form-control" value="<%= areaM2 != null ? areaM2 : "" %>">
         </div>
         <div class="col-md-3">
@@ -119,7 +119,7 @@
             <input type="number" name="habitaciones" class="form-control" value="<%= habitaciones != null ? habitaciones : "" %>">
         </div>
         <div class="col-md-3">
-            <label class="form-label">Banos</label>
+            <label class="form-label">Baños</label>
             <input type="number" name="banos" class="form-control" value="<%= banos != null ? banos : "" %>">
         </div>
 

@@ -6,7 +6,7 @@
     request.setCharacterEncoding("UTF-8");
     int idAdmin = (Integer) session.getAttribute("idUsuario");
 
-    // Lista blanca de tablas de catalogo permitidas: nunca se concatena
+    // Lista blanca de tablas de catálogo permitidas: nunca se concatena
     // un nombre de tabla/columna que venga directo del usuario sin validar.
     java.util.Set<String> tablasPermitidas = new java.util.HashSet<>(
         java.util.Arrays.asList("ciudad", "tipo_propiedad", "caracteristica"));

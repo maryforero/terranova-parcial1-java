@@ -1,4 +1,4 @@
-# Modelo Entidad-Relación (MER) - TerraNova Bienes Raices
+# Modelo Entidad-Relación (MER) - TerraNova Bienes Raíces
 
 Diagrama en formato Mermaid (GitHub lo renderiza automaticamente al ver este
 archivo en el repositorio). Si el docente pide una imagen o PDF suelto,

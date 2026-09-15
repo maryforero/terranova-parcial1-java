@@ -10,7 +10,7 @@
 <div class="text-center py-5">
     <i class="bi bi-shield-lock text-danger" style="font-size:4rem;"></i>
     <h3 class="mt-3">Acceso denegado</h3>
-    <p class="text-muted">Tu cuenta no tiene el rol necesario para ver esta pagina.</p>
+    <p class="text-muted">Tu cuenta no tiene el rol necesario para ver esta página.</p>
     <a class="btn btn-success" href="<%= ctx %>/index.jsp"><i class="bi bi-house"></i> Volver al inicio</a>
 </div>
 

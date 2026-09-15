@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/jspf/utilidadesInmobiliaria.jspf" %>
 <%
     String ctx = request.getContextPath() + "/Parcial%201/Inmobiliaria";
-    String tituloPagina = "Galeria de imagenes";
+    String tituloPagina = "Galería de imágenes";
     boolean esAdmin = tieneRol(session, "ADMINISTRADOR");
     int idUsuario = (Integer) session.getAttribute("idUsuario");
     int idPropiedad = 0;
@@ -11,7 +11,7 @@
 %>
 <%@ include file="/WEB-INF/jspf/cabeceraInmobiliaria.jspf" %>
 
-<h3 class="mb-3"><i class="bi bi-images"></i> Galeria de imagenes</h3>
+<h3 class="mb-3"><i class="bi bi-images"></i> Galería de imágenes</h3>
 
 <div class="row g-3 mb-4">
 <%
@@ -43,7 +43,7 @@
             <div class="card-body text-center p-2">
                 <% if (rs.getBoolean("es_principal")) { %><span class="badge text-bg-success mb-1">Principal</span><br><% } %>
                 <a class="btn btn-sm btn-outline-danger" href="<%= ctx %>/propiedades/eliminarImagen.jsp?idImagen=<%= rs.getInt("id_imagen") %>&idPropiedad=<%= idPropiedad %>"
-                   onclick="return confirm('Eliminar esta imagen?');"><i class="bi bi-trash"></i> Eliminar</a>
+                   onclick="return confirm('¿Eliminar esta imagen?');"><i class="bi bi-trash"></i> Eliminar</a>
             </div>
         </div>
     </div>

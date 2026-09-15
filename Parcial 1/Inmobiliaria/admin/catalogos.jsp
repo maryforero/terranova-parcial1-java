@@ -3,22 +3,22 @@
 <%@ include file="/WEB-INF/jspf/utilidadesInmobiliaria.jspf" %>
 <%
     String ctx = request.getContextPath() + "/Parcial%201/Inmobiliaria";
-    String tituloPagina = "Catalogos del sistema";
+    String tituloPagina = "Catálogos del sistema";
     String msg = request.getParameter("msg");
     String error = request.getParameter("error");
 %>
 <%@ include file="/WEB-INF/jspf/cabeceraInmobiliaria.jspf" %>
 
-<h3 class="mb-3"><i class="bi bi-tags"></i> Catalogos del sistema</h3>
-<% if ("agregado".equals(msg)) { %><div class="alert alert-success">Elemento agregado al catalogo.</div><% } %>
-<% if ("duplicado".equals(error)) { %><div class="alert alert-danger">Ese nombre ya existe en el catalogo.</div><% } %>
+<h3 class="mb-3"><i class="bi bi-tags"></i> Catálogos del sistema</h3>
+<% if ("agregado".equals(msg)) { %><div class="alert alert-success">Elemento agregado al catálogo.</div><% } %>
+<% if ("duplicado".equals(error)) { %><div class="alert alert-danger">Ese nombre ya existe en el catálogo.</div><% } %>
 
 <div class="row g-4">
 <%
     String[][] catalogos = {
         {"ciudad", "Ciudades", "nombre"},
         {"tipo_propiedad", "Tipos de propiedad", "nombre"},
-        {"caracteristica", "Caracteristicas", "nombre"}
+        {"caracteristica", "Características", "nombre"}
     };
     for (String[] cat : catalogos) {
 %>

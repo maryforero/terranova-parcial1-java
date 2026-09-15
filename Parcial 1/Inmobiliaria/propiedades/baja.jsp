@@ -14,7 +14,7 @@
             ps.setInt(1, idPropiedad);
             if (!esAdmin) ps.setInt(2, idUsuario);
             ps.executeUpdate();
-            registrarAuditoria(con, idUsuario, "BAJA_PROPIEDAD", "propiedad", "Inactivo propiedad id=" + idPropiedad, request.getRemoteAddr());
+            registrarAuditoria(con, idUsuario, "BAJA_PROPIEDAD", "propiedad", "Inactivó propiedad id=" + idPropiedad, request.getRemoteAddr());
         } catch (SQLException ex) { }
     }
     response.sendRedirect(ctx + "/propiedades/listar.jsp?msg=baja");

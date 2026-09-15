@@ -20,7 +20,7 @@
         Fila(String e, long v) { etiqueta = e; valor = v; }
     }
 
-    /** Tarjeta KPI simple con un numero grande. */
+    /** Tarjeta KPI simple con un número grande. */
     void pintarKpi(JspWriter out, String colorClase, String icono, long valor, String etiqueta)
             throws java.io.IOException {
         out.println("<div class=\"col-6 col-lg-3\"><div class=\"kpi-card " + colorClase + " d-flex align-items-center gap-3\">"
@@ -39,7 +39,7 @@
     }
 
     /** Pinta una tarjeta de reporte con grafica de barras horizontales en CSS puro
-     *  (nada de JS/librerias externas) y una frase de insight con el valor mas alto. */
+     *  (nada de JS/librerías externas) y una frase de insight con el valor más alto. */
     void pintarBarras(JspWriter out, Connection con, String numero, String titulo, String porQue,
                        String sql) throws java.io.IOException {
         out.println("<div class=\"reporte-card\">");
@@ -50,7 +50,7 @@
             long max = 1;
             for (Fila f : filas) max = Math.max(max, f.valor);
             if (filas.isEmpty()) {
-                out.println("<p class=\"text-muted\">Sin datos todavia.</p>");
+                out.println("<p class=\"text-muted\">Sin datos todavía.</p>");
             } else {
                 for (Fila f : filas) {
                     int pct = (int) Math.round((f.valor * 100.0) / max);
@@ -87,7 +87,7 @@
     void pintarReporte4(JspWriter out, Connection con) throws java.io.IOException {
         out.println("<div class=\"reporte-card\">");
         out.println("<h5>4. Propiedades por ciudad, tipo e inmobiliaria</h5>");
-        out.println("<p class=\"reporte-desc\">Catalogo con la ciudad, el tipo de inmueble y la inmobiliaria responsable de cada propiedad.</p>");
+        out.println("<p class=\"reporte-desc\">Catálogo con la ciudad, el tipo de inmueble y la inmobiliaria responsable de cada propiedad.</p>");
         String sql = "SELECT p.titulo, c.nombre AS ciudad, t.nombre AS tipo, i.nombre AS inmobiliaria, p.precio, p.estado " +
                      "FROM propiedad p JOIN ciudad c ON c.id_ciudad=p.id_ciudad " +
                      "JOIN tipo_propiedad t ON t.id_tipo=p.id_tipo " +
@@ -118,7 +118,7 @@
     void pintarReporte5(JspWriter out, Connection con) throws java.io.IOException {
         out.println("<div class=\"reporte-card\">");
         out.println("<h5>5. Citas agendadas</h5>");
-        out.println("<p class=\"reporte-desc\">Quien agendo cada visita, a que propiedad y con que inmobiliaria.</p>");
+        out.println("<p class=\"reporte-desc\">Quién agendó cada visita, a qué propiedad y con qué inmobiliaria.</p>");
         String sql = "SELECT DATE_FORMAT(c.fecha_hora, '%d/%m/%Y %H:%i') AS fecha, c.estado, p.titulo, " +
                      "pf.nombres, pf.apellidos, i.nombre AS inmobiliaria " +
                      "FROM cita c JOIN propiedad p ON p.id_propiedad=c.id_propiedad " +
@@ -150,7 +150,7 @@
     void pintarReporte6(JspWriter out, Connection con) throws java.io.IOException {
         out.println("<div class=\"reporte-card\">");
         out.println("<h5>6. Roles por usuario</h5>");
-        out.println("<p class=\"reporte-desc\">Cada usuario con el o los roles que tiene asignados (algunos tienen mas de uno).</p>");
+        out.println("<p class=\"reporte-desc\">Cada usuario con el o los roles que tiene asignados (algunos tienen más de uno).</p>");
         String sql = "SELECT pf.nombres, pf.apellidos, u.correo, r.nombre AS rol " +
                      "FROM usuario_rol ur JOIN usuario u ON u.id_usuario=ur.id_usuario " +
                      "JOIN perfil pf ON pf.id_usuario=u.id_usuario " +
@@ -177,7 +177,7 @@
     void pintarReporte7(JspWriter out, Connection con) throws java.io.IOException {
         out.println("<div class=\"reporte-card\">");
         out.println("<h5>7. Propiedades sin visitas agendadas</h5>");
-        out.println("<p class=\"reporte-desc\">Inventario que todavia no ha tenido ninguna visita; util para priorizar promocion.</p>");
+        out.println("<p class=\"reporte-desc\">Inventario que todavía no ha tenido ninguna visita; útil para priorizar promoción.</p>");
         String sql = "SELECT p.titulo, p.direccion, p.estado FROM propiedad p " +
                      "LEFT JOIN cita c ON c.id_propiedad=p.id_propiedad " +
                      "WHERE c.id_cita IS NULL ORDER BY p.titulo LIMIT 10";
@@ -211,26 +211,26 @@
         try (PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) FROM cita WHERE estado='PENDIENTE'");
              ResultSet rs = ps.executeQuery()) { rs.next(); pintarKpi(out, "kpi-dorado", "bi-calendar-event", rs.getLong(1), "Citas pendientes"); }
         try (PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) FROM solicitud WHERE estado IN ('PENDIENTE','EN_REVISION')");
-             ResultSet rs = ps.executeQuery()) { rs.next(); pintarKpi(out, "kpi-azul", "bi-file-earmark-text", rs.getLong(1), "Solicitudes en tramite"); }
+             ResultSet rs = ps.executeQuery()) { rs.next(); pintarKpi(out, "kpi-azul", "bi-file-earmark-text", rs.getLong(1), "Solicitudes en trámite"); }
         try (PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) FROM solicitud WHERE estado='APROBADA'");
              ResultSet rs = ps.executeQuery()) { rs.next(); pintarKpi(out, "kpi-gris", "bi-check-circle", rs.getLong(1), "Solicitudes aprobadas"); }
 %>
 </div>
 
-<!-- ================= Resumen por categoria ================= -->
+<!-- ================= Resumen por categoría ================= -->
 <h6 class="text-uppercase text-muted mb-3" style="letter-spacing:0.04em;">
-    <i class="bi bi-graph-up"></i> Resumen por categoria</h6>
+    <i class="bi bi-graph-up"></i> Resumen por categoría</h6>
 <div class="row g-3 mb-5">
     <div class="col-lg-4">
 <%      pintarBarras(out, con, "1", "Propiedades disponibles por ciudad",
-            "¿En que ciudades tenemos mas inventario listo para vender o arrendar? " +
-            "Ayuda a decidir donde reforzar la oferta o el mercadeo.",
+            "¿En qué ciudades tenemos más inventario listo para vender o arrendar? " +
+            "Ayuda a decidir dónde reforzar la oferta o el mercadeo.",
             "SELECT c.nombre, COUNT(*) FROM propiedad p JOIN ciudad c ON c.id_ciudad=p.id_ciudad " +
             "WHERE p.estado='DISPONIBLE' GROUP BY c.nombre HAVING COUNT(*) >= 1 ORDER BY 2 DESC"); %>
     </div>
     <div class="col-lg-4">
 <%      pintarBarras(out, con, "2", "Solicitudes por inmobiliaria",
-            "¿Que agencia aliada esta generando mas negocio (compras/arriendos radicados)? " +
+            "¿Qué agencia aliada está generando más negocio (compras/arriendos radicados)? " +
             "Sirve para medir el desempeño de cada inmobiliaria aliada.",
             "SELECT i.nombre, COUNT(*) FROM solicitud s JOIN propiedad p ON p.id_propiedad=s.id_propiedad " +
             "JOIN inmobiliaria i ON i.id_inmobiliaria=p.id_inmobiliaria " +
@@ -238,7 +238,7 @@
     </div>
     <div class="col-lg-4">
 <%      pintarBarras(out, con, "3", "Citas por estado",
-            "¿Cuantas visitas terminan confirmadas, rechazadas o realizadas? Mide que tan " +
+            "¿Cuántas visitas terminan confirmadas, rechazadas o realizadas? Mide qué tan " +
             "efectivo es el proceso de agendamiento.",
             "SELECT estado, COUNT(*) FROM cita GROUP BY estado ORDER BY 2 DESC"); %>
     </div>

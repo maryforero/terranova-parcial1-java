@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Filtro de control de acceso por rol para el proyecto TerraNova
- * (Parcial Practico - Programacion Java).
+ * (Parcial Práctico - Programación Java).
  *
  * Se registra en /WEB-INF/web.xml con url-pattern "/Parcial 1/Inmobiliaria/*".
  * Es la unica fuente de verdad del control de acceso: la interfaz oculta

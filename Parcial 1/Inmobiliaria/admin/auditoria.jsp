@@ -11,26 +11,26 @@
 <%@ include file="/WEB-INF/jspf/cabeceraInmobiliaria.jspf" %>
 
 <%!
-    /** Traduce el codigo interno de la accion a texto + icono + color para
+    /** Traduce el código interno de la acción a texto + icono + color para
      *  que un administrador (no programador) entienda de un vistazo que paso. */
     String[] descripcionAccion(String accion) {
         // {texto amigable, icono bootstrap, clase de color}
         switch (accion) {
-            case "LOGIN":                    return new String[]{"Inicio de sesion", "bi-box-arrow-in-right", "text-primary"};
+            case "LOGIN":                    return new String[]{"Inicio de sesión", "bi-box-arrow-in-right", "text-primary"};
             case "LOGIN_FALLIDO":            return new String[]{"Intento de inicio fallido", "bi-exclamation-triangle", "text-danger"};
             case "REGISTRO":                 return new String[]{"Registro de nueva cuenta", "bi-person-plus", "text-primary"};
             case "CAMBIAR_CLAVE":            return new String[]{"Cambio de clave", "bi-key", "text-secondary"};
-            case "CREAR_PROPIEDAD":          return new String[]{"Publico una propiedad", "bi-house-add", "text-primary"};
-            case "EDITAR_PROPIEDAD":         return new String[]{"Edito una propiedad", "bi-pencil-square", "text-primary"};
+            case "CREAR_PROPIEDAD":          return new String[]{"Publicó una propiedad", "bi-house-add", "text-primary"};
+            case "EDITAR_PROPIEDAD":         return new String[]{"Editó una propiedad", "bi-pencil-square", "text-primary"};
             case "BAJA_PROPIEDAD":           return new String[]{"Dio de baja una propiedad", "bi-trash", "text-danger"};
-            case "AGENDAR_CITA":             return new String[]{"Agendo una visita", "bi-calendar-plus", "text-warning"};
-            case "CAMBIAR_ESTADO_CITA":      return new String[]{"Actualizo una cita", "bi-calendar-check", "text-warning"};
-            case "RADICAR_SOLICITUD":        return new String[]{"Radico una solicitud", "bi-file-earmark-plus", "text-primary"};
-            case "CAMBIAR_ESTADO_SOLICITUD": return new String[]{"Actualizo una solicitud", "bi-file-earmark-check", "text-warning"};
-            case "MARCAR_FAVORITO":          return new String[]{"Marco un favorito", "bi-heart", "text-danger"};
-            case "CAMBIAR_ROL":              return new String[]{"Actualizo roles de un usuario", "bi-people", "text-dark"};
-            case "CAMBIAR_ESTADO_USUARIO":   return new String[]{"Activo o inactivo una cuenta", "bi-person-gear", "text-dark"};
-            case "AGREGAR_CATALOGO":         return new String[]{"Agrego un valor de catalogo", "bi-tags", "text-warning"};
+            case "AGENDAR_CITA":             return new String[]{"Agendó una visita", "bi-calendar-plus", "text-warning"};
+            case "CAMBIAR_ESTADO_CITA":      return new String[]{"Actualizó una cita", "bi-calendar-check", "text-warning"};
+            case "RADICAR_SOLICITUD":        return new String[]{"Radicó una solicitud", "bi-file-earmark-plus", "text-primary"};
+            case "CAMBIAR_ESTADO_SOLICITUD": return new String[]{"Actualizó una solicitud", "bi-file-earmark-check", "text-warning"};
+            case "MARCAR_FAVORITO":          return new String[]{"Marcó un favorito", "bi-heart", "text-danger"};
+            case "CAMBIAR_ROL":              return new String[]{"Actualizó roles de un usuario", "bi-people", "text-dark"};
+            case "CAMBIAR_ESTADO_USUARIO":   return new String[]{"Activó o inactivó una cuenta", "bi-person-gear", "text-dark"};
+            case "AGREGAR_CATALOGO":         return new String[]{"Agregó un valor de catálogo", "bi-tags", "text-warning"};
             default:                         return new String[]{accion, "bi-info-circle", "text-secondary"};
         }
     }
@@ -51,7 +51,7 @@
 
 <div class="seccion-titulo text-start mb-4">
     <h3 class="panel-titulo mb-1"><i class="bi bi-shield-check"></i> Auditoria de la aplicacion</h3>
-    <p class="text-muted mb-0">Registro de accesos y cambios: quien hizo que y cuando.</p>
+    <p class="text-muted mb-0">Registro de accesos y cambios: quién hizo qué y cuándo.</p>
 </div>
 
 <%
@@ -97,9 +97,9 @@
         <a class="btn btn-sm <%= "1".equals(rango) ? "btn-success" : "btn-outline-success" %>"
            href="<%= ctx %>/admin/auditoria.jsp?rango=1<%= accionFiltro != null ? "&accion="+accionFiltro : "" %>">Hoy</a>
         <a class="btn btn-sm <%= "7".equals(rango) ? "btn-success" : "btn-outline-success" %>"
-           href="<%= ctx %>/admin/auditoria.jsp?rango=7<%= accionFiltro != null ? "&accion="+accionFiltro : "" %>">7 dias</a>
+           href="<%= ctx %>/admin/auditoria.jsp?rango=7<%= accionFiltro != null ? "&accion="+accionFiltro : "" %>">7 días</a>
         <a class="btn btn-sm <%= "30".equals(rango) ? "btn-success" : "btn-outline-success" %>"
-           href="<%= ctx %>/admin/auditoria.jsp?rango=30<%= accionFiltro != null ? "&accion="+accionFiltro : "" %>">30 dias</a>
+           href="<%= ctx %>/admin/auditoria.jsp?rango=30<%= accionFiltro != null ? "&accion="+accionFiltro : "" %>">30 días</a>
         <a class="btn btn-sm <%= "todo".equals(rango) ? "btn-success" : "btn-outline-success" %>"
            href="<%= ctx %>/admin/auditoria.jsp?rango=todo<%= accionFiltro != null ? "&accion="+accionFiltro : "" %>">Todo</a>
     </div>

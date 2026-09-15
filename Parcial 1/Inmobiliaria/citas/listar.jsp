@@ -64,7 +64,7 @@
         <% } %>
         <% if (esCliente && !esAdmin && "PENDIENTE".equals(estado)) { %>
             <a class="btn btn-sm btn-outline-secondary" href="<%= ctx %>/citas/cambiarEstado.jsp?id=<%= rs.getInt("id_cita") %>&estado=CANCELADA"
-               onclick="return confirm('Cancelar esta cita?');">Cancelar</a>
+               onclick="return confirm('¿Cancelar esta cita?');">Cancelar</a>
         <% } %>
         </td>
     </tr>

@@ -44,10 +44,10 @@
         <div class="col-md-6"><label class="form-label">Documento</label>
             <input type="text" name="documento" class="form-control" required value="<%= escapar(documento) %>">
             <div class="invalid-feedback"></div></div>
-        <div class="col-md-6"><label class="form-label">Telefono</label>
+        <div class="col-md-6"><label class="form-label">Teléfono</label>
             <input type="text" name="telefono" class="form-control" data-tipo="telefono" value="<%= telefono != null ? escapar(telefono) : "" %>">
             <div class="invalid-feedback"></div></div>
-        <div class="col-12"><label class="form-label">Direccion</label>
+        <div class="col-12"><label class="form-label">Dirección</label>
             <input type="text" name="direccion" class="form-control" value="<%= direccion != null ? escapar(direccion) : "" %>"></div>
         <div class="col-12"><label class="form-label">URL de foto (opcional)</label>
             <input type="text" name="fotoUrl" class="form-control" value="<%= fotoUrl != null ? escapar(fotoUrl) : "" %>"></div>

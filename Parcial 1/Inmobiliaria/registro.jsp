@@ -15,11 +15,11 @@
                 <h4 class="mb-3"><i class="bi bi-person-plus"></i> Crear cuenta de cliente</h4>
 
                 <% if ("correo_duplicado".equals(error)) { %>
-                    <div class="alert alert-danger">El correo ya se encuentra registrado. Intenta con otro o inicia sesion.</div>
+                    <div class="alert alert-danger">El correo ya se encuentra registrado. Intenta con otro o inicia sesión.</div>
                 <% } else if ("clave_no_coincide".equals(error)) { %>
                     <div class="alert alert-danger">Las claves no coinciden.</div>
                 <% } else if ("campos_invalidos".equals(error)) { %>
-                    <div class="alert alert-danger">Revisa los campos marcados: hay datos obligatorios o con formato invalido.</div>
+                    <div class="alert alert-danger">Revisa los campos marcados: hay datos obligatorios o con formato inválido.</div>
                 <% } %>
 
                 <form method="post" action="<%= ctx %>/procesarRegistro.jsp" data-validar novalidate>
@@ -40,16 +40,16 @@
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Telefono</label>
+                            <label class="form-label">Teléfono</label>
                             <input type="text" name="telefono" class="form-control" data-tipo="telefono">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="col-12">
-                            <label class="form-label">Direccion</label>
+                            <label class="form-label">Dirección</label>
                             <input type="text" name="direccion" class="form-control">
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Correo electronico</label>
+                            <label class="form-label">Correo electrónico</label>
                             <input type="email" name="correo" class="form-control" required>
                             <div class="invalid-feedback"></div>
                         </div>
@@ -68,7 +68,7 @@
                         <i class="bi bi-check-circle"></i> Crear cuenta</button>
                 </form>
                 <p class="text-center mt-3 mb-0">
-                    Ya tienes cuenta? <a href="<%= ctx %>/login.jsp">Inicia sesion</a></p>
+                    ¿Ya tienes cuenta? <a href="<%= ctx %>/login.jsp">Inicia sesión</a></p>
             </div>
         </div>
     </div>

@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/jspf/utilidadesInmobiliaria.jspf" %>
 <%
     String ctx = request.getContextPath() + "/Parcial%201/Inmobiliaria";
-    String tituloPagina = "Caracteristicas";
+    String tituloPagina = "Características";
     boolean esAdmin = tieneRol(session, "ADMINISTRADOR");
     int idUsuario = (Integer) session.getAttribute("idUsuario");
     int idPropiedad = 0;
@@ -11,7 +11,7 @@
 %>
 <%@ include file="/WEB-INF/jspf/cabeceraInmobiliaria.jspf" %>
 
-<h3 class="mb-3"><i class="bi bi-tags"></i> Caracteristicas de la propiedad</h3>
+<h3 class="mb-3"><i class="bi bi-tags"></i> Características de la propiedad</h3>
 
 <%
     String sqlProp = "SELECT titulo FROM propiedad WHERE id_propiedad=?" + (esAdmin ? "" : " AND id_agente=?");

@@ -85,7 +85,7 @@
                     }
                 }
 
-                registrarAuditoria(con, idUsuario, "LOGIN", "usuario", "Inicio de sesion exitoso", request.getRemoteAddr());
+                registrarAuditoria(con, idUsuario, "LOGIN", "usuario", "Inicio de sesión exitoso", request.getRemoteAddr());
 
                 session.invalidate();
                 HttpSession nuevaSesion = request.getSession(true);

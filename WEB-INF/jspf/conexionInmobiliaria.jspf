@@ -1,14 +1,14 @@
 <%--
     conexionInmobiliaria.jspf - Conexion JDBC centralizada del proyecto
-    TerraNova Bienes Raices (Parcial Practico Programacion Java).
+    TerraNova Bienes Raíces (Parcial Práctico Programación Java).
 
-    Se incluye de forma ESTATICA en cada pagina que necesite la base de datos:
+    Se incluye de forma ESTATICA en cada página que necesite la base de datos:
         <%@ include file="/WEB-INF/jspf/conexionInmobiliaria.jspf" %>
 
     Al estar dentro de /WEB-INF ningun usuario puede abrirlo desde el
     navegador, por lo que la clave de MySQL queda protegida. Los cuatro
     parametros de abajo son el UNICO lugar donde se configura la cadena
-    de conexion: ninguna otra pagina la repite.
+    de conexión: ninguna otra página la repite.
 --%>
 <%@ page import="java.sql.*" %>
 <%!

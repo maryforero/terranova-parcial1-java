@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/jspf/utilidadesInmobiliaria.jspf" %>
 <%
     String ctx = request.getContextPath() + "/Parcial%201/Inmobiliaria";
-    String tituloPagina = "Catalogo de propiedades";
+    String tituloPagina = "Catálogo de propiedades";
 
     String idCiudad   = request.getParameter("idCiudad");
     String idTipo     = request.getParameter("idTipo");
@@ -36,7 +36,7 @@
                 <input type="hidden" name="orden" value="<%= escapar(orden) %>">
                 <div class="mb-3">
                     <label class="form-label small fw-semibold">Buscar</label>
-                    <input type="text" class="form-control" name="q" placeholder="Titulo o direccion"
+                    <input type="text" class="form-control" name="q" placeholder="Título o dirección"
                            value="<%= q != null ? escapar(q) : "" %>">
                 </div>
                 <div class="mb-3">
@@ -156,7 +156,7 @@
         }
     } catch (SQLException ex) {
 %>
-    <div class="alert alert-danger">Error al consultar el catalogo: <%= escapar(ex.getMessage()) %></div>
+    <div class="alert alert-danger">Error al consultar el catálogo: <%= escapar(ex.getMessage()) %></div>
 <%  } %>
 
 <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
@@ -169,7 +169,7 @@
         <% } } %>
         <label class="small text-muted mb-0">Ordenar por</label>
         <select name="orden" class="form-select form-select-sm" style="width:auto;" onchange="this.form.submit()">
-            <option value="recientes" <%= "recientes".equals(orden) ? "selected" : "" %>>Mas recientes</option>
+            <option value="recientes" <%= "recientes".equals(orden) ? "selected" : "" %>>Más recientes</option>
             <option value="precio_asc" <%= "precio_asc".equals(orden) ? "selected" : "" %>>Precio: menor a mayor</option>
             <option value="precio_desc" <%= "precio_desc".equals(orden) ? "selected" : "" %>>Precio: mayor a menor</option>
         </select>

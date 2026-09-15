@@ -1,4 +1,4 @@
-# Modelo relacional (normalizado a 3FN) - TerraNova Bienes Raices
+# Modelo relacional (normalizado a 3FN) - TerraNova Bienes Raíces
 
 Notacion: `tabla(columna PK, columna FK -> tabla_referenciada, ...)`
 

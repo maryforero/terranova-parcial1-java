@@ -1,4 +1,4 @@
-# Consultas obligatorias - TerraNova Bienes Raices
+# Consultas obligatorias - TerraNova Bienes Raíces
 
 Las 7 consultas de abajo estan implementadas y se ejecutan en vivo en
 `reportes/reportes.jsp` (rol Administrador o Inmobiliaria), agrupadas en

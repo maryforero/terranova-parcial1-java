@@ -82,7 +82,7 @@
                 ps.setString(14, estado);
                 ps.executeUpdate();
             }
-            registrarAuditoria(con, idUsuario, "CREAR_PROPIEDAD", "propiedad", "Publico " + matricula, request.getRemoteAddr());
+            registrarAuditoria(con, idUsuario, "CREAR_PROPIEDAD", "propiedad", "Publicó " + matricula, request.getRemoteAddr());
         } else {
             String sqlUpd = "UPDATE propiedad SET matricula_inmobiliaria=?, titulo=?, descripcion=?, id_tipo=?, id_ciudad=?, " +
                             "id_agente=?, id_inmobiliaria=?, direccion=?, precio=?, area_m2=?, habitaciones=?, banos=?, operacion=?, estado=? " +
@@ -106,7 +106,7 @@
                 if (!esAdmin) ps.setInt(16, idUsuario);
                 ps.executeUpdate();
             }
-            registrarAuditoria(con, idUsuario, "EDITAR_PROPIEDAD", "propiedad", "Edito " + matricula, request.getRemoteAddr());
+            registrarAuditoria(con, idUsuario, "EDITAR_PROPIEDAD", "propiedad", "Editó " + matricula, request.getRemoteAddr());
         }
 
         response.sendRedirect(ctx + "/propiedades/listar.jsp?msg=guardado");

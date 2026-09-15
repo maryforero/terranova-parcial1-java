@@ -1,9 +1,9 @@
 <%--
     utilidadesInmobiliaria.jspf - Funciones de apoyo compartidas por las
-    paginas del proyecto TerraNova (formato de moneda, escape de HTML,
+    páginas del proyecto TerraNova (formato de moneda, escape de HTML,
     verificacion de rol PARA LA VISTA y registro de auditoria).
 
-    IMPORTANTE: tieneRol() aqui es solo para decidir que botones/menus
+    IMPORTANTE: tieneRol() aquí es solo para decidir qué botones/menús
     mostrar. El control de acceso real, obligatorio, lo hace
     com.terranova.filter.AccesoFilter en el servidor. Ocultar un boton
     con tieneRol() nunca reemplaza esa validacion.

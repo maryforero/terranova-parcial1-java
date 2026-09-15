@@ -8,7 +8,7 @@
     int idUsuario = (Integer) session.getAttribute("idUsuario");
     int idSolicitud = Integer.parseInt(request.getParameter("id"));
 
-    // Solo el cliente dueno de la solicitud puede radicar documentos en ella.
+    // Solo el cliente dueño de la solicitud puede radicar documentos en ella.
     boolean esDueno = false;
     try (Connection con = abrirConexion();
          PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) FROM solicitud WHERE id_solicitud=? AND id_cliente=?")) {
@@ -60,7 +60,7 @@
         <td><%= rs.getTimestamp("fecha_carga") %></td></tr>
 <%          }
             if (!alguno) { %>
-    <tr><td colspan="3" class="text-center text-muted">Aun no has adjuntado documentos.</td></tr>
+    <tr><td colspan="3" class="text-center text-muted">Aún no has adjuntado documentos.</td></tr>
 <%          }
         }
     } catch (SQLException ex) { } %>
@@ -71,7 +71,7 @@
 <form method="post" action="<%= ctx %>/solicitudes/subirDocumento.jsp?id=<%= idSolicitud %>"
       class="row g-2 bg-white p-3 rounded-3 shadow-sm" data-validar novalidate>
     <div class="col-md-5">
-        <input type="text" name="nombreDocumento" class="form-control" placeholder="Nombre del documento (ej. Cedula)" required>
+        <input type="text" name="nombreDocumento" class="form-control" placeholder="Nombre del documento (ej. Cédula)" required>
         <div class="invalid-feedback"></div>
     </div>
     <div class="col-md-5">
@@ -82,7 +82,7 @@
         <button type="submit" class="btn btn-success"><i class="bi bi-upload"></i> Adjuntar</button>
     </div>
 </form>
-<p class="form-text">Nota: por simplicidad esta version registra una referencia/URL del documento en vez de
+<p class="form-text">Nota: por simplicidad esta versión registra una referencia/URL del documento en vez de
     almacenar el archivo binario en el servidor.</p>
 <a class="btn btn-outline-secondary mt-2" href="<%= ctx %>/solicitudes/listar.jsp">Volver a mis solicitudes</a>
 <% } %>

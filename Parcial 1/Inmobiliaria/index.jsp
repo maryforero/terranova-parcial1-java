@@ -23,8 +23,8 @@
     <div class="container-inner">
     <div class="row align-items-center">
         <div class="col-lg-8">
-            <h1 class="fw-bold">Encuentra el inmueble que estas buscando</h1>
-            <p class="lead">TerraNova reune las mejores propiedades en venta y arriendo
+            <h1 class="fw-bold">Encuentra el inmueble que estás buscando</h1>
+            <p class="lead">TerraNova reúne las mejores propiedades en venta y arriendo
                 del area metropolitana de Bucaramanga, publicadas por varias
                 inmobiliarias aliadas.</p>
         </div>
@@ -114,7 +114,7 @@
 <!-- ================= Por que elegirnos ================= -->
 <div class="seccion-titulo">
     <h4>¿Por que elegir TerraNova?</h4>
-    <p>Un marketplace pensado para que buscar, agendar y tramitar tu proximo inmueble sea simple.</p>
+    <p>Un marketplace pensado para que buscar, agendar y tramitar tu próximo inmueble sea simple.</p>
 </div>
 <div class="row g-4 mb-5">
     <div class="col-md-3 feature-card">
@@ -126,7 +126,7 @@
     <div class="col-md-3 feature-card">
         <div class="feature-icono"><i class="bi bi-patch-check"></i></div>
         <h6>Publicaciones verificadas</h6>
-        <p class="text-muted small">Cada inmueble tiene una matricula inmobiliaria unica y un
+        <p class="text-muted small">Cada inmueble tiene una matrícula inmobiliaria única y un
             agente responsable identificado.</p>
     </div>
     <div class="col-md-3 feature-card">
@@ -138,7 +138,7 @@
     <div class="col-md-3 feature-card">
         <div class="feature-icono"><i class="bi bi-calendar2-check"></i></div>
         <h6>Agenda en minutos</h6>
-        <p class="text-muted small">Solicita una visita o radica tu tramite de compra/arriendo
+        <p class="text-muted small">Solicita una visita o radica tu trámite de compra/arriendo
             sin llamadas ni filas.</p>
     </div>
 </div>
@@ -211,7 +211,7 @@
 <!-- ================= CTA de cierre ================= -->
 <div class="cta-terranova text-center mb-4">
     <h4 class="fw-bold">¿Eres agente inmobiliario?</h4>
-    <p class="mb-3">Registrate, publica tus propiedades y gestiona citas y solicitudes desde un
+    <p class="mb-3">Regístrate, publica tus propiedades y gestiona citas y solicitudes desde un
         solo panel.</p>
     <a class="btn btn-warning fw-semibold" href="<%= ctx %>/registro.jsp">
         <i class="bi bi-person-plus"></i> Crear una cuenta</a>

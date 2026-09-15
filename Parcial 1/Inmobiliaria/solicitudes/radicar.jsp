@@ -32,7 +32,7 @@
 <form method="post" action="<%= ctx %>/solicitudes/guardarSolicitud.jsp" data-validar novalidate>
     <input type="hidden" name="idPropiedad" value="<%= idPropiedad %>">
     <div class="mb-3">
-        <label class="form-label">Tipo de tramite</label>
+        <label class="form-label">Tipo de trámite</label>
         <select name="tipo" class="form-select">
             <option value="COMPRA" <%= "VENTA".equals(operacionProp) ? "selected" : "" %>>Compra</option>
             <option value="ARRIENDO" <%= "ARRIENDO".equals(operacionProp) ? "selected" : "" %>>Arriendo</option>

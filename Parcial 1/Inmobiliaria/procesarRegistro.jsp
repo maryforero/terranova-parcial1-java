@@ -72,7 +72,7 @@
 
         con.commit();
 
-        // Inicio de sesion automatico tras registrarse
+        // Inicio de sesión automático tras registrarse
         session.invalidate();
         HttpSession nuevaSesion = request.getSession(true);
         nuevaSesion.setAttribute("idUsuario", idUsuarioNuevo);

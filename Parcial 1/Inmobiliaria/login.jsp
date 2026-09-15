@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/jspf/utilidadesInmobiliaria.jspf" %>
 <%
     String ctx = request.getContextPath() + "/Parcial%201/Inmobiliaria";
-    String tituloPagina = "Iniciar sesion";
+    String tituloPagina = "Iniciar sesión";
     String error = request.getParameter("error");
 %>
 <%@ include file="/WEB-INF/jspf/cabeceraInmobiliaria.jspf" %>
@@ -12,16 +12,16 @@
     <div class="col-md-5">
         <div class="card shadow-sm">
             <div class="card-body p-4">
-                <h4 class="mb-3"><i class="bi bi-box-arrow-in-right"></i> Iniciar sesion</h4>
+                <h4 class="mb-3"><i class="bi bi-box-arrow-in-right"></i> Iniciar sesión</h4>
 
                 <% if ("credenciales".equals(error)) { %>
                     <div class="alert alert-danger">Usuario o clave incorrectos.</div>
                 <% } else if ("inactivo".equals(error)) { %>
-                    <div class="alert alert-warning">Tu cuenta se encuentra inactiva. Comunicate con el administrador.</div>
+                    <div class="alert alert-warning">Tu cuenta se encuentra inactiva. Comunícate con el administrador.</div>
                 <% } else if ("bloqueado".equals(error)) { %>
-                    <div class="alert alert-warning">Tu cuenta esta bloqueada temporalmente por varios intentos fallidos. Intenta en unos minutos.</div>
+                    <div class="alert alert-warning">Tu cuenta está bloqueada temporalmente por varios intentos fallidos. Intenta en unos minutos.</div>
                 <% } else if ("sesion".equals(error)) { %>
-                    <div class="alert alert-warning">Debes iniciar sesion para continuar.</div>
+                    <div class="alert alert-warning">Debes iniciar sesión para continuar.</div>
                 <% } %>
 
                 <form method="post" action="<%= ctx %>/procesarLogin.jsp" data-validar novalidate>
@@ -38,9 +38,9 @@
                     <button type="submit" class="btn btn-success w-100"><i class="bi bi-box-arrow-in-right"></i> Ingresar</button>
                 </form>
                 <p class="text-center mt-3 mb-0">
-                    No tienes cuenta? <a href="<%= ctx %>/registro.jsp">Registrate</a></p>
+                    ¿No tienes cuenta? <a href="<%= ctx %>/registro.jsp">Regístrate</a></p>
 
-                <div class="separador-o"><span>acceso rapido de prueba</span></div>
+                <div class="separador-o"><span>acceso rápido de prueba</span></div>
 
                 <div class="row g-2 mb-2">
                     <div class="col-4">
@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 <p class="small text-muted text-center mb-0">Director tiene doble rol
-                    (Administrador + Inmobiliaria) para demostrar la relacion N:M.</p>
+                    (Administrador + Inmobiliaria) para demostrar la relación N:M.</p>
             </div>
         </div>
     </div>

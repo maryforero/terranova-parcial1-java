@@ -1,5 +1,5 @@
 -- =====================================================================
--- TerraNova Bienes Raices - Script DDL
+-- TerraNova Bienes Raíces - Script DDL
 -- Parcial Practico Programacion Java - UTS
 -- Motor: MySQL / MariaDB (XAMPP)
 --

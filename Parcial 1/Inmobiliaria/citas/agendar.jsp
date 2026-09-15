@@ -19,7 +19,7 @@
 <% if ("horario_ocupado".equals(error)) { %>
     <div class="alert alert-danger">Ya existe una cita agendada para esta propiedad en ese horario. Elige otro momento.</div>
 <% } else if ("campos_invalidos".equals(error)) { %>
-    <div class="alert alert-danger">Selecciona una fecha y hora validas.</div>
+    <div class="alert alert-danger">Selecciona una fecha y hora válidas.</div>
 <% } %>
 
 <%

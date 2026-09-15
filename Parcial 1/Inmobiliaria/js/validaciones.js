@@ -1,5 +1,5 @@
-// TerraNova Bienes Raices - validaciones de formulario en el navegador.
-// Complementan (NO reemplazan) la validacion obligatoria del servidor.
+// TerraNova Bienes Raíces - validaciones de formulario en el navegador.
+// Complementan (NO reemplazan) la validación obligatoria del servidor.
 (function () {
     "use strict";
 
@@ -30,7 +30,7 @@
                 form.querySelectorAll('input[type="email"]').forEach(function (campo) {
                     var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                     if (campo.value && !re.test(campo.value)) {
-                        marcarInvalido(campo, "Correo electronico no valido.");
+                        marcarInvalido(campo, "Correo electrónico no válido.");
                         valido = false;
                     }
                 });
@@ -38,7 +38,7 @@
                 form.querySelectorAll('input[data-tipo="telefono"]').forEach(function (campo) {
                     var re = /^[0-9+()\-\s]{7,20}$/;
                     if (campo.value && !re.test(campo.value)) {
-                        marcarInvalido(campo, "Telefono no valido.");
+                        marcarInvalido(campo, "Teléfono no válido.");
                         valido = false;
                     }
                 });

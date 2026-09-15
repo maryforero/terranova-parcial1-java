@@ -33,7 +33,7 @@
     </div>
 <%      }
     } catch (SQLException ex) { %>
-    <div class="col-12 text-danger">No se pudieron cargar las metricas: <%= escapar(ex.getMessage()) %></div>
+    <div class="col-12 text-danger">No se pudieron cargar las métricas: <%= escapar(ex.getMessage()) %></div>
 <%  } %>
 </div>
 

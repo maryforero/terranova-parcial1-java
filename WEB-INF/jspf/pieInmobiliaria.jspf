@@ -1,13 +1,13 @@
-<%-- pieInmobiliaria.jspf - Cierre de la pagina, footer y carga del JavaScript de Bootstrap. --%>
+<%-- pieInmobiliaria.jspf - Cierre de la página, footer y carga del JavaScript de Bootstrap. --%>
 </main>
 
 <footer class="footer-terranova mt-5 pt-5 pb-3">
     <div class="container">
         <div class="row g-4">
             <div class="col-md-4">
-                <h6><i class="bi bi-building text-warning"></i> TerraNova Bienes Raices</h6>
-                <p class="small mb-0">Marketplace inmobiliario que reune propiedades en venta y
-                    arriendo de varias inmobiliarias aliadas del area metropolitana de
+                <h6><i class="bi bi-building text-warning"></i> TerraNova Bienes Raíces</h6>
+                <p class="small mb-0">Marketplace inmobiliario que reúne propiedades en venta y
+                    arriendo de varias inmobiliarias aliadas del área metropolitana de
                     Bucaramanga.</p>
             </div>
             <div class="col-md-2">
@@ -38,8 +38,8 @@
             </div>
         </div>
         <div class="footer-bottom text-center mt-4 pt-3">
-            TerraNova Bienes Raices &middot; Aplicacion web JSP + JDBC + MySQL &middot;
-            Parcial Practico Programacion Java - UTS
+            TerraNova Bienes Raíces &middot; Aplicación web JSP + JDBC + MySQL &middot;
+            Parcial Práctico Programación Java - UTS
         </div>
     </div>
 </footer>

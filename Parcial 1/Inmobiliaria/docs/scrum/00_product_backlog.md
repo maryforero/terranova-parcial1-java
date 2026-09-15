@@ -1,4 +1,4 @@
-# Product Backlog - TerraNova Bienes Raices
+# Product Backlog - TerraNova Bienes Raíces
 
 Product Owner: Docente Julian Barney Jaimes Rincon (segun el enunciado).
 Scrum Master / Development Team: estudiante(s) del proyecto.
