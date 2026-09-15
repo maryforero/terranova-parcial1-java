@@ -41,7 +41,7 @@
     /** Pinta una tarjeta de reporte con grafica de barras horizontales en CSS puro
      *  (nada de JS/librerias externas) y una frase de insight con el valor mas alto. */
     void pintarBarras(JspWriter out, Connection con, String numero, String titulo, String porQue,
-                       String sql, String colorTexto) throws java.io.IOException {
+                       String sql) throws java.io.IOException {
         out.println("<div class=\"reporte-card\">");
         out.println("<h5>" + numero + ". " + titulo + "</h5>");
         out.println("<p class=\"reporte-desc\">" + porQue + "</p>");
@@ -70,30 +70,128 @@
         out.println("</div>");
     }
 
-    /** Pinta una tarjeta de reporte como tabla (para listados con varias columnas). */
-    void pintarTabla(JspWriter out, Connection con, String numero, String titulo, String porQue,
-                      String sql, int limiteFilas) throws java.io.IOException {
+    String badgeEstadoPropiedad(String estado) {
+        return "<span class=\"badge badge-estado-" + estado + "\">" + estado + "</span>";
+    }
+    String badgeEstadoCita(String estado) {
+        return "<span class=\"badge badge-cita-" + estado + "\">" + estado + "</span>";
+    }
+    String badgeRol(String rol) {
+        String clase = "ADMINISTRADOR".equals(rol) ? "text-bg-dark"
+                     : "INMOBILIARIA".equals(rol) ? "text-bg-primary"
+                     : "text-bg-secondary";
+        return "<span class=\"badge " + clase + "\">" + rol + "</span>";
+    }
+
+    /** Reporte 4: catalogo de propiedades con ciudad, tipo e inmobiliaria. */
+    void pintarReporte4(JspWriter out, Connection con) throws java.io.IOException {
         out.println("<div class=\"reporte-card\">");
-        out.println("<h5>" + numero + ". " + titulo + "</h5>");
-        out.println("<p class=\"reporte-desc\">" + porQue + "</p>");
+        out.println("<h5>4. Propiedades por ciudad, tipo e inmobiliaria</h5>");
+        out.println("<p class=\"reporte-desc\">Catalogo con la ciudad, el tipo de inmueble y la inmobiliaria responsable de cada propiedad.</p>");
+        String sql = "SELECT p.titulo, c.nombre AS ciudad, t.nombre AS tipo, i.nombre AS inmobiliaria, p.precio, p.estado " +
+                     "FROM propiedad p JOIN ciudad c ON c.id_ciudad=p.id_ciudad " +
+                     "JOIN tipo_propiedad t ON t.id_tipo=p.id_tipo " +
+                     "JOIN inmobiliaria i ON i.id_inmobiliaria=p.id_inmobiliaria " +
+                     "ORDER BY p.fecha_publicacion DESC LIMIT 8";
         try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
-            ResultSetMetaData meta = rs.getMetaData();
-            int cols = meta.getColumnCount();
-            out.println("<div class=\"table-responsive\"><table class=\"table table-sm table-striped align-middle\"><thead><tr>");
-            for (int i = 1; i <= cols; i++) out.println("<th>" + meta.getColumnLabel(i) + "</th>");
-            out.println("</tr></thead><tbody>");
+            out.println("<div class=\"table-responsive\"><table class=\"table table-sm table-striped align-middle tabla-reporte\">"
+                + "<thead><tr><th>Propiedad</th><th>Tipo</th><th>Inmobiliaria</th><th class=\"text-end\">Precio</th><th>Estado</th></tr></thead><tbody>");
             boolean alguna = false;
-            int n = 0;
-            while (rs.next() && n < limiteFilas) {
-                alguna = true; n++;
-                out.println("<tr>");
-                for (int i = 1; i <= cols; i++) {
-                    Object v = rs.getObject(i);
-                    out.println("<td>" + (v != null ? v.toString() : "<span class=\"text-muted\">-</span>") + "</td>");
-                }
-                out.println("</tr>");
+            while (rs.next()) {
+                alguna = true;
+                out.println("<tr><td><strong>" + escapar(rs.getString("titulo")) + "</strong><br>"
+                    + "<span class=\"text-muted small\"><i class=\"bi bi-geo-alt\"></i> " + escapar(rs.getString("ciudad")) + "</span></td>"
+                    + "<td>" + escapar(rs.getString("tipo")) + "</td>"
+                    + "<td>" + escapar(rs.getString("inmobiliaria")) + "</td>"
+                    + "<td class=\"text-end fw-semibold\">" + formatoCOP(rs.getDouble("precio")) + "</td>"
+                    + "<td>" + badgeEstadoPropiedad(rs.getString("estado")) + "</td></tr>");
             }
-            if (!alguna) out.println("<tr><td colspan=\"" + cols + "\" class=\"text-center text-muted\">Sin datos</td></tr>");
+            if (!alguna) out.println("<tr><td colspan=\"5\" class=\"text-center text-muted\">Sin datos</td></tr>");
+            out.println("</tbody></table></div>");
+        } catch (SQLException ex) {
+            out.println("<p class=\"text-danger\">Error: " + ex.getMessage() + "</p>");
+        }
+        out.println("</div>");
+    }
+
+    /** Reporte 5: citas con propiedad, cliente e inmobiliaria. */
+    void pintarReporte5(JspWriter out, Connection con) throws java.io.IOException {
+        out.println("<div class=\"reporte-card\">");
+        out.println("<h5>5. Citas agendadas</h5>");
+        out.println("<p class=\"reporte-desc\">Quien agendo cada visita, a que propiedad y con que inmobiliaria.</p>");
+        String sql = "SELECT DATE_FORMAT(c.fecha_hora, '%d/%m/%Y %H:%i') AS fecha, c.estado, p.titulo, " +
+                     "pf.nombres, pf.apellidos, i.nombre AS inmobiliaria " +
+                     "FROM cita c JOIN propiedad p ON p.id_propiedad=c.id_propiedad " +
+                     "JOIN usuario u ON u.id_usuario=c.id_cliente " +
+                     "JOIN perfil pf ON pf.id_usuario=u.id_usuario " +
+                     "JOIN inmobiliaria i ON i.id_inmobiliaria=p.id_inmobiliaria " +
+                     "ORDER BY c.fecha_hora DESC LIMIT 8";
+        try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+            out.println("<div class=\"table-responsive\"><table class=\"table table-sm table-striped align-middle tabla-reporte\">"
+                + "<thead><tr><th>Fecha</th><th>Propiedad</th><th>Cliente</th><th>Inmobiliaria</th><th>Estado</th></tr></thead><tbody>");
+            boolean alguna = false;
+            while (rs.next()) {
+                alguna = true;
+                out.println("<tr><td class=\"text-nowrap\">" + rs.getString("fecha") + "</td>"
+                    + "<td>" + escapar(rs.getString("titulo")) + "</td>"
+                    + "<td>" + escapar(rs.getString("nombres")) + " " + escapar(rs.getString("apellidos")) + "</td>"
+                    + "<td>" + escapar(rs.getString("inmobiliaria")) + "</td>"
+                    + "<td>" + badgeEstadoCita(rs.getString("estado")) + "</td></tr>");
+            }
+            if (!alguna) out.println("<tr><td colspan=\"5\" class=\"text-center text-muted\">Sin datos</td></tr>");
+            out.println("</tbody></table></div>");
+        } catch (SQLException ex) {
+            out.println("<p class=\"text-danger\">Error: " + ex.getMessage() + "</p>");
+        }
+        out.println("</div>");
+    }
+
+    /** Reporte 6: roles asignados por usuario (relacion N:M usuario_rol). */
+    void pintarReporte6(JspWriter out, Connection con) throws java.io.IOException {
+        out.println("<div class=\"reporte-card\">");
+        out.println("<h5>6. Roles por usuario</h5>");
+        out.println("<p class=\"reporte-desc\">Cada usuario con el o los roles que tiene asignados (algunos tienen mas de uno).</p>");
+        String sql = "SELECT pf.nombres, pf.apellidos, u.correo, r.nombre AS rol " +
+                     "FROM usuario_rol ur JOIN usuario u ON u.id_usuario=ur.id_usuario " +
+                     "JOIN perfil pf ON pf.id_usuario=u.id_usuario " +
+                     "JOIN rol r ON r.id_rol=ur.id_rol ORDER BY pf.nombres LIMIT 10";
+        try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+            out.println("<div class=\"table-responsive\"><table class=\"table table-sm table-striped align-middle tabla-reporte\">"
+                + "<thead><tr><th>Usuario</th><th>Rol</th></tr></thead><tbody>");
+            boolean alguna = false;
+            while (rs.next()) {
+                alguna = true;
+                out.println("<tr><td><strong>" + escapar(rs.getString("nombres")) + " " + escapar(rs.getString("apellidos")) + "</strong><br>"
+                    + "<span class=\"text-muted small\">" + escapar(rs.getString("correo")) + "</span></td>"
+                    + "<td>" + badgeRol(rs.getString("rol")) + "</td></tr>");
+            }
+            if (!alguna) out.println("<tr><td colspan=\"2\" class=\"text-center text-muted\">Sin datos</td></tr>");
+            out.println("</tbody></table></div>");
+        } catch (SQLException ex) {
+            out.println("<p class=\"text-danger\">Error: " + ex.getMessage() + "</p>");
+        }
+        out.println("</div>");
+    }
+
+    /** Reporte 7: propiedades sin citas agendadas. */
+    void pintarReporte7(JspWriter out, Connection con) throws java.io.IOException {
+        out.println("<div class=\"reporte-card\">");
+        out.println("<h5>7. Propiedades sin visitas agendadas</h5>");
+        out.println("<p class=\"reporte-desc\">Inventario que todavia no ha tenido ninguna visita; util para priorizar promocion.</p>");
+        String sql = "SELECT p.titulo, p.direccion, p.estado FROM propiedad p " +
+                     "LEFT JOIN cita c ON c.id_propiedad=p.id_propiedad " +
+                     "WHERE c.id_cita IS NULL ORDER BY p.titulo LIMIT 10";
+        try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+            out.println("<div class=\"table-responsive\"><table class=\"table table-sm table-striped align-middle tabla-reporte\">"
+                + "<thead><tr><th>Propiedad</th><th>Direccion</th><th>Estado</th></tr></thead><tbody>");
+            boolean alguna = false;
+            while (rs.next()) {
+                alguna = true;
+                out.println("<tr><td>" + escapar(rs.getString("titulo")) + "</td>"
+                    + "<td class=\"text-muted small\">" + escapar(rs.getString("direccion")) + "</td>"
+                    + "<td>" + badgeEstadoPropiedad(rs.getString("estado")) + "</td></tr>");
+            }
+            if (!alguna) out.println("<tr><td colspan=\"3\" class=\"text-center text-muted\">Todas las propiedades tienen al menos una visita.</td></tr>");
             out.println("</tbody></table></div>");
         } catch (SQLException ex) {
             out.println("<p class=\"text-danger\">Error: " + ex.getMessage() + "</p>");
@@ -119,17 +217,16 @@
 %>
 </div>
 
-<!-- ================= Reportes de agregacion (graficas) ================= -->
+<!-- ================= Resumen por categoria ================= -->
 <h6 class="text-uppercase text-muted mb-3" style="letter-spacing:0.04em;">
-    <i class="bi bi-graph-up"></i> Paneles con agregacion (GROUP BY + HAVING)</h6>
+    <i class="bi bi-graph-up"></i> Resumen por categoria</h6>
 <div class="row g-3 mb-5">
     <div class="col-lg-4">
 <%      pintarBarras(out, con, "1", "Propiedades disponibles por ciudad",
             "¿En que ciudades tenemos mas inventario listo para vender o arrendar? " +
             "Ayuda a decidir donde reforzar la oferta o el mercadeo.",
             "SELECT c.nombre, COUNT(*) FROM propiedad p JOIN ciudad c ON c.id_ciudad=p.id_ciudad " +
-            "WHERE p.estado='DISPONIBLE' GROUP BY c.nombre HAVING COUNT(*) >= 1 ORDER BY 2 DESC",
-            "text-success"); %>
+            "WHERE p.estado='DISPONIBLE' GROUP BY c.nombre HAVING COUNT(*) >= 1 ORDER BY 2 DESC"); %>
     </div>
     <div class="col-lg-4">
 <%      pintarBarras(out, con, "2", "Solicitudes por inmobiliaria",
@@ -137,59 +234,28 @@
             "Sirve para medir el desempeño de cada inmobiliaria aliada.",
             "SELECT i.nombre, COUNT(*) FROM solicitud s JOIN propiedad p ON p.id_propiedad=s.id_propiedad " +
             "JOIN inmobiliaria i ON i.id_inmobiliaria=p.id_inmobiliaria " +
-            "GROUP BY i.nombre HAVING COUNT(*) >= 1 ORDER BY 2 DESC",
-            "text-primary"); %>
+            "GROUP BY i.nombre HAVING COUNT(*) >= 1 ORDER BY 2 DESC"); %>
     </div>
     <div class="col-lg-4">
 <%      pintarBarras(out, con, "3", "Citas por estado",
             "¿Cuantas visitas terminan confirmadas, rechazadas o realizadas? Mide que tan " +
             "efectivo es el proceso de agendamiento.",
-            "SELECT estado, COUNT(*) FROM cita GROUP BY estado ORDER BY 2 DESC",
-            "text-warning"); %>
+            "SELECT estado, COUNT(*) FROM cita GROUP BY estado ORDER BY 2 DESC"); %>
     </div>
 </div>
 
-<!-- ================= Reportes de cruces (JOIN) ================= -->
+<!-- ================= Detalle y actividad ================= -->
 <h6 class="text-uppercase text-muted mb-3" style="letter-spacing:0.04em;">
-    <i class="bi bi-diagram-3"></i> Cruces entre tablas (JOIN)</h6>
+    <i class="bi bi-list-ul"></i> Detalle y actividad</h6>
+<div class="row g-3 mb-3">
+    <div class="col-12"><% pintarReporte4(out, con); %></div>
+</div>
+<div class="row g-3 mb-3">
+    <div class="col-12"><% pintarReporte5(out, con); %></div>
+</div>
 <div class="row g-3">
-    <div class="col-lg-6">
-<%      pintarTabla(out, con, "4", "Propiedades con ciudad, tipo e inmobiliaria",
-            "Cruce (INNER JOIN) de 4 tablas: la vista base del catalogo administrativo.",
-            "SELECT p.titulo, c.nombre AS ciudad, t.nombre AS tipo, i.nombre AS inmobiliaria, " +
-            "p.precio, p.estado FROM propiedad p " +
-            "JOIN ciudad c ON c.id_ciudad = p.id_ciudad " +
-            "JOIN tipo_propiedad t ON t.id_tipo = p.id_tipo " +
-            "JOIN inmobiliaria i ON i.id_inmobiliaria = p.id_inmobiliaria " +
-            "ORDER BY p.fecha_publicacion DESC", 8); %>
-    </div>
-    <div class="col-lg-6">
-<%      pintarTabla(out, con, "5", "Citas con propiedad, cliente e inmobiliaria",
-            "Cruce (INNER JOIN) de 5 tablas: quien agendo, que propiedad y con que agencia.",
-            "SELECT c.fecha_hora, c.estado, p.titulo, pf.nombres, i.nombre AS inmobiliaria " +
-            "FROM cita c JOIN propiedad p ON p.id_propiedad = c.id_propiedad " +
-            "JOIN usuario u ON u.id_usuario = c.id_cliente " +
-            "JOIN perfil pf ON pf.id_usuario = u.id_usuario " +
-            "JOIN inmobiliaria i ON i.id_inmobiliaria = p.id_inmobiliaria " +
-            "ORDER BY c.fecha_hora DESC", 8); %>
-    </div>
-    <div class="col-lg-6">
-<%      pintarTabla(out, con, "6", "Roles asignados por usuario (relacion N:M)",
-            "Expande la tabla intermedia usuario_rol: un mismo usuario puede aparecer con mas " +
-            "de un rol (por ejemplo, un director que tambien administra el sistema).",
-            "SELECT pf.nombres, pf.apellidos, u.correo, r.nombre AS rol " +
-            "FROM usuario_rol ur JOIN usuario u ON u.id_usuario = ur.id_usuario " +
-            "JOIN perfil pf ON pf.id_usuario = u.id_usuario " +
-            "JOIN rol r ON r.id_rol = ur.id_rol ORDER BY pf.nombres", 10); %>
-    </div>
-    <div class="col-lg-6">
-<%      pintarTabla(out, con, "7", "Propiedades sin citas agendadas (LEFT JOIN)",
-            "El LEFT JOIN conserva TODAS las propiedades aunque no tengan ninguna cita; " +
-            "identifica inventario que necesita mas promocion.",
-            "SELECT p.titulo, p.direccion, p.estado FROM propiedad p " +
-            "LEFT JOIN cita c ON c.id_propiedad = p.id_propiedad " +
-            "WHERE c.id_cita IS NULL ORDER BY p.titulo", 10); %>
-    </div>
+    <div class="col-lg-6"><% pintarReporte6(out, con); %></div>
+    <div class="col-lg-6"><% pintarReporte7(out, con); %></div>
 </div>
 
 <% } catch (SQLException ex) { %>
