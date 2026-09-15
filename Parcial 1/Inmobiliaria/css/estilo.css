@@ -354,6 +354,24 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 }
 .separador-o span { padding: 0 0.75rem; }
 
+/* ---------- Auditoria: lista de actividad ---------- */
+.auditoria-item {
+    display: flex;
+    gap: 0.9rem;
+    padding: 0.75rem 0.25rem;
+    border-bottom: 1px solid #eee;
+}
+.auditoria-item:last-child { border-bottom: none; }
+.auditoria-icono {
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--tn-gris-seccion);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+}
+.auditoria-cuerpo { flex-grow: 1; min-width: 0; }
+
 /* ---------- Paneles (dashboards por rol) ---------- */
 .panel-titulo { color: var(--tn-oscuro); font-weight: 700; }
 .panel-accion {

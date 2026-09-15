@@ -192,6 +192,7 @@ INSERT INTO usuario_rol (id_usuario, id_rol) VALUES
 -- PROPIEDADES
 -- id_tipo: 1 Casa 2 Apto 3 Apartaestudio 4 Local 5 Oficina 6 Lote 7 Finca 8 Bodega
 -- id_ciudad: 1 Bucaramanga 2 Floridablanca 3 Giron 4 Piedecuesta 5 San Gil
+--            6 Barrancabermeja 7 Socorro 8 Malaga 9 Bogota 10 Medellin
 -- ---------------------------------------------------------------------
 INSERT INTO propiedad
     (matricula_inmobiliaria, titulo, id_tipo, id_ciudad, id_inmobiliaria, id_agente,
@@ -210,7 +211,17 @@ VALUES
     ('SAN-0011-PIE', 'Apartamento arriendo cerca al parque principal', 2, 4, 4, 7, 'Cra 4 #10-12, Piedecuesta', 1100000, 60.0, 2, 1, 'ARRIENDO', 'ARRENDADO'),
     ('SAN-0012-BGA', 'Bodega industrial zona Chimita', 8, 1, 1, 2, 'Diagonal 15 #100-20, Bucaramanga', 6500000, 400.0, NULL, 1, 'ARRIENDO', 'DISPONIBLE'),
     ('SAN-0013-BGA', 'Lote urbanizable sector Lagos del Cacique', 6, 1, 1, 3, 'Cra 42 #60-10, Bucaramanga', 310000000, 500.0, NULL, NULL, 'VENTA', 'DISPONIBLE'),
-    ('SAN-0014-BGA', 'Apartamento antiguo para remodelar', 2, 1, 1, 4, 'Cll 22 #14-30, Bucaramanga', 210000000, 70.0, 2, 1, 'VENTA', 'INACTIVO');
+    ('SAN-0014-BGA', 'Apartamento antiguo para remodelar', 2, 1, 1, 4, 'Cll 22 #14-30, Bucaramanga', 210000000, 70.0, 2, 1, 'VENTA', 'INACTIVO'),
+    ('SAN-0015-SGL', 'Casa campestre en las afueras de San Gil', 1, 5, 1, 2, 'Vereda Alto del Pozo, San Gil', 480000000, 300.0, 4, 3, 'VENTA', 'DISPONIBLE'),
+    ('SAN-0016-SGL', 'Apartamento nuevo cerca al Parque El Gallineral', 2, 5, 2, 5, 'Cra 10 #7-45, San Gil', 320000000, 85.0, 3, 2, 'VENTA', 'DISPONIBLE'),
+    ('SAN-0017-BAR', 'Bodega logistica zona industrial de Barrancabermeja', 8, 6, 3, 6, 'Km 3 via Yondo, Barrancabermeja', 8200000, 600.0, NULL, 2, 'ARRIENDO', 'DISPONIBLE'),
+    ('SAN-0018-BAR', 'Local comercial avenida principal de Barrancabermeja', 4, 6, 4, 7, 'Cra 20 #52-18, Barrancabermeja', 2900000, 70.0, NULL, 1, 'ARRIENDO', 'DISPONIBLE'),
+    ('SAN-0019-SOC', 'Casa colonial patrimonial en el Socorro', 1, 7, 1, 3, 'Cll 14 #10-22, Socorro', 390000000, 220.0, 4, 2, 'VENTA', 'DISPONIBLE'),
+    ('SAN-0020-MLG', 'Finca cafetera con vista a la cordillera', 7, 8, 2, 5, 'Vereda La Laguna, Malaga', 680000000, 8000.0, 3, 2, 'VENTA', 'DISPONIBLE'),
+    ('SAN-0021-BOG', 'Apartamento ejecutivo en Chapinero', 2, 9, 3, 6, 'Cra 13 #63-20, Bogota', 620000000, 78.0, 2, 2, 'VENTA', 'RESERVADO'),
+    ('SAN-0022-MED', 'Apartaestudio en El Poblado', 3, 10, 4, 7, 'Cll 10 #35-40, Medellin', 2100000, 42.0, 1, 1, 'ARRIENDO', 'DISPONIBLE'),
+    ('SAN-0023-BGA', 'Oficina coworking en Cabecera', 5, 1, 1, 4, 'Cra 33 #40-18, Bucaramanga', 1800000, 30.0, NULL, 1, 'ARRIENDO', 'DISPONIBLE'),
+    ('SAN-0024-FLB', 'Lote campestre para proyecto de vivienda', 6, 2, 2, 5, 'Vereda Casiano, Floridablanca', 210000000, 800.0, NULL, NULL, 'VENTA', 'DISPONIBLE');
 
 -- ---------------------------------------------------------------------
 -- IMAGENES DE PROPIEDAD (1 a 2 por inmueble)
@@ -257,7 +268,35 @@ INSERT INTO imagen_propiedad (id_propiedad, url_imagen, es_principal, orden) VAL
     (13, 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
     -- 14: Apartamento antiguo para remodelar
     (14, 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
-    (14, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 0, 2);
+    (14, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 15: Casa campestre en las afueras de San Gil
+    (15, 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (15, 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 16: Apartamento nuevo cerca al Parque El Gallineral
+    (16, 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (16, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 17: Bodega logistica zona industrial de Barrancabermeja
+    (17, 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    -- 18: Local comercial avenida principal de Barrancabermeja
+    (18, 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (18, 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 19: Casa colonial patrimonial en el Socorro
+    (19, 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (19, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 20: Finca cafetera con vista a la cordillera
+    (20, 'https://images.unsplash.com/photo-1444858291040-58f756a3bdd6?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (20, 'https://images.unsplash.com/photo-1500076656116-558758c991c1?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 21: Apartamento ejecutivo en Chapinero
+    (21, 'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (21, 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 22: Apartaestudio en El Poblado
+    (22, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (22, 'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 23: Oficina coworking en Cabecera
+    (23, 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (23, 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 24: Lote campestre para proyecto de vivienda
+    (24, 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop&auto=format&q=80', 1, 1);
 
 -- ---------------------------------------------------------------------
 -- PROPIEDAD <-> CARACTERISTICA (N:M)
@@ -314,7 +353,31 @@ INSERT INTO propiedad_caracteristica (id_propiedad, id_caracteristica) VALUES
     (13, 5),
     (14, 4),
     (14, 2),
-    (14, 7);
+    (14, 7),
+    (15, 1),
+    (15, 6),
+    (15, 2),
+    (15, 12),
+    (16, 5),
+    (16, 2),
+    (16, 3),
+    (17, 11),
+    (17, 7),
+    (18, 7),
+    (18, 2),
+    (19, 12),
+    (19, 10),
+    (20, 6),
+    (20, 12),
+    (21, 3),
+    (21, 4),
+    (21, 7),
+    (21, 2),
+    (22, 8),
+    (22, 9),
+    (23, 9),
+    (23, 3),
+    (23, 7);
 
 -- ---------------------------------------------------------------------
 -- CITAS (respetan UNIQUE id_propiedad+fecha_hora)
@@ -394,17 +457,35 @@ INSERT INTO favorito (id_usuario, id_propiedad) VALUES
 -- ---------------------------------------------------------------------
 -- AUDITORIA (muestra de eventos registrados por la aplicacion)
 -- ---------------------------------------------------------------------
-INSERT INTO auditoria (id_usuario, accion, tabla_afectada, detalle, ip) VALUES
-    (1, 'LOGIN', 'usuario', 'Inicio de sesion exitoso', '127.0.0.1'),
-    (2, 'LOGIN', 'usuario', 'Inicio de sesion exitoso', '127.0.0.1'),
-    (3, 'CREAR_PROPIEDAD', 'propiedad', 'Publico SAN-0001-BGA', '127.0.0.1'),
-    (4, 'CREAR_PROPIEDAD', 'propiedad', 'Publico SAN-0003-BGA', '127.0.0.1'),
-    (8, 'REGISTRO', 'usuario', 'Nueva cuenta cliente', '127.0.0.1'),
-    (8, 'AGENDAR_CITA', 'cita', 'Cita sobre propiedad 1', '127.0.0.1'),
-    (3, 'CAMBIAR_ESTADO_CITA', 'cita', 'Confirmo cita 1', '127.0.0.1'),
-    (9, 'RADICAR_SOLICITUD', 'solicitud', 'Solicitud de compra propiedad 6', '127.0.0.1'),
-    (5, 'APROBAR_SOLICITUD', 'solicitud', 'Aprobo solicitud 2', '127.0.0.1'),
-    (1, 'CAMBIAR_ROL', 'usuario_rol', 'Asigno rol INMOBILIARIA a director', '127.0.0.1'),
-    (1, 'INACTIVAR_USUARIO', 'usuario', 'Prueba de baja de cuenta', '127.0.0.1'),
-    (10, 'MARCAR_FAVORITO', 'favorito', 'Marco propiedad 3 como favorita', '127.0.0.1');
+INSERT INTO auditoria (id_usuario, accion, tabla_afectada, detalle, ip, fecha_hora) VALUES
+    (1,  'LOGIN', 'usuario', 'Inicio de sesion exitoso', '190.90.4.12', DATE_SUB(NOW(), INTERVAL 9 DAY)),
+    (2,  'LOGIN', 'usuario', 'Inicio de sesion exitoso', '190.90.4.20', DATE_SUB(NOW(), INTERVAL 9 DAY)),
+    (3,  'CREAR_PROPIEDAD', 'propiedad', 'Publico SAN-0001-BGA', '190.90.4.33', DATE_SUB(NOW(), INTERVAL 9 DAY)),
+    (4,  'CREAR_PROPIEDAD', 'propiedad', 'Publico SAN-0003-BGA', '190.90.4.41', DATE_SUB(NOW(), INTERVAL 8 DAY)),
+    (8,  'REGISTRO', 'usuario', 'Nueva cuenta cliente', '181.52.60.10', DATE_SUB(NOW(), INTERVAL 8 DAY)),
+    (9,  'REGISTRO', 'usuario', 'Nueva cuenta cliente', '181.52.60.14', DATE_SUB(NOW(), INTERVAL 8 DAY)),
+    (6,  'CREAR_PROPIEDAD', 'propiedad', 'Publico SAN-0008-GIR', '190.90.4.55', DATE_SUB(NOW(), INTERVAL 7 DAY)),
+    (8,  'AGENDAR_CITA', 'cita', 'Cita sobre propiedad 1', '181.52.60.10', DATE_SUB(NOW(), INTERVAL 7 DAY)),
+    (3,  'CAMBIAR_ESTADO_CITA', 'cita', 'Confirmo cita 1', '190.90.4.33', DATE_SUB(NOW(), INTERVAL 7 DAY)),
+    (10, 'LOGIN_FALLIDO', 'usuario', 'Clave incorrecta', '181.52.61.22', DATE_SUB(NOW(), INTERVAL 6 DAY)),
+    (10, 'LOGIN_FALLIDO', 'usuario', 'Clave incorrecta', '181.52.61.22', DATE_SUB(NOW(), INTERVAL 6 DAY)),
+    (10, 'LOGIN', 'usuario', 'Inicio de sesion exitoso', '181.52.61.22', DATE_SUB(NOW(), INTERVAL 6 DAY)),
+    (9,  'RADICAR_SOLICITUD', 'solicitud', 'Solicitud de compra propiedad 6', '181.52.60.14', DATE_SUB(NOW(), INTERVAL 6 DAY)),
+    (5,  'CAMBIAR_ESTADO_SOLICITUD', 'solicitud', 'Solicitud 2 -> APROBADA', '190.90.4.60', DATE_SUB(NOW(), INTERVAL 6 DAY)),
+    (1,  'CAMBIAR_ROL', 'usuario_rol', 'Actualizo roles del usuario 2', '190.90.4.12', DATE_SUB(NOW(), INTERVAL 5 DAY)),
+    (4,  'EDITAR_PROPIEDAD', 'propiedad', 'Edito SAN-0003-BGA', '190.90.4.41', DATE_SUB(NOW(), INTERVAL 5 DAY)),
+    (7,  'CREAR_PROPIEDAD', 'propiedad', 'Publico SAN-0010-PIE', '190.90.4.71', DATE_SUB(NOW(), INTERVAL 5 DAY)),
+    (11, 'REGISTRO', 'usuario', 'Nueva cuenta cliente', '181.52.62.30', DATE_SUB(NOW(), INTERVAL 4 DAY)),
+    (11, 'MARCAR_FAVORITO', 'favorito', 'Propiedad 9', '181.52.62.30', DATE_SUB(NOW(), INTERVAL 4 DAY)),
+    (10, 'MARCAR_FAVORITO', 'favorito', 'Propiedad 3', '181.52.61.22', DATE_SUB(NOW(), INTERVAL 4 DAY)),
+    (1,  'CAMBIAR_ESTADO_USUARIO', 'usuario', 'Usuario 9 -> INACTIVO', '190.90.4.12', DATE_SUB(NOW(), INTERVAL 3 DAY)),
+    (1,  'CAMBIAR_ESTADO_USUARIO', 'usuario', 'Usuario 9 -> ACTIVO', '190.90.4.12', DATE_SUB(NOW(), INTERVAL 3 DAY)),
+    (1,  'AGREGAR_CATALOGO', 'ciudad', 'Agrego San Gil', '190.90.4.12', DATE_SUB(NOW(), INTERVAL 3 DAY)),
+    (6,  'BAJA_PROPIEDAD', 'propiedad', 'Inactivo propiedad id=14', '190.90.4.55', DATE_SUB(NOW(), INTERVAL 2 DAY)),
+    (8,  'CAMBIAR_CLAVE', 'usuario', 'Cambio de clave', '181.52.60.10', DATE_SUB(NOW(), INTERVAL 2 DAY)),
+    (5,  'CAMBIAR_ESTADO_CITA', 'cita', 'Cita 6 -> CONFIRMADA', '190.90.4.60', DATE_SUB(NOW(), INTERVAL 1 DAY)),
+    (9,  'AGENDAR_CITA', 'cita', 'Cita sobre propiedad 16', '181.52.60.14', DATE_SUB(NOW(), INTERVAL 1 DAY)),
+    (2,  'LOGIN', 'usuario', 'Inicio de sesion exitoso', '190.90.4.20', DATE_SUB(NOW(), INTERVAL 10 HOUR)),
+    (1,  'LOGIN', 'usuario', 'Inicio de sesion exitoso', '190.90.4.12', DATE_SUB(NOW(), INTERVAL 3 HOUR)),
+    (8,  'LOGIN', 'usuario', 'Inicio de sesion exitoso', '181.52.60.10', DATE_SUB(NOW(), INTERVAL 1 HOUR));
 
