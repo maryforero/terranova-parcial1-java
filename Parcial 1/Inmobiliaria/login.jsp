@@ -24,7 +24,43 @@
                     <div class="alert alert-warning">Debes iniciar sesion para continuar.</div>
                 <% } %>
 
-                <form method="post" action="<%= ctx %>/procesarLogin.jsp" data-validar novalidate>
+                <p class="small text-muted mb-2 text-center">Acceso rapido de prueba</p>
+                <div class="row g-2 mb-4">
+                    <div class="col-4">
+                        <form method="post" action="<%= ctx %>/procesarLogin.jsp">
+                            <input type="hidden" name="correo" value="admin@terranova.com">
+                            <input type="hidden" name="clave" value="1234">
+                            <button type="submit" class="rol-rapido-card w-100">
+                                <i class="bi bi-shield-lock"></i>
+                                <span>Admin</span>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col-4">
+                        <form method="post" action="<%= ctx %>/procesarLogin.jsp">
+                            <input type="hidden" name="correo" value="agente.garcia@terranova.com">
+                            <input type="hidden" name="clave" value="1234">
+                            <button type="submit" class="rol-rapido-card w-100">
+                                <i class="bi bi-building"></i>
+                                <span>Agente</span>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col-4">
+                        <form method="post" action="<%= ctx %>/procesarLogin.jsp">
+                            <input type="hidden" name="correo" value="cliente.torres@gmail.com">
+                            <input type="hidden" name="clave" value="1234">
+                            <button type="submit" class="rol-rapido-card w-100">
+                                <i class="bi bi-person"></i>
+                                <span>Cliente</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="separador-o"><span>o ingresa con tu cuenta</span></div>
+
+                <form method="post" action="<%= ctx %>/procesarLogin.jsp" class="mt-3" data-validar novalidate>
                     <div class="mb-3">
                         <label class="form-label">Correo</label>
                         <input type="email" name="correo" class="form-control" required autofocus>
