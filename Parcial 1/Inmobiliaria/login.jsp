@@ -57,6 +57,20 @@
                         </form>
                     </div>
                 </div>
+                <div class="row g-2 justify-content-center mb-1">
+                    <div class="col-4">
+                        <form method="post" action="<%= ctx %>/procesarLogin.jsp">
+                            <input type="hidden" name="correo" value="director@terranova.com">
+                            <input type="hidden" name="clave" value="1234">
+                            <button type="submit" class="rol-rapido-card w-100">
+                                <i class="bi bi-person-badge"></i>
+                                <span>Director</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <p class="small text-muted text-center mb-4">Director tiene doble rol
+                    (Administrador + Inmobiliaria) para demostrar la relacion N:M.</p>
 
                 <div class="separador-o"><span>o ingresa con tu cuenta</span></div>
 
