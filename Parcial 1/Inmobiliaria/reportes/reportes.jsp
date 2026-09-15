@@ -9,8 +9,8 @@
 
 <div class="seccion-titulo text-start mb-4">
     <h3 class="panel-titulo mb-1"><i class="bi bi-bar-chart"></i> Reportes</h3>
-    <p class="text-muted mb-0">Un vistazo rapido al estado del negocio, seguido de las consultas SQL
-        que lo sustentan (INNER JOIN, relacion N:M, LEFT JOIN y agregaciones con GROUP BY/HAVING).</p>
+    <p class="text-muted mb-0">Un vistazo rapido al estado del negocio: disponibilidad,
+        actividad de citas y solicitudes, y desempeño por ciudad e inmobiliaria.</p>
 </div>
 
 <%!
@@ -67,8 +67,6 @@
         } catch (SQLException ex) {
             out.println("<p class=\"text-danger\">Error: " + ex.getMessage() + "</p>");
         }
-        out.println("<details class=\"mt-2\"><summary class=\"small text-primary\" style=\"cursor:pointer;\">Ver consulta SQL</summary>"
-            + "<pre class=\"small bg-light p-2 rounded mt-1\">" + sql.replace("<","&lt;") + "</pre></details>");
         out.println("</div>");
     }
 
@@ -100,8 +98,6 @@
         } catch (SQLException ex) {
             out.println("<p class=\"text-danger\">Error: " + ex.getMessage() + "</p>");
         }
-        out.println("<details class=\"mt-2\"><summary class=\"small text-primary\" style=\"cursor:pointer;\">Ver consulta SQL</summary>"
-            + "<pre class=\"small bg-light p-2 rounded mt-1\">" + sql.replace("<","&lt;") + "</pre></details>");
         out.println("</div>");
     }
 %>
