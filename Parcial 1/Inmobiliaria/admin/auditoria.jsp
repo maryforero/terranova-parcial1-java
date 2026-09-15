@@ -163,10 +163,7 @@
                     <span class="text-muted small" title="<%= ts %>"><%= tiempoRelativo(ts) %></span>
                 </div>
             </div>
-            <div class="text-muted small">
-                <%= escapar(rs.getString("detalle")) %>
-                <% if (rs.getString("ip") != null) { %> &middot; IP <%= escapar(rs.getString("ip")) %><% } %>
-            </div>
+            <div class="text-muted small"><%= escapar(rs.getString("detalle")) %></div>
         </div>
     </div>
 <%

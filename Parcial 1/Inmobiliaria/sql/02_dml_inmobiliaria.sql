@@ -221,7 +221,19 @@ VALUES
     ('SAN-0021-BOG', 'Apartamento ejecutivo en Chapinero', 2, 9, 3, 6, 'Cra 13 #63-20, Bogota', 620000000, 78.0, 2, 2, 'VENTA', 'RESERVADO'),
     ('SAN-0022-MED', 'Apartaestudio en El Poblado', 3, 10, 4, 7, 'Cll 10 #35-40, Medellin', 2100000, 42.0, 1, 1, 'ARRIENDO', 'DISPONIBLE'),
     ('SAN-0023-BGA', 'Oficina coworking en Cabecera', 5, 1, 1, 4, 'Cra 33 #40-18, Bucaramanga', 1800000, 30.0, NULL, 1, 'ARRIENDO', 'DISPONIBLE'),
-    ('SAN-0024-FLB', 'Lote campestre para proyecto de vivienda', 6, 2, 2, 5, 'Vereda Casiano, Floridablanca', 210000000, 800.0, NULL, NULL, 'VENTA', 'DISPONIBLE');
+    ('SAN-0024-FLB', 'Lote campestre para proyecto de vivienda', 6, 2, 2, 5, 'Vereda Casiano, Floridablanca', 210000000, 800.0, NULL, NULL, 'VENTA', 'DISPONIBLE'),
+    ('SAN-0025-SGL', 'Finca ganadera camino a Charala', 7, 5, 2, 5, 'Vereda Charala Km 8, San Gil', 720000000, 15000.0, 4, 3, 'VENTA', 'DISPONIBLE'),
+    ('SAN-0026-SGL', 'Bodega de almacenamiento via Bucaramanga-San Gil', 8, 5, 1, 4, 'Km 12 via a Bucaramanga, San Gil', 5200000, 350.0, NULL, 1, 'ARRIENDO', 'DISPONIBLE'),
+    ('SAN-0027-BAR', 'Apartamento frente al rio Magdalena', 2, 6, 3, 6, 'Cra 5 #48-30, Barrancabermeja', 260000000, 82.0, 3, 2, 'VENTA', 'DISPONIBLE'),
+    ('SAN-0028-SOC', 'Apartaestudio para estudiantes en el Socorro', 3, 7, 4, 7, 'Cll 16 #8-14, Socorro', 850000, 32.0, 1, 1, 'ARRIENDO', 'DISPONIBLE'),
+    ('SAN-0029-SOC', 'Lote esquinero cerca al parque principal', 6, 7, 1, 3, 'Cra 12 #13-05, Socorro', 145000000, 300.0, NULL, NULL, 'VENTA', 'DISPONIBLE'),
+    ('SAN-0030-MLG', 'Casa esquinera remodelada en el centro', 1, 8, 2, 5, 'Cll 8 #9-40, Malaga', 310000000, 190.0, 3, 2, 'VENTA', 'VENDIDO'),
+    ('SAN-0031-MLG', 'Local comercial frente al parque de Malaga', 4, 8, 3, 6, 'Cra 9 #7-15, Malaga', 1600000, 45.0, NULL, 1, 'ARRIENDO', 'DISPONIBLE'),
+    ('SAN-0032-BOG', 'Oficina corporativa Zona T', 5, 9, 4, 7, 'Cra 11 #82-30, Bogota', 4200000, 90.0, NULL, 2, 'ARRIENDO', 'RESERVADO'),
+    ('SAN-0033-BOG', 'Casa campestre en las afueras de Bogota', 1, 9, 1, 2, 'Vereda Chicaque, Bogota', 890000000, 350.0, 5, 4, 'VENTA', 'DISPONIBLE'),
+    ('SAN-0034-MED', 'Bodega industrial zona franca de Medellin', 8, 10, 2, 5, 'Autopista Sur Km 4, Medellin', 12000000, 800.0, NULL, 2, 'ARRIENDO', 'DISPONIBLE'),
+    ('SAN-0035-MED', 'Apartamento en Laureles con balcon', 2, 10, 3, 6, 'Cra 76 #34-50, Medellin', 2400000, 75.0, 2, 2, 'ARRIENDO', 'ARRENDADO'),
+    ('SAN-0036-BGA', 'Lote industrial zona Cafe Madrid', 6, 1, 1, 4, 'Autopista Floridablanca Km 6, Bucaramanga', 420000000, 1200.0, NULL, NULL, 'VENTA', 'DISPONIBLE');
 
 -- ---------------------------------------------------------------------
 -- IMAGENES DE PROPIEDAD (1 a 2 por inmueble)
@@ -296,7 +308,39 @@ INSERT INTO imagen_propiedad (id_propiedad, url_imagen, es_principal, orden) VAL
     (23, 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
     (23, 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
     -- 24: Lote campestre para proyecto de vivienda
-    (24, 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop&auto=format&q=80', 1, 1);
+    (24, 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    -- 25: Finca ganadera camino a Charala
+    (25, 'https://images.unsplash.com/photo-1500076656116-558758c991c1?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (25, 'https://images.unsplash.com/photo-1444858291040-58f756a3bdd6?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 26: Bodega de almacenamiento via Bucaramanga-San Gil
+    (26, 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    -- 27: Apartamento frente al rio Magdalena
+    (27, 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (27, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 28: Apartaestudio para estudiantes en el Socorro
+    (28, 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (28, 'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 29: Lote esquinero cerca al parque principal
+    (29, 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    -- 30: Casa esquinera remodelada en el centro
+    (30, 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (30, 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 31: Local comercial frente al parque de Malaga
+    (31, 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (31, 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 32: Oficina corporativa Zona T
+    (32, 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (32, 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 33: Casa campestre en las afueras de Bogota
+    (33, 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (33, 'https://images.unsplash.com/photo-1591474200742-8e512e6f98f8?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 34: Bodega industrial zona franca de Medellin
+    (34, 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    -- 35: Apartamento en Laureles con balcon
+    (35, 'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=800&h=600&fit=crop&auto=format&q=80', 1, 1),
+    (35, 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&auto=format&q=80', 0, 2),
+    -- 36: Lote industrial zona Cafe Madrid
+    (36, 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop&auto=format&q=80', 1, 1);
 
 -- ---------------------------------------------------------------------
 -- PROPIEDAD <-> CARACTERISTICA (N:M)
@@ -377,7 +421,30 @@ INSERT INTO propiedad_caracteristica (id_propiedad, id_caracteristica) VALUES
     (22, 9),
     (23, 9),
     (23, 3),
-    (23, 7);
+    (23, 7),
+    (25, 6),
+    (25, 7),
+    (26, 11),
+    (26, 2),
+    (27, 5),
+    (27, 2),
+    (28, 9),
+    (30, 2),
+    (30, 12),
+    (31, 2),
+    (31, 7),
+    (32, 3),
+    (32, 9),
+    (32, 7),
+    (33, 1),
+    (33, 6),
+    (33, 12),
+    (33, 2),
+    (34, 11),
+    (34, 7),
+    (35, 5),
+    (35, 3),
+    (35, 9);
 
 -- ---------------------------------------------------------------------
 -- CITAS (respetan UNIQUE id_propiedad+fecha_hora)
