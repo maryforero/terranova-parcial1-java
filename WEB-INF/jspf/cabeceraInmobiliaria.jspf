@@ -29,7 +29,7 @@
     <link href="<%= ctx %>/css/estilo.css" rel="stylesheet">
 </head>
 <body data-ctx="<%= ctx %>">
-<nav class="navbar navbar-expand-lg navbar-dark shadow-sm" style="background-color:#0b5d3b;">
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm" style="background-color:var(--tn-oscuro);">
   <div class="container">
     <a class="navbar-brand fw-bold" href="<%= ctx %>/index.jsp">
         <i class="bi bi-building text-warning"></i> TerraNova

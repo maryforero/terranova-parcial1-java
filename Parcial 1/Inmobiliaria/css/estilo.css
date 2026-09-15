@@ -7,30 +7,33 @@
    TODO el proyecto tomen la nueva paleta automaticamente.
    ========================================================================== */
 :root {
-    --tn-oscuro: #1b2e28;
-    --tn-verde: #35604f;
-    --tn-verde-suave: #4a7d68;
-    --tn-dorado: #b6884f;
-    --tn-dorado-suave: #cba36c;
-    --tn-crema: #f8f5ef;
-    --tn-texto: #23282a;
+    /* Paleta morado + azul (antes verde + bronce). Los nombres de las
+       variables se dejaron igual para no tocar el resto del archivo;
+       lo unico que cambio es el color que hay detras de cada una. */
+    --tn-oscuro: #241b40;
+    --tn-verde: #6c4bb6;
+    --tn-verde-suave: #8a6fd1;
+    --tn-dorado: #3a6fb0;
+    --tn-dorado-suave: #5b91d1;
+    --tn-crema: #f5f5fb;
+    --tn-texto: #221f30;
 
     --bs-primary: var(--tn-verde);
-    --bs-primary-rgb: 53,96,79;
+    --bs-primary-rgb: 108,75,182;
     --bs-success: var(--tn-verde);
-    --bs-success-rgb: 53,96,79;
+    --bs-success-rgb: 108,75,182;
     --bs-warning: var(--tn-dorado);
-    --bs-warning-rgb: 182,136,79;
+    --bs-warning-rgb: 58,111,176;
     --bs-danger: #a13a3a;
     --bs-danger-rgb: 161,58,58;
     --bs-link-color: var(--tn-verde);
-    --bs-link-color-rgb: 53,96,79;
+    --bs-link-color-rgb: 108,75,182;
     --bs-link-hover-color: var(--tn-oscuro);
-    --bs-link-hover-color-rgb: 27,46,40;
+    --bs-link-hover-color-rgb: 36,27,64;
     --bs-body-bg: var(--tn-crema);
     --bs-body-color: var(--tn-texto);
     --bs-light: var(--tn-crema);
-    --bs-light-rgb: 248,245,239;
+    --bs-light-rgb: 245,245,251;
 }
 
 body {
@@ -39,8 +42,66 @@ body {
 h1, h2, h3, h4, h5, h6, .navbar-brand {
     font-family: 'Poppins', 'Inter', sans-serif;
 }
-/* Los botones "warning" (dorado) quedan con texto oscuro para buen contraste */
-.btn-warning, .badge.text-bg-warning { color: #2a2116 !important; }
+.badge.text-bg-warning { color: #fff !important; }
+
+/* Bootstrap 5.3 NO lee el color de fondo de .btn-success/.btn-warning/etc.
+   desde --bs-success/--bs-warning (esas solo alimentan utilidades como
+   .text-success o .badge.text-bg-success): cada variante de boton trae
+   su propio color ya compilado en variables --bs-btn-*. Para retemarlas
+   hay que sobreescribir esas variables por componente, no las de arriba. */
+.btn-success, .btn-outline-primary.active {
+    --bs-btn-bg: var(--tn-verde);
+    --bs-btn-border-color: var(--tn-verde);
+    --bs-btn-hover-bg: var(--tn-oscuro);
+    --bs-btn-hover-border-color: var(--tn-oscuro);
+    --bs-btn-active-bg: var(--tn-oscuro);
+    --bs-btn-active-border-color: var(--tn-oscuro);
+    --bs-btn-disabled-bg: var(--tn-verde);
+    --bs-btn-disabled-border-color: var(--tn-verde);
+}
+.btn-outline-success, .btn-outline-primary {
+    --bs-btn-color: var(--tn-verde);
+    --bs-btn-border-color: var(--tn-verde);
+    --bs-btn-hover-bg: var(--tn-verde);
+    --bs-btn-hover-border-color: var(--tn-verde);
+    --bs-btn-active-bg: var(--tn-verde);
+    --bs-btn-active-border-color: var(--tn-verde);
+}
+.btn-warning {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--tn-dorado);
+    --bs-btn-border-color: var(--tn-dorado);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--tn-oscuro);
+    --bs-btn-hover-border-color: var(--tn-oscuro);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--tn-oscuro);
+    --bs-btn-active-border-color: var(--tn-oscuro);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: var(--tn-dorado);
+    --bs-btn-disabled-border-color: var(--tn-dorado);
+}
+.btn-outline-warning {
+    --bs-btn-color: var(--tn-dorado);
+    --bs-btn-border-color: var(--tn-dorado);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--tn-dorado);
+    --bs-btn-hover-border-color: var(--tn-dorado);
+    --bs-btn-active-bg: var(--tn-dorado);
+    --bs-btn-active-border-color: var(--tn-dorado);
+}
+.btn-danger, .btn-outline-danger {
+    --bs-btn-bg: #a13a3a;
+    --bs-btn-border-color: #a13a3a;
+    --bs-btn-color: #fff;
+    --bs-btn-hover-bg: #7f2e2e;
+    --bs-btn-hover-border-color: #7f2e2e;
+}
+.btn-outline-danger {
+    --bs-btn-bg: transparent;
+    --bs-btn-color: #a13a3a;
+    --bs-btn-hover-color: #fff;
+}
 
 /* ---------- Landing: hero con foto de fondo ---------- */
 .hero-terranova {
@@ -48,7 +109,7 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     color: #fff;
     border-radius: 1rem;
     padding: 4.5rem 2rem 3.5rem;
-    background: linear-gradient(135deg, rgba(20,33,29,0.93) 0%, rgba(27,46,40,0.90) 55%, rgba(53,96,79,0.80) 100%),
+    background: linear-gradient(135deg, rgba(20,14,40,0.93) 0%, rgba(36,27,64,0.90) 55%, rgba(108,75,182,0.80) 100%),
                 url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=70&auto=format&fit=crop') center/cover no-repeat;
     overflow: hidden;
 }
@@ -60,7 +121,7 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 .stats-strip {
     background: #fff;
     border-radius: 0.9rem;
-    box-shadow: 0 0.4rem 1.2rem rgba(27,46,40,0.07);
+    box-shadow: 0 0.4rem 1.2rem rgba(36,27,64,0.07);
     padding: 0.5rem 0;
 }
 .stats-strip .stat-item { padding: 1.1rem 0.5rem; text-align: center; }
@@ -86,7 +147,7 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     width: 56px; height: 56px;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    background: rgba(53,96,79,0.10);
+    background: rgba(108,75,182,0.10);
     color: var(--tn-verde);
     font-size: 1.4rem;
     margin: 0 auto 0.85rem;
@@ -115,7 +176,7 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 }
 .tarjeta-propiedad:hover {
     transform: translateY(-4px);
-    box-shadow: 0 0.75rem 1.5rem rgba(27,46,40,0.14);
+    box-shadow: 0 0.75rem 1.5rem rgba(36,27,64,0.14);
 }
 .tarjeta-propiedad .card-body {
     display: flex;
@@ -141,7 +202,7 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 .tarjeta-propiedad .ribbon-destacado {
     position: absolute; top: 0.6rem; left: 0.6rem;
     background: var(--tn-dorado);
-    color: #2a2116;
+    color: #fff;
     font-size: 0.72rem;
     font-weight: 700;
     padding: 0.25rem 0.6rem;
@@ -176,12 +237,12 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 }
 
 .badge-estado-DISPONIBLE { background-color: var(--tn-verde) !important; }
-.badge-estado-RESERVADO  { background-color: var(--tn-dorado) !important; color:#2a2116; }
+.badge-estado-RESERVADO  { background-color: var(--tn-dorado) !important; color:#fff; }
 .badge-estado-VENDIDO,
 .badge-estado-ARRENDADO  { background-color: #6c757d !important; }
 .badge-estado-INACTIVO   { background-color: #adb5bd !important; color:#222; }
 
-.badge-cita-PENDIENTE, .badge-solicitud-PENDIENTE     { background-color: var(--tn-dorado) !important; color:#2a2116; }
+.badge-cita-PENDIENTE, .badge-solicitud-PENDIENTE     { background-color: var(--tn-dorado) !important; color:#fff; }
 .badge-cita-CONFIRMADA, .badge-solicitud-APROBADA     { background-color: var(--tn-verde) !important; }
 .badge-cita-RECHAZADA,  .badge-solicitud-RECHAZADA    { background-color: #a13a3a !important; }
 .badge-cita-REALIZADA                                 { background-color: var(--tn-oscuro) !important; }
@@ -214,7 +275,7 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 .kpi-card .kpi-valor { font-family:'Poppins',sans-serif; font-size: 1.9rem; font-weight: 700; line-height: 1.15; }
 .kpi-card .kpi-label { font-size: 0.82rem; opacity: 0.92; }
 .kpi-card.kpi-verde   { background: linear-gradient(135deg,var(--tn-oscuro),var(--tn-verde)); }
-.kpi-card.kpi-dorado  { background: linear-gradient(135deg,#8a6a3d,var(--tn-dorado)); }
+.kpi-card.kpi-dorado  { background: linear-gradient(135deg,#1c3a6e,var(--tn-dorado)); }
 .kpi-card.kpi-azul    { background: linear-gradient(135deg,#1c3a4a,#2f5f7a); }
 .kpi-card.kpi-gris    { background: linear-gradient(135deg,#495057,#6c757d); }
 
@@ -222,19 +283,19 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 .reporte-card {
     background: #fff;
     border-radius: 0.75rem;
-    box-shadow: 0 0.25rem 0.75rem rgba(27,46,40,0.07);
+    box-shadow: 0 0.25rem 0.75rem rgba(36,27,64,0.07);
     padding: 1.25rem;
     height: 100%;
 }
 .reporte-card h5 { margin-bottom: 0.2rem; color: var(--tn-oscuro); }
 .reporte-card .reporte-desc { color: #6b7280; font-size: 0.86rem; min-height: 2.6em; }
 .reporte-insight {
-    background: rgba(53,96,79,0.08);
+    background: rgba(108,75,182,0.08);
     border-left: 3px solid var(--tn-verde);
     padding: 0.5rem 0.75rem;
     border-radius: 0.35rem;
     font-size: 0.86rem;
-    color: #1f3a30;
+    color: #2e2350;
     margin: 0.75rem 0 0.25rem;
 }
 .barra-fila { margin-bottom: 0.6rem; }
@@ -266,9 +327,9 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 .rol-rapido-card i { font-size: 1.5rem; color: var(--tn-verde); }
 .rol-rapido-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 0.5rem 1rem rgba(27,46,40,0.12);
+    box-shadow: 0 0.5rem 1rem rgba(36,27,64,0.12);
     border-color: var(--tn-verde);
-    background: rgba(53,96,79,0.06);
+    background: rgba(108,75,182,0.06);
 }
 
 .separador-o {
@@ -299,7 +360,7 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 .panel-accion i { font-size: 1.6rem; color: var(--tn-verde); display: block; margin-bottom: 0.4rem; }
 .panel-accion:hover {
     transform: translateY(-3px);
-    box-shadow: 0 0.5rem 1rem rgba(27,46,40,0.1);
+    box-shadow: 0 0.5rem 1rem rgba(36,27,64,0.1);
     border-color: var(--tn-verde);
 }
 
