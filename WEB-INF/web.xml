@@ -74,4 +74,93 @@
         <url-pattern>/Parcial 1/Inmobiliaria/*</url-pattern>
     </filter-mapping>
 
+    <!-- Servlets controladores del Parcial (TerraNova Bienes Raices), uno por
+         entidad, en cumplimiento del requisito de arquitectura MVC. Cada uno
+         se mapea a la MISMA ruta exacta que ya usaban los formularios/enlaces
+         cuando esa logica vivia en un JSP: una coincidencia EXACTA de
+         servlet-mapping siempre gana sobre el mapeo global por extension
+         "*.jsp" que trae Tomcat por defecto, asi que no hizo falta tocar
+         ningun action="" ni href="" del resto del proyecto. -->
+    <servlet>
+        <servlet-name>AuthServlet</servlet-name>
+        <servlet-class>com.terranova.servlet.AuthServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AuthServlet</servlet-name>
+        <url-pattern>/Parcial 1/Inmobiliaria/procesarLogin.jsp</url-pattern>
+        <url-pattern>/Parcial 1/Inmobiliaria/procesarRegistro.jsp</url-pattern>
+        <url-pattern>/Parcial 1/Inmobiliaria/logout.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PerfilServlet</servlet-name>
+        <servlet-class>com.terranova.servlet.PerfilServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PerfilServlet</servlet-name>
+        <url-pattern>/Parcial 1/Inmobiliaria/perfil/guardarPerfil.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UsuarioAdminServlet</servlet-name>
+        <servlet-class>com.terranova.servlet.UsuarioAdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UsuarioAdminServlet</servlet-name>
+        <url-pattern>/Parcial 1/Inmobiliaria/admin/guardarRolUsuario.jsp</url-pattern>
+        <url-pattern>/Parcial 1/Inmobiliaria/admin/cambiarEstadoUsuario.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PropiedadServlet</servlet-name>
+        <servlet-class>com.terranova.servlet.PropiedadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PropiedadServlet</servlet-name>
+        <url-pattern>/Parcial 1/Inmobiliaria/propiedades/guardar.jsp</url-pattern>
+        <url-pattern>/Parcial 1/Inmobiliaria/propiedades/baja.jsp</url-pattern>
+        <url-pattern>/Parcial 1/Inmobiliaria/propiedades/guardarCaracteristicas.jsp</url-pattern>
+        <url-pattern>/Parcial 1/Inmobiliaria/propiedades/guardarImagen.jsp</url-pattern>
+        <url-pattern>/Parcial 1/Inmobiliaria/propiedades/eliminarImagen.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CitaServlet</servlet-name>
+        <servlet-class>com.terranova.servlet.CitaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CitaServlet</servlet-name>
+        <url-pattern>/Parcial 1/Inmobiliaria/citas/guardarCita.jsp</url-pattern>
+        <url-pattern>/Parcial 1/Inmobiliaria/citas/cambiarEstado.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SolicitudServlet</servlet-name>
+        <servlet-class>com.terranova.servlet.SolicitudServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SolicitudServlet</servlet-name>
+        <url-pattern>/Parcial 1/Inmobiliaria/solicitudes/guardarSolicitud.jsp</url-pattern>
+        <url-pattern>/Parcial 1/Inmobiliaria/solicitudes/cambiarEstado.jsp</url-pattern>
+        <url-pattern>/Parcial 1/Inmobiliaria/solicitudes/subirDocumento.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CatalogoServlet</servlet-name>
+        <servlet-class>com.terranova.servlet.CatalogoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CatalogoServlet</servlet-name>
+        <url-pattern>/Parcial 1/Inmobiliaria/admin/guardarCatalogo.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>FavoritoServlet</servlet-name>
+        <servlet-class>com.terranova.servlet.FavoritoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FavoritoServlet</servlet-name>
+        <url-pattern>/Parcial 1/Inmobiliaria/favoritos/alternarAjax.jsp</url-pattern>
+    </servlet-mapping>
+
 </web-app>

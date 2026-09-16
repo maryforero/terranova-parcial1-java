@@ -56,7 +56,6 @@ public class AccesoFilter implements Filter {
     private static final Regla[] REGLAS = new Regla[] {
         new Regla("citas/agendar.jsp",           false, "CLIENTE"),
         new Regla("citas/guardarCita.jsp",        false, "CLIENTE"),
-        new Regla("citas/gestionar.jsp",          false, "ADMINISTRADOR", "INMOBILIARIA"),
         // cambiarEstado.jsp lo usan tanto el agente/admin (confirmar/rechazar/marcar
         // realizada) como el cliente (cancelar su propia cita): solo exige login,
         // la propiedad y el rol de cada quien se valida dentro de la pagina.
@@ -66,7 +65,6 @@ public class AccesoFilter implements Filter {
         new Regla("solicitudes/radicar.jsp",        false, "CLIENTE"),
         new Regla("solicitudes/guardarSolicitud.jsp", false, "CLIENTE"),
         new Regla("solicitudes/subirDocumento.jsp", false, "CLIENTE"),
-        new Regla("solicitudes/gestionar.jsp",      false, "ADMINISTRADOR", "INMOBILIARIA"),
         new Regla("solicitudes/cambiarEstado.jsp",  false, "ADMINISTRADOR", "INMOBILIARIA"),
         new Regla("solicitudes/",                   true),
 

@@ -54,14 +54,28 @@ WEB-INF/
    ahi si tu MySQL tiene otra configuracion (es el UNICO lugar donde se
    configura la conexion, no se repite en cada pagina).
 
-2. **Compilar el filtro y el helper de contraseñas** (requiere el
-   `servlet-api.jar` de tu instalacion de Tomcat):
+2. **Compilar el filtro, las utilidades y los Servlets controladores**
+   (requiere el `servlet-api.jar` de tu instalacion de Tomcat):
    ```
    cd WEB-INF/classes
    javac -encoding UTF-8 -cp "<ruta-a-tomcat>/lib/servlet-api.jar" -d . \
        com/terranova/util/PasswordUtil.java \
-       com/terranova/filter/AccesoFilter.java
+       com/terranova/util/ConexionUtil.java \
+       com/terranova/util/Utilidades.java \
+       com/terranova/filter/AccesoFilter.java \
+       com/terranova/servlet/AuthServlet.java \
+       com/terranova/servlet/PerfilServlet.java \
+       com/terranova/servlet/UsuarioAdminServlet.java \
+       com/terranova/servlet/PropiedadServlet.java \
+       com/terranova/servlet/CitaServlet.java \
+       com/terranova/servlet/SolicitudServlet.java \
+       com/terranova/servlet/CatalogoServlet.java \
+       com/terranova/servlet/FavoritoServlet.java
    ```
+   Los 8 Servlets son los controladores por entidad que pide el enunciado
+   (arquitectura MVC): cada uno se registra en `WEB-INF/web.xml` mapeado a
+   la misma ruta `.jsp` que usaban los formularios antes, asi que ningun
+   `action=`/`href=` del resto del proyecto cambio.
 
 3. **Copiar** la carpeta `Parcial 1/` y la carpeta `WEB-INF/` dentro del
    webapp de Tomcat que uses como contexto (o desplegar todo el

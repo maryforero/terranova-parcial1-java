@@ -4,7 +4,6 @@
 <%
     String ctx = request.getContextPath() + "/Parcial%201/Inmobiliaria";
     String tituloPagina = "Documentos de la solicitud";
-    request.setCharacterEncoding("UTF-8");
     int idUsuario = (Integer) session.getAttribute("idUsuario");
     int idSolicitud = Integer.parseInt(request.getParameter("id"));
 
@@ -16,23 +15,6 @@
         ps.setInt(2, idUsuario);
         try (ResultSet rs = ps.executeQuery()) { rs.next(); esDueno = rs.getInt(1) > 0; }
     } catch (SQLException ex) { }
-
-    if ("POST".equalsIgnoreCase(request.getMethod()) && esDueno) {
-        String nombreDoc = request.getParameter("nombreDocumento");
-        String urlArchivo = request.getParameter("urlArchivo");
-        if (nombreDoc != null && !nombreDoc.trim().isEmpty() && urlArchivo != null && !urlArchivo.trim().isEmpty()) {
-            try (Connection con = abrirConexion();
-                 PreparedStatement ps = con.prepareStatement(
-                     "INSERT INTO documento_solicitud (id_solicitud, nombre_documento, url_archivo) VALUES (?,?,?)")) {
-                ps.setInt(1, idSolicitud);
-                ps.setString(2, nombreDoc.trim());
-                ps.setString(3, urlArchivo.trim());
-                ps.executeUpdate();
-            } catch (SQLException ex) { }
-        }
-        response.sendRedirect(ctx + "/solicitudes/subirDocumento.jsp?id=" + idSolicitud);
-        return;
-    }
 %>
 <%@ include file="/WEB-INF/jspf/cabeceraInmobiliaria.jspf" %>
 
