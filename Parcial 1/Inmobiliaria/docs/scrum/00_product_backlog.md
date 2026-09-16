@@ -3,6 +3,7 @@
 Product Owner: Docente Julian Barney Jaimes Rincon (segun el enunciado).
 Scrum Master / Development Team: estudiante(s) del proyecto.
 Tablero de seguimiento: Trello (columnas Backlog / En progreso / En revision / Hecho).
+Link: https://trello.com/invite/b/6aaa0aa5077ec652d3cbdcea/ATTI612380f68d1957aa0ba14a29c81e6df0DF77D29A/terranova-bienes-raices-parcial-java
 
 Historias entregadas por el Product Owner en el enunciado, mas las
 agregadas por el equipo, priorizadas y con su Definicion de Terminado (DoD).
