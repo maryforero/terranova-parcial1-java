@@ -14,7 +14,7 @@ Versión exportada en PDF (documento único, listo para entregar):
 | Interfaz | Bootstrap 5.3 desde CDN, diseño responsivo, paleta morado + dorado |
 | Servidor | Apache Tomcat 8.5 (paquete `javax.servlet`) |
 | Archivos del proyecto | 45 archivos: 24 JSP, 4 fragmentos JSPF, 8 Servlets, 3 utilidades Java, 1 Filter, CSS, 2 JS, 2 SQL, `web.xml` |
-| Estudiante | _______________________________________ |
+| Estudiantes | Mariana del Pilar Forero Jiménez, Mariana Alzate Meneses |
 
 ---
 
