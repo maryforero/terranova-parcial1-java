@@ -1,5 +1,8 @@
 # Modelo relacional (normalizado a 3FN) - TerraNova Bienes Raíces
 
+La version exportada en PDF (entregable requerido) esta en
+[`docs/diagramas/modelo_relacional.pdf`](diagramas/modelo_relacional.pdf).
+
 Notacion: `tabla(columna PK, columna FK -> tabla_referenciada, ...)`
 
 ```
