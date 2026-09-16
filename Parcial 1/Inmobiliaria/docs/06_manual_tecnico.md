@@ -86,7 +86,7 @@ catálogos y auditoría).
 | 2 | Proyecto web | Carpeta `Parcial 1/Inmobiliaria` con los 24 JSP, los 4 fragmentos `.jspf`, el CSS y los dos JS. |
 | 3 | Controladores Java | 8 Servlets + 3 clases de utilidad + el `Filter` de acceso, en `WEB-INF/classes/com/terranova`. |
 | 4 | Documentación | MER, modelo relacional, diccionario de datos, consultas documentadas, diagrama de casos de uso y este manual técnico. |
-| 5 | Documentación Scrum | Product backlog y planning/review/retrospective de los 3 sprints (`docs/scrum/`). |
+| 5 | Documentación Scrum | Product backlog y planning/review/retrospective de los 3 sprints (`docs/scrum/`). Tablero de seguimiento en Trello: https://trello.com/invite/b/6aaa0aa5077ec652d3cbdcea/ATTI612380f68d1957aa0ba14a29c81e6df0DF77D29A/terranova-bienes-raices-parcial-java |
 | 6 | Repositorio Git | Historial de commits descriptivo, público. |
 
 ### 1.4 Plan de trabajo por sprints
