@@ -7,13 +7,13 @@ Versión exportada en PDF (documento único, listo para entregar):
 | Elemento | Detalle |
 |---|---|
 | Asignatura | Programación Java (Java EE) |
-| Tipo de entrega | Parcial práctico — proyecto completo |
+| Tipo de entrega | Parcial práctico — taller guiado paso a paso, proyecto completo |
 | Arquitectura | JSP + Servlets Java (un controlador por entidad) + fragmentos reutilizables `.jspf` |
 | Base de datos | MySQL / MariaDB (XAMPP) — esquema `inmobiliaria_terranova` (16 tablas) |
 | Conexión | `WEB-INF/jspf/conexionInmobiliaria.jspf` (vistas) y `com.terranova.util.ConexionUtil` (Servlets), ambos con JDBC y `PreparedStatement` |
 | Interfaz | Bootstrap 5.3 desde CDN, diseño responsivo, paleta morado + dorado |
 | Servidor | Apache Tomcat 8.5 (paquete `javax.servlet`) |
-| Archivos del proyecto | 45 archivos: 24 JSP, 4 fragmentos JSPF, 8 Servlets, 3 utilidades Java, 1 Filter, CSS, 2 JS, 2 SQL, `web.xml` |
+| Archivos del proyecto | 46 archivos: 24 JSP, 4 fragmentos JSPF, 8 Servlets, 3 utilidades Java, 1 Filter, CSS, 2 JS, 2 SQL, `web.xml` |
 | Estudiantes | Mariana del Pilar Forero Jiménez, Mariana Alzate Meneses |
 
 ---
@@ -107,6 +107,7 @@ catálogos y auditoría).
 | Apache Tomcat | 8.5.x (paquete `javax.servlet`) | Servidor de aplicaciones. |
 | MySQL / MariaDB | 8.x / 10.x (XAMPP) | Motor de la base de datos. |
 | Driver JDBC | `mysql-connector-j-9.7.0.jar` | Permite que Java hable con MySQL, va en `WEB-INF/lib`. |
+| IDE | Visual Studio Code | Editar el proyecto y desplegar en Tomcat. |
 | Bootstrap | 5.3.3 desde CDN | Estilos y componentes de la interfaz. |
 | Bootstrap Icons | 1.11.3 desde CDN | Iconografía de toda la aplicación. |
 | Navegador | Chrome / Edge | Probar la aplicación. |
@@ -155,8 +156,13 @@ La aplicación trabaja sobre el esquema `inmobiliaria_terranova`, con **16 tabla
 
 ### 3.2 Modelo entidad-relación
 
-El diagrama completo (16 entidades, todos los atributos, PK/FK/UK y
-cardinalidades) está en [`docs/01_MER.md`](01_MER.md) y exportado como imagen en
+El diagrama completo tiene las 16 entidades, todos los atributos, las llaves
+PK/FK/UK y las cardinalidades de cada relación:
+
+![Modelo Entidad-Relación de TerraNova](diagramas/mer.png)
+
+También está disponible como diagrama Mermaid editable en
+[`docs/01_MER.md`](01_MER.md) y como archivo de imagen suelto en
 [`docs/diagramas/mer.png`](diagramas/mer.png). El modelo relacional normalizado a
 3FN, con la justificación de cada `ON DELETE`/`ON UPDATE`, está en
 [`docs/02_modelo_relacional.md`](02_modelo_relacional.md) y exportado en PDF en
@@ -165,6 +171,11 @@ cardinalidades) está en [`docs/01_MER.md`](01_MER.md) y exportado como imagen e
 ---
 
 ## 4. Arquitectura de la aplicación
+
+El siguiente diagrama resume cómo viaja una petición desde el navegador
+hasta la base de datos y de vuelta:
+
+![Diagrama de arquitectura de TerraNova](diagramas/arquitectura.png)
 
 ### 4.1 Qué es un archivo `.jspf` y por qué se usa
 
@@ -245,7 +256,103 @@ originales sin ningún cambio.
 | `js/favoritos.js` | JavaScript | Alternar favorito por AJAX sin recargar la página. |
 | `WEB-INF/web.xml` | Configuración | Filtro, Servlets, codificación, sesión. |
 
-### 4.4 Recorrido de una petición
+### 4.4 Estructura de carpetas del proyecto
+
+```
+Inmobiliaria/                          <-- raiz publica de la aplicacion
+├── index.jsp
+├── login.jsp
+├── registro.jsp
+├── accesoDenegado.jsp
+├── catalogo.jsp
+├── detallePropiedad.jsp
+├── MANUAL_TECNICO_TERRANOVA.pdf
+├── panel/
+│   ├── panelAdmin.jsp
+│   ├── panelCliente.jsp
+│   └── panelInmobiliaria.jsp
+├── propiedades/
+│   ├── listar.jsp
+│   ├── formulario.jsp
+│   ├── caracteristicas.jsp
+│   └── imagenes.jsp
+├── citas/
+│   ├── agendar.jsp
+│   └── listar.jsp
+├── solicitudes/
+│   ├── radicar.jsp
+│   ├── listar.jsp
+│   └── subirDocumentoVista.jsp
+├── favoritos/
+│   └── listar.jsp
+├── perfil/
+│   └── verPerfil.jsp
+├── admin/
+│   ├── usuarios.jsp
+│   ├── catalogos.jsp
+│   └── auditoria.jsp
+├── reportes/
+│   └── reportes.jsp
+├── css/
+│   └── estilo.css
+├── js/
+│   ├── validaciones.js
+│   └── favoritos.js
+├── sql/
+│   ├── 01_ddl_inmobiliaria.sql
+│   └── 02_dml_inmobiliaria.sql
+├── docs/
+│   ├── 01_MER.md
+│   ├── 02_modelo_relacional.md
+│   ├── 03_diccionario_datos.md
+│   ├── 04_consultas.md
+│   ├── 05_casos_uso.md
+│   ├── 06_manual_tecnico.md
+│   ├── diagramas/
+│   │   ├── mer.png
+│   │   ├── arquitectura.png
+│   │   ├── casos_uso.png
+│   │   └── modelo_relacional.pdf
+│   └── scrum/
+│       ├── 00_product_backlog.md
+│       └── sprint{1,2,3}_{planning,review,retrospective}.md
+└── WEB-INF/                           <-- invisible desde el navegador
+    ├── web.xml
+    ├── lib/
+    │   └── mysql-connector-j-9.7.0.jar
+    ├── jspf/
+    │   ├── conexionInmobiliaria.jspf
+    │   ├── utilidadesInmobiliaria.jspf
+    │   ├── cabeceraInmobiliaria.jspf
+    │   └── pieInmobiliaria.jspf
+    └── classes/com/terranova/
+        ├── filter/AccesoFilter.java
+        ├── util/ConexionUtil.java
+        ├── util/Utilidades.java
+        ├── util/PasswordUtil.java
+        └── servlet/
+            ├── AuthServlet.java
+            ├── PerfilServlet.java
+            ├── UsuarioAdminServlet.java
+            ├── PropiedadServlet.java
+            ├── CitaServlet.java
+            ├── SolicitudServlet.java
+            ├── CatalogoServlet.java
+            └── FavoritoServlet.java
+```
+
+| Carpeta | Para qué sirve | ¿Visible desde el navegador? |
+|---|---|---|
+| raíz (`Inmobiliaria/`) | Páginas que el usuario abre directamente. | Sí |
+| `admin`, `citas`, `solicitudes`, `propiedades`, `favoritos`, `perfil`, `panel`, `reportes` | Un módulo por funcionalidad; facilita el control de acceso por prefijo en `AccesoFilter`. | Sí |
+| `css`, `js` | Estilos y JavaScript propios. | Sí |
+| `docs` | Toda la documentación del parcial (MER, modelo relacional, consultas, Scrum, este manual). | Sí (son archivos, pero no forman parte de la aplicación en ejecución) |
+| `WEB-INF` | Configuración, fragmentos y clases Java. | No — nadie puede abrir estos archivos escribiendo su URL. |
+| `WEB-INF/lib` | Librerías `.jar` que usa la aplicación. | No |
+| `WEB-INF/jspf` | Fragmentos reutilizables. | No |
+| `WEB-INF/classes` | Los 8 Servlets, el Filter y las utilidades ya compilados. | No |
+
+### 4.5 Recorrido de una petición
 
 Cuando un agente publica una propiedad nueva, ocurre lo siguiente en orden:
 
@@ -5542,13 +5649,25 @@ cruce entre tablas (2 `INNER JOIN`, 1 que resuelve la N:M `usuario_rol`, 1
 
 | # | Acción | Resultado esperado |
 |---|---|---|
-| 1 | `mysql.exe --default-character-set=utf8mb4 -u root < 01_ddl_inmobiliaria.sql` | Esquema `inmobiliaria_terranova` con 16 tablas. |
-| 2 | `mysql.exe --default-character-set=utf8mb4 -u root < 02_dml_inmobiliaria.sql` | 11 usuarios, 36 propiedades, 30 eventos de auditoría y demás datos de prueba. |
-| 3 | Copiar `mysql-connector-j-*.jar` a `WEB-INF/lib`. | El `.jar` se ve dentro de la carpeta. |
-| 4 | Compilar los Servlets (ver comando en `README.md`). | `javac` termina con exit 0, `.class` generados en `WEB-INF/classes`. |
-| 5 | Iniciar Tomcat. | `http://localhost:8080/JAVA/Parcial%201/Inmobiliaria/index.jsp` responde. |
+| 1 | Iniciar el servidor de MySQL/MariaDB (por ejemplo, desde el panel de XAMPP) y ejecutar el script DDL: `mysql.exe --default-character-set=utf8mb4 -u root < 01_ddl_inmobiliaria.sql`. | Esquema `inmobiliaria_terranova` con 16 tablas. |
+| 2 | Ejecutar el script de datos de prueba (DML): `mysql.exe --default-character-set=utf8mb4 -u root < 02_dml_inmobiliaria.sql`. | 11 usuarios, 36 propiedades, 30 eventos de auditoría y demás datos de prueba. |
+| 3 | Instalar el driver JDBC: copiar `mysql-connector-j-*.jar` a `WEB-INF/lib`. | El `.jar` se ve dentro de la carpeta. |
+| 4 | Compilar los 8 Servlets y las clases de utilidad (ver comando en `README.md`). | `javac` termina con exit 0, `.class` generados en `WEB-INF/classes`. |
+| 5 | Iniciar Apache Tomcat. | `http://localhost:8080/JAVA/Parcial%201/Inmobiliaria/index.jsp` responde. |
 
-### 21.2 Guion de prueba completo
+### 21.2 Usuarios con los que se inicia sesión
+
+La clave de los cuatro es `1234`, cifrada con SHA-256 + salt (nunca se
+guarda en texto plano; ver `PasswordUtil.java` en la sección 5.5).
+
+| Usuario | Clave | Rol | Qué puede hacer |
+|---|---|---|---|
+| `admin@terranova.com` | `1234` | ADMINISTRADOR | Acceso total: usuarios y roles, catálogos, auditoría, reportes, y puede tocar cualquier propiedad/cita/solicitud. |
+| `director@terranova.com` | `1234` | ADMINISTRADOR + INMOBILIARIA | Tiene los dos roles a la vez — demuestra en vivo la relación N:M `usuario_rol`. |
+| `agente.garcia@terranova.com` | `1234` | INMOBILIARIA | Publica y edita sus propias propiedades, gestiona sus citas y solicitudes, genera reportes. |
+| `cliente.torres@gmail.com` | `1234` | CLIENTE | Busca propiedades, marca favoritos, agenda citas, radica solicitudes y sube documentos. |
+
+### 21.3 Guion de prueba completo
 
 | # | Usuario | Acción | Qué debe ocurrir |
 |---|---|---|---|
@@ -5567,7 +5686,7 @@ cruce entre tablas (2 `INNER JOIN`, 1 que resuelve la N:M `usuario_rol`, 1
 | 13 | `cliente.torres@gmail.com` | Escribir directamente la URL `admin/usuarios.jsp`. | `AccesoFilter` lo redirige a `accesoDenegado.jsp`. |
 | 14 | (sin sesión) | Escribir directamente `perfil/verPerfil.jsp`. | `AccesoFilter` lo redirige a `login.jsp`. |
 
-### 21.3 Verificación en la base de datos
+### 21.4 Verificación en la base de datos
 
 ```sql
 -- Confirmar que el bloqueo temporal quedo registrado
@@ -5602,51 +5721,57 @@ WHERE u.correo = 'director@terranova.com';
 
 ## Anexo A. Inventario de archivos entregados
 
-| Archivo | Tipo | Contenido |
+El tipo de cada archivo (vista, fragmento, Java, etc.) ya está en la tabla
+de la sección 4.3; aquí se listan las líneas de código de cada uno.
+
+| Archivo | Líneas | Contenido |
 |---|---|---|
-| `sql/01_ddl_inmobiliaria.sql` | SQL | 16 tablas, llaves y restricciones. |
-| `sql/02_dml_inmobiliaria.sql` | SQL | Datos de prueba (11 usuarios, 36 propiedades, 30 eventos de auditoría, etc.). |
-| `index.jsp` | Vista | Landing page. |
-| `login.jsp` | Vista | Formulario de acceso + tarjetas de prueba. |
-| `registro.jsp` | Vista | Registro de cliente. |
-| `accesoDenegado.jsp` | Vista | Página de rol insuficiente. |
-| `catalogo.jsp` | Vista | Catálogo público con filtros. |
-| `detallePropiedad.jsp` | Vista | Ficha de propiedad. |
-| `panel/panelAdmin.jsp` | Vista | Panel del administrador. |
-| `panel/panelCliente.jsp` | Vista | Panel del cliente. |
-| `panel/panelInmobiliaria.jsp` | Vista | Panel del agente. |
-| `propiedades/listar.jsp` | Vista | Listado de propiedades. |
-| `propiedades/formulario.jsp` | Vista | Alta/edición de propiedad. |
-| `propiedades/caracteristicas.jsp` | Vista | Checklist de características. |
-| `propiedades/imagenes.jsp` | Vista | Galería de imágenes. |
-| `citas/agendar.jsp` | Vista | Agendar visita. |
-| `citas/listar.jsp` | Vista | Listado de citas. |
-| `solicitudes/radicar.jsp` | Vista | Radicar solicitud. |
-| `solicitudes/listar.jsp` | Vista | Listado de solicitudes. |
-| `solicitudes/subirDocumentoVista.jsp` | Vista | Documentos de la solicitud. |
-| `favoritos/listar.jsp` | Vista | Mis favoritos. |
-| `perfil/verPerfil.jsp` | Vista | Perfil y cambio de clave. |
-| `admin/usuarios.jsp` | Vista | Usuarios y roles. |
-| `admin/catalogos.jsp` | Vista | Catálogos del sistema. |
-| `admin/auditoria.jsp` | Vista | Auditoría. |
-| `reportes/reportes.jsp` | Vista | Las 7 consultas documentadas. |
-| `WEB-INF/jspf/conexionInmobiliaria.jspf` | Fragmento | Conexión JDBC (vistas). |
-| `WEB-INF/jspf/utilidadesInmobiliaria.jspf` | Fragmento | Utilidades (vistas). |
-| `WEB-INF/jspf/cabeceraInmobiliaria.jspf` | Fragmento | Encabezado + navbar. |
-| `WEB-INF/jspf/pieInmobiliaria.jspf` | Fragmento | Footer + scripts. |
-| `WEB-INF/classes/.../filter/AccesoFilter.java` | Java | Control de acceso. |
-| `WEB-INF/classes/.../util/ConexionUtil.java` | Java | Conexión JDBC (Servlets). |
-| `WEB-INF/classes/.../util/Utilidades.java` | Java | Utilidades (Servlets). |
-| `WEB-INF/classes/.../util/PasswordUtil.java` | Java | Hash de contraseñas. |
-| `WEB-INF/classes/.../servlet/AuthServlet.java` | Java | Login/registro/logout. |
-| `WEB-INF/classes/.../servlet/PerfilServlet.java` | Java | Perfil y clave. |
-| `WEB-INF/classes/.../servlet/UsuarioAdminServlet.java` | Java | Roles y estado de cuenta. |
-| `WEB-INF/classes/.../servlet/PropiedadServlet.java` | Java | CRUD de propiedad. |
-| `WEB-INF/classes/.../servlet/CitaServlet.java` | Java | Citas. |
-| `WEB-INF/classes/.../servlet/SolicitudServlet.java` | Java | Solicitudes y documentos. |
-| `WEB-INF/classes/.../servlet/CatalogoServlet.java` | Java | Catálogos. |
-| `WEB-INF/classes/.../servlet/FavoritoServlet.java` | Java | Favoritos (AJAX). |
-| `css/estilo.css` | Estilos | Paleta, tarjetas, KPIs, reportes, responsivo. |
-| `js/validaciones.js` | JavaScript | Validación de formularios. |
-| `js/favoritos.js` | JavaScript | Favoritos por AJAX. |
-| `WEB-INF/web.xml` | Configuración | Filtro, Servlets, sesión, codificación. |
+| `sql/01_ddl_inmobiliaria.sql` | 255 | 16 tablas, llaves y restricciones. |
+| `sql/02_dml_inmobiliaria.sql` | 568 | Datos de prueba (11 usuarios, 36 propiedades, 30 eventos de auditoría, etc.). |
+| `index.jsp` | 220 | Landing page. |
+| `login.jsp` | 96 | Formulario de acceso + tarjetas de prueba. |
+| `registro.jsp` | 77 | Registro de cliente. |
+| `accesoDenegado.jsp` | 17 | Página de rol insuficiente. |
+| `catalogo.jsp` | 219 | Catálogo público con filtros. |
+| `detallePropiedad.jsp` | 148 | Ficha de propiedad. |
+| `panel/panelAdmin.jsp` | 58 | Panel del administrador. |
+| `panel/panelCliente.jsp` | 59 | Panel del cliente. |
+| `panel/panelInmobiliaria.jsp` | 59 | Panel del agente. |
+| `propiedades/listar.jsp` | 82 | Listado de propiedades. |
+| `propiedades/formulario.jsp` | 167 | Alta/edición de propiedad. |
+| `propiedades/caracteristicas.jsp` | 67 | Checklist de características. |
+| `propiedades/imagenes.jsp` | 81 | Galería de imágenes. |
+| `citas/agendar.jsp` | 65 | Agendar visita. |
+| `citas/listar.jsp` | 83 | Listado de citas. |
+| `solicitudes/radicar.jsp` | 54 | Radicar solicitud. |
+| `solicitudes/listar.jsp` | 81 | Listado de solicitudes. |
+| `solicitudes/subirDocumentoVista.jsp` | 72 | Documentos de la solicitud. |
+| `favoritos/listar.jsp` | 54 | Mis favoritos. |
+| `perfil/verPerfil.jsp` | 77 | Perfil y cambio de clave. |
+| `admin/usuarios.jsp` | 65 | Usuarios y roles. |
+| `admin/catalogos.jsp` | 55 | Catálogos del sistema. |
+| `admin/auditoria.jsp` | 187 | Auditoría. |
+| `reportes/reportes.jsp` | 265 | Las 7 consultas documentadas. |
+| `WEB-INF/jspf/conexionInmobiliaria.jspf` | 47 | Conexión JDBC (vistas). |
+| `WEB-INF/jspf/utilidadesInmobiliaria.jspf` | 61 | Utilidades (vistas). |
+| `WEB-INF/jspf/cabeceraInmobiliaria.jspf` | 119 | Encabezado + navbar. |
+| `WEB-INF/jspf/pieInmobiliaria.jspf` | 52 | Footer + scripts. |
+| `WEB-INF/classes/.../filter/AccesoFilter.java` | 137 | Control de acceso. |
+| `WEB-INF/classes/.../util/ConexionUtil.java` | 50 | Conexión JDBC (Servlets). |
+| `WEB-INF/classes/.../util/Utilidades.java` | 47 | Utilidades (Servlets). |
+| `WEB-INF/classes/.../util/PasswordUtil.java` | 57 | Hash de contraseñas. |
+| `WEB-INF/classes/.../servlet/AuthServlet.java` | 250 | Login/registro/logout. |
+| `WEB-INF/classes/.../servlet/PerfilServlet.java` | 95 | Perfil y clave. |
+| `WEB-INF/classes/.../servlet/UsuarioAdminServlet.java` | 94 | Roles y estado de cuenta. |
+| `WEB-INF/classes/.../servlet/PropiedadServlet.java` | 305 | CRUD de propiedad. |
+| `WEB-INF/classes/.../servlet/CitaServlet.java` | 127 | Citas. |
+| `WEB-INF/classes/.../servlet/SolicitudServlet.java` | 153 | Solicitudes y documentos. |
+| `WEB-INF/classes/.../servlet/CatalogoServlet.java` | 63 | Catálogos. |
+| `WEB-INF/classes/.../servlet/FavoritoServlet.java` | 66 | Favoritos (AJAX). |
+| `css/estilo.css` | 431 | Paleta, tarjetas, KPIs, reportes, responsivo. |
+| `js/validaciones.js` | 61 | Validación de formularios. |
+| `js/favoritos.js` | 106 | Favoritos por AJAX. |
+| `WEB-INF/web.xml` | 166 | Filtro, Servlets, sesión, codificación. |
+
+**Total: 5.718 líneas** de código propio (sin contar el driver JDBC ni las
+librerías de Bootstrap, que se cargan desde CDN).
